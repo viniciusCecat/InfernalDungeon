@@ -5,6 +5,22 @@ import { SectionTitle } from './SectionTitle.jsx';
 
 const categories = ['Todos', 'Jogador', 'NPC defensivo', 'NPC de suporte', 'Invasor NPC'];
 
+function getRoleIcon(role) {
+  if (role === 'Jogador') {
+    return 'userCog';
+  }
+
+  if (role === 'Invasor NPC') {
+    return 'invader';
+  }
+
+  if (role === 'NPC defensivo') {
+    return 'shield';
+  }
+
+  return 'gem';
+}
+
 export function CharactersSection() {
   const [category, setCategory] = useState('Todos');
   const [selectedName, setSelectedName] = useState(units[0].name);
@@ -69,7 +85,7 @@ export function CharactersSection() {
 
         <article className="detail-panel">
           <div className="detail-icon">
-            <Icon name={selectedUnit.role === 'Jogador' ? 'userCog' : 'crosshair'} size={40} />
+            <Icon name={getRoleIcon(selectedUnit.role)} size={40} />
           </div>
           <p className="eyebrow">{selectedUnit.role}</p>
           <h3>{selectedUnit.name}</h3>

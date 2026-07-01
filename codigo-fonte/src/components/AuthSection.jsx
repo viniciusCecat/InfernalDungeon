@@ -2,8 +2,9 @@ import { useMemo, useState } from 'react';
 import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
-const accountsKey = 'infernal-dungeon-accounts';
-const sessionKey = 'infernal-dungeon-session';
+const legacyAccountKeys = ['infernal-dungeon-accounts', 'infernal-dungeon-session'];
+const accountsKey = 'infernal-dungeon-accounts-v2';
+const sessionKey = 'infernal-dungeon-session-v2';
 
 const emptyRegister = {
   name: '',
@@ -26,12 +27,19 @@ function readJson(key, fallback) {
   }
 }
 
+function clearLegacyAccounts() {
+  legacyAccountKeys.forEach((key) => window.localStorage.removeItem(key));
+}
+
 function normalizeEmail(email) {
   return email.trim().toLowerCase();
 }
 
 export function AuthSection() {
-  const [accounts, setAccounts] = useState(() => readJson(accountsKey, []));
+  const [accounts, setAccounts] = useState(() => {
+    clearLegacyAccounts();
+    return readJson(accountsKey, []);
+  });
   const [sessionEmail, setSessionEmail] = useState(() => readJson(sessionKey, null));
   const [mode, setMode] = useState('register');
   const [registerForm, setRegisterForm] = useState(emptyRegister);

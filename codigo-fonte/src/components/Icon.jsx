@@ -1,6 +1,7 @@
 import closeIcon from '../assets/icons/close.svg';
 import crosshairIcon from '../assets/icons/crosshair.svg';
 import gemIcon from '../assets/icons/gem.svg';
+import invaderIcon from '../assets/icons/invader.svg';
 import loginIcon from '../assets/icons/login.svg';
 import logoutIcon from '../assets/icons/logout.svg';
 import menuIcon from '../assets/icons/menu.svg';
@@ -21,6 +22,7 @@ const icons = {
   close: closeIcon,
   crosshair: crosshairIcon,
   gem: gemIcon,
+  invader: invaderIcon,
   login: loginIcon,
   logout: logoutIcon,
   menu: menuIcon,

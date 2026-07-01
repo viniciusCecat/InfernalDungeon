@@ -14,7 +14,7 @@ export function Hero() {
         </p>
         <div className="hero-actions">
           <a className="primary-button" href="#conta">
-            <Icon name="scroll" size={18} />
+            <Icon name="userPlus" size={18} />
             Criar conta
           </a>
           <a className="secondary-button" href="#personagens">
