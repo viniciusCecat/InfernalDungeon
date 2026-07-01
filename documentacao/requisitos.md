@@ -16,7 +16,7 @@ Nesta etapa foi implementada uma aplicacao web em React com paginas separadas po
 | --- | --- | --- |
 | RF01 | Exibir a pagina inicial com nome, descricao e proposta do jogo. | Print da tela inicial. |
 | RF02 | Exibir uma secao de universo/background com informacoes sobre nucleo, profundidade e invasoes. | Print da secao Universo. |
-| RF03 | Exibir catalogo de personagens, comerciantes, inimigos e invasores rivais do projeto. | Print da secao Personagens. |
+| RF03 | Exibir catalogo de personagens, comerciantes, inimigos, chefes rivais e invasores rivais do projeto. | Print da secao Personagens. |
 | RF04 | Permitir filtrar personagens/unidades por categoria. | Print mostrando filtro aplicado. |
 | RF05 | Exibir lore expandida no painel de detalhes dos personagens/NPCs. | Print de um NPC selecionado. |
 | RF06 | Exibir catalogo de mascaras com poderes, uso, recarga e risco. | Print da pagina Mascaras. |

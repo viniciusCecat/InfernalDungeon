@@ -1,3 +1,4 @@
+import bossIcon from '../assets/icons/boss.svg';
 import closeIcon from '../assets/icons/close.svg';
 import coinDollarIcon from '../assets/icons/coin-dollar.svg';
 import crosshairIcon from '../assets/icons/crosshair.svg';
@@ -24,6 +25,7 @@ import userCogIcon from '../assets/icons/user-cog.svg';
 import userPlusIcon from '../assets/icons/user-plus.svg';
 
 const icons = {
+  boss: bossIcon,
   close: closeIcon,
   coinDollar: coinDollarIcon,
   crosshair: crosshairIcon,
