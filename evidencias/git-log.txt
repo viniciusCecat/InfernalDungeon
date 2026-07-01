@@ -1,5 +1,6 @@
 Historico de commits do repositorio local em 2026-07-01.
 
+9fd0270 Ajusta icones por tipo de personagem
 14951f0 Ajusta visual assustador dos icones inimigos
 08d67be Adiciona paginas separadas mascaras e lore expandida
 de0c960 Ajusta proposta para multiplayer e revisa icones inimigos
