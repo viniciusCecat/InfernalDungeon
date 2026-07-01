@@ -167,14 +167,14 @@ export const masks = [
       'Marca um inimigo ferido. Se ele cair em poucos segundos, a sala recebe um bonus temporario de dano.',
   },
   {
-    name: 'Mascara do Mercador Cego',
+    name: 'Mascara do Cofre Profano',
     category: 'Economia',
-    power: 'Pacto de Reliquias',
-    use: 'Troca de recursos',
+    power: 'Dizimo Sombrio',
+    use: 'Converter saque',
     cooldown: 'Baixa',
     risk: 'Medio',
     description:
-      'Converte parte do saque roubado em materiais raros, mas aumenta o custo da proxima melhoria comprada.',
+      'Transforma parte do saque roubado em materiais de melhoria, mas cobra uma taxa do nucleo na proxima compra da loja.',
   },
   {
     name: 'Mascara da Fenda',
@@ -205,6 +205,36 @@ export const masks = [
     risk: 'Muito alto',
     description:
       'Tenta dominar uma unidade inimiga temporariamente. Se falhar, o nucleo perde energia e a sala fica vulneravel.',
+  },
+  {
+    name: 'Mascara da Coroa Partida',
+    category: 'PvP',
+    power: 'Autoridade Rival',
+    use: 'Pressionar mestre rival',
+    cooldown: 'Alta',
+    risk: 'Alto',
+    description:
+      'Durante uma invasao, enfraquece temporariamente a defesa do Mestre Rival e aumenta o dano contra o nucleo inimigo.',
+  },
+  {
+    name: 'Mascara do Ferreiro Rubro',
+    category: 'Melhoria',
+    power: 'Forja de Sangue',
+    use: 'Reforcar torres',
+    cooldown: 'Media',
+    risk: 'Medio',
+    description:
+      'Aumenta o dano da proxima torre melhorada pelo ferreiro, mas exige fragmentos raros coletados nas camadas inferiores.',
+  },
+  {
+    name: 'Mascara do Vigia Subterraneo',
+    category: 'Defesa',
+    power: 'Olhar da Pedra',
+    use: 'Revelar invasores',
+    cooldown: 'Baixa',
+    risk: 'Baixo',
+    description:
+      'Revela rotas escondidas e marca invasores rivais que tentam passar por salas secundarias da dungeon.',
   },
 ];
 
@@ -246,13 +276,13 @@ export const towers = [
       'Amplifica habilidades de mascara do jogador e reduz a recarga de torres instaladas na mesma sala.',
   },
   {
-    name: 'Carrilhao Funebre',
-    role: 'Medo',
-    damage: 'Baixo',
+    name: 'Agulha da Cripta',
+    role: 'Execucao',
+    damage: 'Alto',
     range: 'Medio',
-    cooldown: 'Media',
+    cooldown: 'Lenta',
     description:
-      'Emite ondas sonoras que atrasam inimigos e interrompem rituais de cultistas proximos.',
+      'Dispara estacas de metal amaldicoado contra alvos marcados, ideal para punir invasores fortes antes do nucleo.',
   },
   {
     name: 'Portao de Espinhos',
@@ -262,6 +292,33 @@ export const towers = [
     cooldown: 'Passiva',
     description:
       'Funciona como barreira viva, prende invasores e compra tempo para NPCs defensivos chegarem ao combate.',
+  },
+  {
+    name: 'Forja de Lanca-Viva',
+    role: 'Dano continuo',
+    damage: 'Medio',
+    range: 'Corredor',
+    cooldown: 'Media',
+    description:
+      'Cria lancas organicas nas paredes da sala e causa dano constante em unidades que permanecem no corredor.',
+  },
+  {
+    name: 'Totem do Nucleo Partido',
+    role: 'Aura defensiva',
+    damage: 'Nenhum',
+    range: 'Sala',
+    cooldown: 'Passiva',
+    description:
+      'Fortalece NPCs defensivos proximos e reduz o dano recebido pelo nucleo enquanto a sala estiver sob controle.',
+  },
+  {
+    name: 'Canhao de Enxofre',
+    role: 'Area pesada',
+    damage: 'Alto',
+    range: 'Longo',
+    cooldown: 'Muito lenta',
+    description:
+      'Lanca explosoes de enxofre contra grupos de invasores, deixando o chao queimando por alguns segundos.',
   },
 ];
 
