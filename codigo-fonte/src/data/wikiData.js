@@ -125,13 +125,13 @@ export const units = [
   },
   {
     name: 'Mestre Rival',
-    role: 'Chefe rival',
-    type: 'Defesa final',
+    role: 'Mestre rival',
+    type: 'Ataque e defesa',
     description:
-      'Chefe final encontrado quando o jogador invade uma dungeon inimiga. Ele protege o nucleo da propria base rival.',
+      'Jogador inimigo que invade outras bases para roubar recursos e tambem protege o proprio nucleo quando sua dungeon e atacada.',
     lore:
-      'Cada mestre rival tambem possui sua propria dungeon, loja de melhorias, mascaras, ferreiros e torres. Quando a base dele e invadida, o mestre permanece perto do nucleo como o ultimo inimigo da rota, controlado como NPC pelo sistema.',
-    stats: ['Chefe final', 'Protege o nucleo', 'Controlado por NPC'],
+      'Cada mestre rival possui sua propria dungeon, loja de melhorias, mascaras, ferreiros e torres. Ele pode invadir bases adversarias como outro jogador, mas quando a dungeon dele e invadida, permanece perto do nucleo como o ultimo inimigo da rota, controlado como NPC pelo sistema.',
+    stats: ['Invade bases', 'Protege o nucleo', 'NPC na defesa'],
   },
   {
     name: 'Campeao de Cerco',
@@ -270,7 +270,7 @@ export const updates = [
     category: 'Devlog',
     date: '2026-07-01',
     title: 'Wiki expandida com dark fantasy',
-    text: 'Catalogo atualizado com comerciantes, inimigos, chefes rivais, invasores, torres e uma loja ficticia propria do universo.',
+    text: 'Catalogo atualizado com comerciantes, inimigos, mestres rivais, invasores, torres e uma loja ficticia propria do universo.',
   },
   {
     category: 'Sistema',

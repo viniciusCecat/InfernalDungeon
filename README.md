@@ -55,7 +55,7 @@ http://localhost:5173
 
 - Pagina inicial de apresentacao do jogo.
 - Pagina de background/universo do Infernal Dungeon.
-- Pagina de personagens, NPCs comerciantes, inimigos, chefes rivais e invasores rivais com filtro por categoria e lore expandida.
+- Pagina de personagens, NPCs comerciantes, inimigos, mestres rivais e invasores rivais com filtro por categoria e lore expandida.
 - Pagina de mascaras com poderes, uso, recarga e risco.
 - Pagina de torres infernais com dano, alcance, recarga e funcao.
 - Sistema de login e registro com consulta, edicao e exclusao de conta local.
