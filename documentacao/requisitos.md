@@ -8,7 +8,7 @@ O jogo apresentado pela wiki tem proposta multiplayer: cada jogador administra u
 
 ## Escopo implementado na Etapa 2
 
-Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal componentizada e um fluxo funcional completo de acesso do visitante. Esse fluxo cobre registro, login, consulta de perfil, edicao de dados, logout e exclusao de conta local.
+Nesta etapa foi implementada uma aplicacao web em React com paginas separadas por navegacao interna: Inicio, Universo, Personagens, Mascaras, Torres, Conta, Atualizacoes e Loja. O fluxo funcional completo fica na pagina Conta e cobre registro, login, consulta de perfil, edicao de dados, logout e exclusao de conta local.
 
 ## Requisitos funcionais implementados
 
@@ -18,15 +18,17 @@ Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal
 | RF02 | Exibir uma secao de universo/background com informacoes sobre nucleo, profundidade e invasoes. | Print da secao Universo. |
 | RF03 | Exibir catalogo de personagens, comerciantes, inimigos e invasores do projeto. | Print da secao Personagens. |
 | RF04 | Permitir filtrar personagens/unidades por categoria. | Print mostrando filtro aplicado. |
-| RF05 | Permitir registrar uma conta local com nome, e-mail, senha e interesse. | Video demonstrando registro. |
-| RF06 | Permitir login com e-mail e senha cadastrados. | Video demonstrando login. |
-| RF07 | Exibir os dados do perfil quando o usuario estiver logado. | Print do perfil logado. |
-| RF08 | Permitir editar nome, e-mail, senha e interesse do perfil. | Video demonstrando edicao. |
-| RF09 | Permitir logout da sessao atual. | Video demonstrando saida. |
-| RF10 | Permitir excluir a conta local com confirmacao. | Video demonstrando exclusao. |
-| RF11 | Exibir catalogo de torres com atributos principais. | Print da secao Torres. |
-| RF12 | Exibir atualizacoes/devlog do projeto. | Print da secao Atualizacoes. |
-| RF13 | Exibir loja ficticia com produtos inventados para o universo do jogo. | Print da secao Loja. |
+| RF05 | Exibir lore expandida no painel de detalhes dos personagens/NPCs. | Print de um NPC selecionado. |
+| RF06 | Exibir catalogo de mascaras com poderes, uso, recarga e risco. | Print da pagina Mascaras. |
+| RF07 | Permitir registrar uma conta local com nome, e-mail, senha e interesse. | Video demonstrando registro. |
+| RF08 | Permitir login com e-mail e senha cadastrados. | Video demonstrando login. |
+| RF09 | Exibir os dados do perfil quando o usuario estiver logado. | Print do perfil logado. |
+| RF10 | Permitir editar nome, e-mail, senha e interesse do perfil. | Video demonstrando edicao. |
+| RF11 | Permitir logout da sessao atual. | Video demonstrando saida. |
+| RF12 | Permitir excluir a conta local com confirmacao. | Video demonstrando exclusao. |
+| RF13 | Exibir catalogo de torres com atributos principais. | Print da secao Torres. |
+| RF14 | Exibir atualizacoes/devlog do projeto. | Print da secao Atualizacoes. |
+| RF15 | Exibir loja ficticia com produtos inventados para o universo do jogo. | Print da secao Loja. |
 
 ## Requisitos nao funcionais considerados
 
@@ -39,6 +41,7 @@ Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal
 | RNF05 | O fluxo funcional deve funcionar sem backend. | Uso de `localStorage` para persistencia local de contas. |
 | RNF06 | O projeto deve manter coerencia com a proposta da Etapa 1. | Conteudo focado em wiki, dungeon, torres, NPCs, mascaras, atualizacoes e loja ficticia. |
 | RNF07 | A entrega deve seguir a estrutura solicitada. | Pastas `codigo-fonte`, `documentacao`, `evidencias` e `README.md`. |
+| RNF08 | A navegacao deve separar visualmente as paginas da wiki. | Controle de pagina por hash no React. |
 
 ## Observacoes
 

@@ -106,6 +106,8 @@ export function CharactersSection() {
           <p className="eyebrow">{selectedUnit.role}</p>
           <h3>{selectedUnit.name}</h3>
           <p>{selectedUnit.description}</p>
+          <h4>Lore</h4>
+          <p>{selectedUnit.lore}</p>
           <div className="stat-list">
             {selectedUnit.stats.map((stat) => (
               <span key={stat}>{stat}</span>

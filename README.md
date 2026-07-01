@@ -13,6 +13,8 @@ Infernal Dungeon e uma wiki/apresentacao oficial do jogo proposto na Etapa 1. O 
 
 O fluxo funcional completo implementado e o acesso do visitante. O usuario consegue criar uma conta local, fazer login, consultar o perfil, editar os dados, sair da sessao e excluir a conta. Os dados ficam salvos no `localStorage` do navegador.
 
+A wiki foi organizada em paginas separadas dentro da aplicacao React: Inicio, Universo, Personagens, Mascaras, Torres, Conta, Atualizacoes e Loja.
+
 ## Tecnologias utilizadas
 
 - React
@@ -52,12 +54,13 @@ http://localhost:5173
 ## Funcionalidades implementadas
 
 - Pagina inicial de apresentacao do jogo.
-- Secao de background/universo do Infernal Dungeon.
-- Catalogo de personagens, NPCs comerciantes, inimigos e invasores com filtro por categoria.
-- Catalogo de torres infernais com dano, alcance, recarga e funcao.
+- Pagina de background/universo do Infernal Dungeon.
+- Pagina de personagens, NPCs comerciantes, inimigos e invasores com filtro por categoria e lore expandida.
+- Pagina de mascaras com poderes, uso, recarga e risco.
+- Pagina de torres infernais com dano, alcance, recarga e funcao.
 - Sistema de login e registro com consulta, edicao e exclusao de conta local.
-- Secao de atualizacoes/devlog.
-- Loja ficticia com produtos inventados para o universo do jogo.
+- Pagina de atualizacoes/devlog.
+- Pagina de loja ficticia com produtos inventados para o universo do jogo.
 - Interface componentizada em React.
 - Persistencia local da conta usando `localStorage`.
 

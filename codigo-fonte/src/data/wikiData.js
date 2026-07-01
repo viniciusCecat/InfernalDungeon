@@ -2,6 +2,7 @@ export const navItems = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Universo', href: '#universo' },
   { label: 'Personagens', href: '#personagens' },
+  { label: 'Mascaras', href: '#mascaras' },
   { label: 'Torres', href: '#torres' },
   { label: 'Conta', href: '#conta' },
   { label: 'Atualizacoes', href: '#atualizacoes' },
@@ -48,6 +49,8 @@ export const units = [
     type: 'Controle',
     description:
       'Comanda o nucleo, escolhe onde gastar recursos e decide quando invadir outras dungeons.',
+    lore:
+      'O mestre nao e um heroi classico. Ele e um senhor de territorio, preso a um pacto com o nucleo infernal. Cada vitoria aumenta a dungeon, mas tambem chama a atencao de outros mestres.',
     stats: ['Construcao', 'Saque', 'Defesa'],
   },
   {
@@ -56,6 +59,8 @@ export const units = [
     type: 'Tanque',
     description:
       'Guarda corredores estreitos e segura os inimigos enquanto as torres carregam disparos pesados.',
+    lore:
+      'Criada com cinzas de antigos guardas, a sentinela obedece ao som do nucleo. Ela nao fala, mas reage a invasores como se lembrasse de guerras antigas.',
     stats: ['Vida alta', 'Provocacao', 'Baixa mobilidade'],
   },
   {
@@ -64,6 +69,8 @@ export const units = [
     type: 'Magia',
     description:
       'Amplifica torres proximas e aplica efeitos de lentidao em unidades que avancam pelo mapa.',
+    lore:
+      'O arcanista vive em pocos de mana escuro e vende lealdade a quem alimenta suas runas. Em combate, ele distorce corredores e prende inimigos em circulos de sombra.',
     stats: ['Controle', 'Suporte', 'Recarga media'],
   },
   {
@@ -72,6 +79,8 @@ export const units = [
     type: 'Economia',
     description:
       'Aparece em saloes seguros da dungeon para trocar reliquias, vender contratos de NPCs e comprar fragmentos amaldicoados.',
+    lore:
+      'Ninguem sabe se o mercador esta vivo. Ele carrega sacolas que tilintam como ossos secos e aceita moedas, dentes, mapas e promessas como pagamento.',
     stats: ['Troca', 'Contratos', 'Itens raros'],
   },
   {
@@ -80,6 +89,8 @@ export const units = [
     type: 'Melhoria',
     description:
       'Forja reforcos para torres e grava runas em mascaras usando metais retirados das camadas inferiores.',
+    lore:
+      'O ferreiro perdeu o rosto ao tentar fundir uma mascara proibida. Desde entao, grava identidades em metal e cobra caro por qualquer melhoria.',
     stats: ['Upgrade', 'Runas', 'Custo alto'],
   },
   {
@@ -88,6 +99,8 @@ export const units = [
     type: 'Ritual',
     description:
       'Tenta corromper salas defendidas e enfraquecer o nucleo se permanecer vivo por tempo suficiente.',
+    lore:
+      'Cultistas procuram nucleos instaveis para abrir rituais de vazio. Sozinhos parecem frageis, mas em grupo conseguem transformar uma sala em altar inimigo.',
     stats: ['Debuff', 'Vida media', 'Perigoso em grupo'],
   },
   {
@@ -96,6 +109,8 @@ export const units = [
     type: 'Brutamontes',
     description:
       'Unidade pesada que avanca lentamente, resiste a dano fisico e abre caminho para inimigos menores.',
+    lore:
+      'Um guerreiro morto que ainda procura uma guerra digna. Sua armadura esta costurada a carne, e cada passo deixa marcas negras nas pedras.',
     stats: ['Armadura', 'Dano alto', 'Lento'],
   },
   {
@@ -104,6 +119,8 @@ export const units = [
     type: 'Emboscada',
     description:
       'Movimenta-se por passagens rachadas e ignora parte das barricadas, obrigando o jogador a proteger rotas secundarias.',
+    lore:
+      'Essas criaturas nascem em salas abandonadas. Elas aprendem rotas que nem o dono da dungeon conhece e transformam rachaduras em atalhos de ataque.',
     stats: ['Mobilidade', 'Veneno', 'Pouca vida'],
   },
   {
@@ -112,6 +129,8 @@ export const units = [
     type: 'Agilidade',
     description:
       'Unidade enviada por jogadores rivais para roubar recursos caso encontre uma rota ate o nucleo.',
+    lore:
+      'Treinado para nao lutar ate o fim, o ladrao prefere atalhos, portas laterais e salas sem vigilancia. Se escapar, leva reliquias e informacoes da base.',
     stats: ['Velocidade', 'Saque', 'Pouca vida'],
   },
   {
@@ -120,7 +139,72 @@ export const units = [
     type: 'Comando',
     description:
       'Lidera ondas enviadas por mestres rivais e fortalece inimigos proximos quando entra em uma sala importante.',
+    lore:
+      'O arauto carrega o simbolo de outro mestre. Sua chegada e uma declaracao de guerra: ele marca salas, levanta moral e transforma invasao em cerco.',
     stats: ['Aura', 'Moral', 'Prioridade alta'],
+  },
+];
+
+export const masks = [
+  {
+    name: 'Mascara do Guardiao Oco',
+    category: 'Defesa',
+    power: 'Juramento do Nucleo',
+    use: 'Protecao emergencial',
+    cooldown: 'Alta',
+    risk: 'Baixo',
+    description:
+      'Cria uma barreira ao redor do nucleo e aumenta a resistencia de NPCs defensivos durante uma invasao inimiga.',
+  },
+  {
+    name: 'Mascara do Carrasco',
+    category: 'Ataque',
+    power: 'Execucao Sombria',
+    use: 'Finalizar unidades fortes',
+    cooldown: 'Media',
+    risk: 'Medio',
+    description:
+      'Marca um inimigo ferido. Se ele cair em poucos segundos, a sala recebe um bonus temporario de dano.',
+  },
+  {
+    name: 'Mascara do Mercador Cego',
+    category: 'Economia',
+    power: 'Pacto de Reliquias',
+    use: 'Troca de recursos',
+    cooldown: 'Baixa',
+    risk: 'Medio',
+    description:
+      'Converte parte do saque roubado em materiais raros, mas aumenta o custo da proxima melhoria comprada.',
+  },
+  {
+    name: 'Mascara da Fenda',
+    category: 'Invasao',
+    power: 'Passagem Profana',
+    use: 'Abrir rota rival',
+    cooldown: 'Alta',
+    risk: 'Alto',
+    description:
+      'Durante uma invasao, revela uma rota alternativa na dungeon rival e permite reposicionar uma unidade invasora.',
+  },
+  {
+    name: 'Mascara do Lamento',
+    category: 'Controle',
+    power: 'Eco Funebre',
+    use: 'Atrasar hordas',
+    cooldown: 'Media',
+    risk: 'Baixo',
+    description:
+      'Reduz a velocidade de inimigos em salas conectadas e interrompe rituais de cultistas por alguns segundos.',
+  },
+  {
+    name: 'Mascara do Usurpador',
+    category: 'Risco',
+    power: 'Roubo de Comando',
+    use: 'Virar combate',
+    cooldown: 'Muito alta',
+    risk: 'Muito alto',
+    description:
+      'Tenta dominar uma unidade inimiga temporariamente. Se falhar, o nucleo perde energia e a sala fica vulneravel.',
   },
 ];
 

@@ -5,6 +5,7 @@ import enemyIcon from '../assets/icons/enemy.svg';
 import invaderIcon from '../assets/icons/invader.svg';
 import loginIcon from '../assets/icons/login.svg';
 import logoutIcon from '../assets/icons/logout.svg';
+import maskIcon from '../assets/icons/mask.svg';
 import merchantIcon from '../assets/icons/merchant.svg';
 import menuIcon from '../assets/icons/menu.svg';
 import newspaperIcon from '../assets/icons/newspaper.svg';
@@ -29,6 +30,7 @@ const icons = {
   invader: invaderIcon,
   login: loginIcon,
   logout: logoutIcon,
+  mask: maskIcon,
   merchant: merchantIcon,
   menu: menuIcon,
   newspaper: newspaperIcon,

@@ -108,7 +108,8 @@ button {
 }
 
 .nav-list a:hover,
-.nav-list a:focus-visible {
+.nav-list a:focus-visible,
+.nav-list a.active {
   border-color: var(--soft-line);
   background: rgba(64, 224, 208, 0.12);
   color: var(--indigo);
@@ -340,6 +341,7 @@ button {
 }
 
 .page-section {
+  min-height: calc(100vh - 170px);
   padding: 86px 7vw;
 }
 
@@ -353,6 +355,7 @@ button {
   background: rgba(64, 224, 208, 0.07);
 }
 
+.masks-section,
 .towers-section,
 .store-section {
   background:
@@ -361,11 +364,13 @@ button {
   color: var(--ghost);
 }
 
+.masks-section .section-title h2,
 .towers-section .section-title h2,
 .store-section .section-title h2 {
   color: var(--ghost);
 }
 
+.masks-section .section-title p:last-child,
 .towers-section .section-title p:last-child,
 .store-section .section-title p:last-child {
   color: rgba(248, 248, 255, 0.78);
@@ -395,6 +400,7 @@ button {
 
 .feature-grid,
 .store-grid,
+.mask-grid,
 .tower-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -413,6 +419,7 @@ button {
   box-shadow: 0 18px 48px rgba(75, 0, 130, 0.1);
 }
 
+.masks-section .mask-card,
 .towers-section .tower-card,
 .store-section .store-item {
   border: 1px solid rgba(64, 224, 208, 0.32);
@@ -422,6 +429,7 @@ button {
 
 .feature-card,
 .store-item,
+.mask-card,
 .tower-card {
   min-height: 236px;
   padding: 24px;
@@ -431,11 +439,19 @@ button {
 .store-item h3,
 .news-item h3,
 .detail-panel h3,
+.detail-panel h4,
 .auth-form h3,
 .profile-panel h3,
+.mask-card h3,
 .tower-card h3 {
   margin: 14px 0 8px;
   line-height: 1.1;
+}
+
+.detail-panel h4 {
+  color: var(--magenta);
+  font-size: 0.92rem;
+  text-transform: uppercase;
 }
 
 .feature-card p,
@@ -443,15 +459,18 @@ button {
 .news-item p,
 .detail-panel p,
 .profile-panel p,
+.mask-card p,
 .tower-card p {
   color: var(--muted);
 }
 
+.masks-section .mask-card p,
 .towers-section .tower-card p,
 .store-section .store-item p {
   color: rgba(248, 248, 255, 0.76);
 }
 
+.mask-card-head,
 .tower-card-head {
   display: flex;
   align-items: center;
@@ -459,6 +478,7 @@ button {
   gap: 12px;
 }
 
+.mask-card-head span,
 .tower-card-head span {
   border: 1px solid rgba(64, 224, 208, 0.4);
   color: var(--turquoise);
@@ -468,12 +488,20 @@ button {
   text-transform: uppercase;
 }
 
+.mask-card strong {
+  display: block;
+  color: var(--turquoise);
+  margin-bottom: 10px;
+}
+
+.mask-meta,
 .tower-stats {
   display: grid;
   gap: 8px;
   margin-top: 18px;
 }
 
+.mask-meta span,
 .tower-stats span {
   border: 1px solid rgba(64, 224, 208, 0.28);
   background: rgba(248, 248, 255, 0.08);
@@ -797,6 +825,7 @@ button {
 
   .feature-grid,
   .store-grid,
+  .mask-grid,
   .tower-grid {
     grid-template-columns: 1fr;
   }

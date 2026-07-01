@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { navItems } from '../data/wikiData.js';
 import { Icon } from './Icon.jsx';
 
-export function Header() {
+export function Header({ activePage }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -27,7 +27,12 @@ export function Header() {
 
       <nav className={open ? 'nav-list nav-list-open' : 'nav-list'}>
         {navItems.map((item) => (
-          <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+          <a
+            className={activePage === item.href.replace('#', '') ? 'active' : ''}
+            key={item.href}
+            href={item.href}
+            onClick={() => setOpen(false)}
+          >
             {item.label}
           </a>
         ))}
