@@ -13,24 +13,28 @@ const categories = [
   'Invasor NPC',
 ];
 
-function getRoleIcon(role) {
-  if (role === 'Jogador') {
+function getUnitIcon(unit) {
+  if (unit.type === 'Economia') {
+    return 'coinDollar';
+  }
+
+  if (unit.role === 'Jogador') {
     return 'userCog';
   }
 
-  if (role === 'Invasor NPC') {
+  if (unit.role === 'Invasor NPC') {
     return 'invader';
   }
 
-  if (role === 'NPC comerciante') {
+  if (unit.role === 'NPC comerciante') {
     return 'merchant';
   }
 
-  if (role === 'Inimigo NPC') {
+  if (unit.role === 'Inimigo NPC') {
     return 'enemy';
   }
 
-  if (role === 'NPC defensivo') {
+  if (unit.role === 'NPC defensivo') {
     return 'shield';
   }
 
@@ -101,7 +105,7 @@ export function CharactersSection() {
 
         <article className="detail-panel">
           <div className="detail-icon">
-            <Icon name={getRoleIcon(selectedUnit.role)} size={40} />
+            <Icon name={getUnitIcon(selectedUnit)} size={40} />
           </div>
           <p className="eyebrow">{selectedUnit.role}</p>
           <h3>{selectedUnit.name}</h3>

@@ -1,4 +1,5 @@
 import closeIcon from '../assets/icons/close.svg';
+import coinDollarIcon from '../assets/icons/coin-dollar.svg';
 import crosshairIcon from '../assets/icons/crosshair.svg';
 import gemIcon from '../assets/icons/gem.svg';
 import enemyIcon from '../assets/icons/enemy.svg';
@@ -24,6 +25,7 @@ import userPlusIcon from '../assets/icons/user-plus.svg';
 
 const icons = {
   close: closeIcon,
+  coinDollar: coinDollarIcon,
   crosshair: crosshairIcon,
   enemy: enemyIcon,
   gem: gemIcon,
