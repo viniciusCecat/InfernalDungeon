@@ -62,17 +62,10 @@ http://localhost:5173
 
 ## Link do repositorio
 
-Preencher apos publicar no GitHub:
+Pendente de publicacao no GitHub. Antes do envio final, criar o repositorio, executar `git remote add origin <url-do-repositorio>`, fazer `git push -u origin main` e substituir esta linha pelo link publico do repositorio.
 
-```text
-https://github.com/SEU-USUARIO/infernal-dungeon
-```
+Link: pendente.
 
 ## Link do video de demonstracao
 
-Preencher apos gravar e enviar o video:
-
-```text
-https://...
-```
-
+Video pendente de gravacao. Inserir aqui o link do video de demonstracao apos o upload.
