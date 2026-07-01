@@ -12,7 +12,6 @@ import menuIcon from '../assets/icons/menu.svg';
 import newspaperIcon from '../assets/icons/newspaper.svg';
 import playIcon from '../assets/icons/play.svg';
 import saveIcon from '../assets/icons/save.svg';
-import scrollIcon from '../assets/icons/scroll.svg';
 import shieldIcon from '../assets/icons/shield.svg';
 import shieldCheckIcon from '../assets/icons/shield-check.svg';
 import shoppingBagIcon from '../assets/icons/shopping-bag.svg';
@@ -39,7 +38,6 @@ const icons = {
   newspaper: newspaperIcon,
   play: playIcon,
   save: saveIcon,
-  scroll: scrollIcon,
   shield: shieldIcon,
   shieldCheck: shieldCheckIcon,
   shoppingBag: shoppingBagIcon,
