@@ -1,0 +1,28 @@
+Historico de commits gerado em 2026-07-01.
+
+b32a555 (HEAD -> main) Adiciona documentacao da etapa 2
+ README.md                    | 78 ++++++++++++++++++++++++++++++++++++++++++++
+ documentacao/participacao.md | 11 +++++++
+ documentacao/referencias.md  | 22 +++++++++++++
+ documentacao/requisitos.md   | 45 +++++++++++++++++++++++++
+ 4 files changed, 156 insertions(+)
+
+3e1aac2 Cria estrutura React da wiki
+ codigo-fonte/.gitignore                           |   5 +
+ codigo-fonte/index.html                           |  16 +
+ codigo-fonte/package.json                         |  19 +
+ codigo-fonte/src/App.jsx                          |  25 +
+ codigo-fonte/src/components/CharactersSection.jsx |  90 +++
+ codigo-fonte/src/components/Footer.jsx            |   8 +
+ codigo-fonte/src/components/Header.jsx            |  37 ++
+ codigo-fonte/src/components/Hero.jsx              |  45 ++
+ codigo-fonte/src/components/LoreSection.jsx       |  32 +
+ codigo-fonte/src/components/MaskEditor.jsx        | 279 ++++++++
+ codigo-fonte/src/components/NewsSection.jsx       |  29 +
+ codigo-fonte/src/components/SectionTitle.jsx      |   9 +
+ codigo-fonte/src/components/StoreSection.jsx      |  27 +
+ codigo-fonte/src/data/wikiData.js                 | 145 +++++
+ codigo-fonte/src/main.jsx                         |  10 +
+ codigo-fonte/src/styles.css                       | 744 ++++++++++++++++++++++
+ codigo-fonte/vite.config.js                       |   6 +
+ 17 files changed, 1526 insertions(+)
