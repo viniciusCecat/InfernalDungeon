@@ -1,9 +1,11 @@
 import closeIcon from '../assets/icons/close.svg';
 import crosshairIcon from '../assets/icons/crosshair.svg';
 import gemIcon from '../assets/icons/gem.svg';
+import enemyIcon from '../assets/icons/enemy.svg';
 import invaderIcon from '../assets/icons/invader.svg';
 import loginIcon from '../assets/icons/login.svg';
 import logoutIcon from '../assets/icons/logout.svg';
+import merchantIcon from '../assets/icons/merchant.svg';
 import menuIcon from '../assets/icons/menu.svg';
 import newspaperIcon from '../assets/icons/newspaper.svg';
 import playIcon from '../assets/icons/play.svg';
@@ -13,6 +15,7 @@ import shieldIcon from '../assets/icons/shield.svg';
 import shieldCheckIcon from '../assets/icons/shield-check.svg';
 import shoppingBagIcon from '../assets/icons/shopping-bag.svg';
 import swordsIcon from '../assets/icons/swords.svg';
+import towerIcon from '../assets/icons/tower.svg';
 import trashIcon from '../assets/icons/trash.svg';
 import userIcon from '../assets/icons/user.svg';
 import userCogIcon from '../assets/icons/user-cog.svg';
@@ -21,10 +24,12 @@ import userPlusIcon from '../assets/icons/user-plus.svg';
 const icons = {
   close: closeIcon,
   crosshair: crosshairIcon,
+  enemy: enemyIcon,
   gem: gemIcon,
   invader: invaderIcon,
   login: loginIcon,
   logout: logoutIcon,
+  merchant: merchantIcon,
   menu: menuIcon,
   newspaper: newspaperIcon,
   play: playIcon,
@@ -34,6 +39,7 @@ const icons = {
   shieldCheck: shieldCheckIcon,
   shoppingBag: shoppingBagIcon,
   swords: swordsIcon,
+  tower: towerIcon,
   trash: trashIcon,
   user: userIcon,
   userCog: userCogIcon,

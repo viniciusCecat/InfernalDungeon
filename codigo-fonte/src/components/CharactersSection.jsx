@@ -3,7 +3,15 @@ import { units } from '../data/wikiData.js';
 import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
-const categories = ['Todos', 'Jogador', 'NPC defensivo', 'NPC de suporte', 'Invasor NPC'];
+const categories = [
+  'Todos',
+  'Jogador',
+  'NPC defensivo',
+  'NPC de suporte',
+  'NPC comerciante',
+  'Inimigo NPC',
+  'Invasor NPC',
+];
 
 function getRoleIcon(role) {
   if (role === 'Jogador') {
@@ -12,6 +20,14 @@ function getRoleIcon(role) {
 
   if (role === 'Invasor NPC') {
     return 'invader';
+  }
+
+  if (role === 'NPC comerciante') {
+    return 'merchant';
+  }
+
+  if (role === 'Inimigo NPC') {
+    return 'enemy';
   }
 
   if (role === 'NPC defensivo') {

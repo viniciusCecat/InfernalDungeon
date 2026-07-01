@@ -6,6 +6,7 @@ import { Hero } from './components/Hero.jsx';
 import { LoreSection } from './components/LoreSection.jsx';
 import { NewsSection } from './components/NewsSection.jsx';
 import { StoreSection } from './components/StoreSection.jsx';
+import { TowersSection } from './components/TowersSection.jsx';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Hero />
         <LoreSection />
         <CharactersSection />
+        <TowersSection />
         <AuthSection />
         <NewsSection />
         <StoreSection />

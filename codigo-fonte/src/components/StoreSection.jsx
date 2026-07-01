@@ -7,9 +7,9 @@ export function StoreSection() {
     <section className="page-section store-section" id="loja">
       <div className="content-shell">
         <SectionTitle
-          eyebrow="Loja"
-          title="Produtos previstos"
-          text="A loja funciona como vitrine conceitual para despertar interesse no jogo e em materiais derivados."
+          eyebrow="Loja ficticia"
+          title="Relicario do Abismo"
+          text="Vitrine conceitual dark fantasy com produtos inventados para o universo do Infernal Dungeon."
         />
         <div className="store-grid">
           {storeItems.map((item) => (

@@ -343,8 +343,7 @@ button {
   padding: 86px 7vw;
 }
 
-.lore-section,
-.store-section {
+.lore-section {
   background: rgba(255, 255, 255, 0.58);
 }
 
@@ -352,6 +351,24 @@ button {
 .auth-section,
 .news-section {
   background: rgba(64, 224, 208, 0.07);
+}
+
+.towers-section,
+.store-section {
+  background:
+    linear-gradient(135deg, rgba(27, 16, 36, 0.96), rgba(75, 0, 130, 0.92)),
+    var(--indigo);
+  color: var(--ghost);
+}
+
+.towers-section .section-title h2,
+.store-section .section-title h2 {
+  color: var(--ghost);
+}
+
+.towers-section .section-title p:last-child,
+.store-section .section-title p:last-child {
+  color: rgba(248, 248, 255, 0.78);
 }
 
 .content-shell {
@@ -377,7 +394,8 @@ button {
 }
 
 .feature-grid,
-.store-grid {
+.store-grid,
+.tower-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -395,8 +413,16 @@ button {
   box-shadow: 0 18px 48px rgba(75, 0, 130, 0.1);
 }
 
+.towers-section .tower-card,
+.store-section .store-item {
+  border: 1px solid rgba(64, 224, 208, 0.32);
+  background: rgba(248, 248, 255, 0.1);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+}
+
 .feature-card,
-.store-item {
+.store-item,
+.tower-card {
   min-height: 236px;
   padding: 24px;
 }
@@ -406,7 +432,8 @@ button {
 .news-item h3,
 .detail-panel h3,
 .auth-form h3,
-.profile-panel h3 {
+.profile-panel h3,
+.tower-card h3 {
   margin: 14px 0 8px;
   line-height: 1.1;
 }
@@ -415,8 +442,45 @@ button {
 .store-item p,
 .news-item p,
 .detail-panel p,
-.profile-panel p {
+.profile-panel p,
+.tower-card p {
   color: var(--muted);
+}
+
+.towers-section .tower-card p,
+.store-section .store-item p {
+  color: rgba(248, 248, 255, 0.76);
+}
+
+.tower-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tower-card-head span {
+  border: 1px solid rgba(64, 224, 208, 0.4);
+  color: var(--turquoise);
+  padding: 6px 9px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.tower-stats {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tower-stats span {
+  border: 1px solid rgba(64, 224, 208, 0.28);
+  background: rgba(248, 248, 255, 0.08);
+  color: var(--ghost);
+  padding: 8px 10px;
+  font-size: 0.88rem;
+  font-weight: 800;
 }
 
 .two-column {
@@ -643,6 +707,10 @@ button {
   color: var(--indigo);
 }
 
+.store-section .store-item strong {
+  color: var(--turquoise);
+}
+
 .footer {
   display: flex;
   min-height: 96px;
@@ -728,7 +796,8 @@ button {
   }
 
   .feature-grid,
-  .store-grid {
+  .store-grid,
+  .tower-grid {
     grid-template-columns: 1fr;
   }
 
