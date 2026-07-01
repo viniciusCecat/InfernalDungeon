@@ -6,7 +6,7 @@ Desenvolver uma wiki/apresentacao oficial para o jogo Infernal Dungeon, reunindo
 
 ## Escopo implementado na Etapa 2
 
-Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal componentizada e um fluxo funcional completo para gerenciamento de mascaras. Esse fluxo representa a administracao de uma parte da wiki e cobre inclusao, consulta, edicao e exclusao.
+Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal componentizada e um fluxo funcional completo de acesso do visitante. Esse fluxo cobre registro, login, consulta de perfil, edicao de dados, logout e exclusao de conta local.
 
 ## Requisitos funcionais implementados
 
@@ -16,12 +16,12 @@ Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal
 | RF02 | Exibir uma secao de universo/background com informacoes sobre nucleo, profundidade e invasoes. | Print da secao Universo. |
 | RF03 | Exibir catalogo de personagens/unidades do projeto. | Print da secao Personagens. |
 | RF04 | Permitir filtrar personagens/unidades por categoria. | Print mostrando filtro aplicado. |
-| RF05 | Listar mascaras cadastradas na wiki. | Print da listagem de mascaras. |
-| RF06 | Permitir cadastrar uma nova mascara com nome, categoria, habilidade, recarga e efeito. | Video demonstrando cadastro. |
-| RF07 | Permitir pesquisar e filtrar mascaras cadastradas. | Video ou print da busca/filtro. |
-| RF08 | Permitir editar uma mascara existente. | Video demonstrando edicao. |
-| RF09 | Permitir excluir uma mascara existente com confirmacao. | Video demonstrando exclusao. |
-| RF10 | Persistir as mascaras no navegador usando armazenamento local. | Video recarregando a pagina apos cadastro. |
+| RF05 | Permitir registrar uma conta local com nome, e-mail, senha e interesse. | Video demonstrando registro. |
+| RF06 | Permitir login com e-mail e senha cadastrados. | Video demonstrando login. |
+| RF07 | Exibir os dados do perfil quando o usuario estiver logado. | Print do perfil logado. |
+| RF08 | Permitir editar nome, e-mail, senha e interesse do perfil. | Video demonstrando edicao. |
+| RF09 | Permitir logout da sessao atual. | Video demonstrando saida. |
+| RF10 | Permitir excluir a conta local com confirmacao. | Video demonstrando exclusao. |
 | RF11 | Exibir atualizacoes/devlog do projeto. | Print da secao Atualizacoes. |
 | RF12 | Exibir loja conceitual com produtos previstos. | Print da secao Loja. |
 
@@ -33,7 +33,7 @@ Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal
 | RNF02 | A interface deve ser responsiva. | CSS com media queries para desktop e mobile. |
 | RNF03 | O codigo deve estar organizado em componentes. | Componentes separados em `src/components`. |
 | RNF04 | Os dados estaticos devem ficar separados da interface. | Dados principais em `src/data/wikiData.js`. |
-| RNF05 | O fluxo funcional deve funcionar sem backend. | Uso de `localStorage` para persistencia local. |
+| RNF05 | O fluxo funcional deve funcionar sem backend. | Uso de `localStorage` para persistencia local de contas. |
 | RNF06 | O projeto deve manter coerencia com a proposta da Etapa 1. | Conteudo focado em wiki, dungeon, torres, NPCs, mascaras, atualizacoes e loja. |
 | RNF07 | A entrega deve seguir a estrutura solicitada. | Pastas `codigo-fonte`, `documentacao`, `evidencias` e `README.md`. |
 
@@ -42,4 +42,3 @@ Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal
 - O projeto ainda nao implementa backend.
 - O multiplayer aparece apenas como expectativa futura, pois o escopo atual do jogo e single-player.
 - As imagens finais do jogo podem ser adicionadas em etapas futuras. Nesta entrega, o foco e a estrutura funcional e componentizada da wiki.
-

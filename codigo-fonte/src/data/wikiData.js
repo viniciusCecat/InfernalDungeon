@@ -2,7 +2,7 @@ export const navItems = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Universo', href: '#universo' },
   { label: 'Personagens', href: '#personagens' },
-  { label: 'Mascaras', href: '#mascaras' },
+  { label: 'Conta', href: '#conta' },
   { label: 'Atualizacoes', href: '#atualizacoes' },
   { label: 'Loja', href: '#loja' },
 ];
@@ -75,36 +75,6 @@ export const units = [
   },
 ];
 
-export const defaultMasks = [
-  {
-    id: 'guardiao',
-    name: 'Mascara do Guardiao',
-    category: 'Defesa',
-    power: 'Bastiao do Nucleo',
-    cooldown: '45s',
-    effect:
-      'Cria uma barreira temporaria ao redor do nucleo e reduz o dano recebido pelas torres proximas.',
-  },
-  {
-    id: 'arquiteto',
-    name: 'Mascara do Arquiteto',
-    category: 'Construcao',
-    power: 'Forja Rapida',
-    cooldown: '35s',
-    effect:
-      'Diminui o custo da proxima torre e acelera a construcao de uma sala durante a preparacao.',
-  },
-  {
-    id: 'saqueador',
-    name: 'Mascara do Saqueador',
-    category: 'Invasao',
-    power: 'Rota Profunda',
-    cooldown: '50s',
-    effect:
-      'Revela uma rota de risco em dungeons inimigas e aumenta o ganho de recursos ao concluir a invasao.',
-  },
-];
-
 export const updates = [
   {
     category: 'Devlog',
@@ -115,8 +85,8 @@ export const updates = [
   {
     category: 'Sistema',
     date: '2026-07-01',
-    title: 'Fluxo de gerenciamento de mascaras',
-    text: 'Inclusao, consulta, edicao e exclusao de mascaras usando armazenamento local do navegador.',
+    title: 'Fluxo de login e registro',
+    text: 'Cadastro, login, consulta, edicao e exclusao de conta local usando armazenamento do navegador.',
   },
   {
     category: 'Gameplay',

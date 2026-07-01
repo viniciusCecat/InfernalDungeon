@@ -13,9 +13,9 @@ export function Hero() {
           dungeons para obter recursos mais raros.
         </p>
         <div className="hero-actions">
-          <a className="primary-button" href="#mascaras">
+          <a className="primary-button" href="#conta">
             <ScrollText size={18} />
-            Ver mascaras
+            Criar conta
           </a>
           <a className="secondary-button" href="#personagens">
             <Play size={18} />
