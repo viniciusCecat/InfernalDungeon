@@ -1,4 +1,4 @@
-Historico de commits gerado em 2026-07-01.
+Historico de commits do repositorio local em 2026-07-01.
 
 cd09907 (HEAD -> main) Adiciona lockfile das dependencias
  codigo-fonte/package-lock.json | 1696 ++++++++++++++++++++++++++++++++++++++++
@@ -13,7 +13,7 @@ cd09907 (HEAD -> main) Adiciona lockfile das dependencias
  1 file changed, 3 insertions(+), 10 deletions(-)
 
 6ca8088 Organiza evidencias obrigatorias
- evidencias/README_EVIDENCIAS.md | 44 +++++++++++++++++++++++++++++++++++++++++
+ evidencias/checklist_evidencias.md | 44 +++++++++++++++++++++++++++++++++++++++
  evidencias/git-log.txt          | 28 ++++++++++++++++++++++++++
  2 files changed, 72 insertions(+)
 

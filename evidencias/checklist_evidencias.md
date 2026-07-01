@@ -1,8 +1,8 @@
-# Evidencias a entregar
+# Checklist de Evidencias
 
 Salve nesta pasta os arquivos que comprovam o desenvolvimento.
 
-## Prints obrigatorios sugeridos
+## Prints
 
 - `01-tela-inicial.png`: tela inicial do Infernal Dungeon.
 - `02-universo.png`: secao de background/universo.
@@ -15,7 +15,7 @@ Salve nesta pasta os arquivos que comprovam o desenvolvimento.
 - `09-git-log.png`: historico de commits do repositorio.
 - `10-repositorio-github.png`: pagina do repositorio no GitHub.
 
-## Roteiro para video de demonstracao
+## Video
 
 Duracao maxima: 10 minutos.
 
@@ -33,7 +33,7 @@ Duracao maxima: 10 minutos.
 7. Mostrar rapidamente a organizacao do codigo em componentes.
 8. Explicar a divisao de atividades da dupla.
 
-## Evidencias de Git
+## Git
 
 Inclua prints ou arquivos mostrando:
 
@@ -41,4 +41,3 @@ Inclua prints ou arquivos mostrando:
 - historico de commits;
 - mensagens descritivas;
 - participacao dos integrantes, quando houver commits de ambos.
-
