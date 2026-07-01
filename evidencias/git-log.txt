@@ -1,5 +1,6 @@
 Historico de commits do repositorio local em 2026-07-01.
 
+60a8296 Ajusta invasor para rival multiplayer
 74c5b1f Corrige icone de invasor
 02f960e Refina icones de inimigos e invasores
 25bfee6 Melhora icones dos NPCs da wiki
