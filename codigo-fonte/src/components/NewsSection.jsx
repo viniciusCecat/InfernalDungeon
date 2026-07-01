@@ -1,5 +1,5 @@
-import { Newspaper } from 'lucide-react';
 import { updates } from '../data/wikiData.js';
+import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
 export function NewsSection() {
@@ -14,7 +14,7 @@ export function NewsSection() {
         <div className="news-list">
           {updates.map((update) => (
             <article className="news-item" key={`${update.title}-${update.date}`}>
-              <Newspaper size={22} />
+              <Icon name="newspaper" size={22} />
               <div>
                 <span>{update.category} - {update.date}</span>
                 <h3>{update.title}</h3>

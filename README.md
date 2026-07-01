@@ -20,7 +20,7 @@ O fluxo funcional completo implementado e o acesso do visitante. O usuario conse
 - JavaScript
 - HTML
 - CSS
-- Lucide React
+- SVGs locais
 - Git e GitHub
 
 ## Instrucoes para execucao

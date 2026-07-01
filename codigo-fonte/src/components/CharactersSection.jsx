@@ -1,6 +1,6 @@
-import { Crosshair, UserRoundCog } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { units } from '../data/wikiData.js';
+import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
 const categories = ['Todos', 'Jogador', 'NPC defensivo', 'NPC de suporte', 'Invasor NPC'];
@@ -69,11 +69,7 @@ export function CharactersSection() {
 
         <article className="detail-panel">
           <div className="detail-icon">
-            {selectedUnit.role === 'Jogador' ? (
-              <UserRoundCog size={40} />
-            ) : (
-              <Crosshair size={40} />
-            )}
+            <Icon name={selectedUnit.role === 'Jogador' ? 'userCog' : 'crosshair'} size={40} />
           </div>
           <p className="eyebrow">{selectedUnit.role}</p>
           <h3>{selectedUnit.name}</h3>

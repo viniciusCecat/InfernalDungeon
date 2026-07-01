@@ -53,10 +53,10 @@ button {
   position: sticky;
   top: 0;
   z-index: 20;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   min-height: 74px;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   border-bottom: 1px solid var(--line);
   background: rgba(248, 248, 255, 0.92);
@@ -94,6 +94,7 @@ button {
 .nav-list {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
 }
 
@@ -115,6 +116,8 @@ button {
 
 .mobile-menu {
   display: none;
+  grid-column: 3;
+  justify-self: end;
 }
 
 .hero-section {
@@ -230,6 +233,13 @@ button {
 .icon-button {
   width: 44px;
   padding: 0;
+}
+
+.svg-icon {
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 .danger-action,
@@ -389,13 +399,6 @@ button {
 .store-item {
   min-height: 236px;
   padding: 24px;
-}
-
-.feature-card svg,
-.store-item svg,
-.news-item svg,
-.profile-panel svg {
-  color: var(--turquoise);
 }
 
 .feature-card h3,
@@ -659,11 +662,14 @@ button {
 
 @media (max-width: 920px) {
   .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
     padding: 0 20px;
   }
 
   .mobile-menu {
     display: inline-flex;
+    grid-column: 2;
   }
 
   .nav-list {
@@ -672,9 +678,12 @@ button {
     right: 0;
     left: 0;
     display: none;
+    grid-column: 1 / -1;
+    justify-content: initial;
     border-bottom: 1px solid var(--line);
     background: rgba(248, 248, 255, 0.98);
     padding: 12px 20px 18px;
+    box-shadow: 0 18px 34px rgba(75, 0, 130, 0.12);
   }
 
   .nav-list-open {
@@ -683,6 +692,9 @@ button {
 
   .nav-list a {
     width: 100%;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
   }
 
   .hero-section,

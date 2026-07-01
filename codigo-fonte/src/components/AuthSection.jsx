@@ -1,5 +1,5 @@
-import { LogIn, LogOut, Save, ShieldCheck, Trash2, UserPlus, UserRound } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
 const accountsKey = 'infernal-dungeon-accounts';
@@ -208,7 +208,7 @@ export function AuthSection() {
         {activeAccount ? (
           <div className="auth-layout">
             <article className="profile-panel">
-              <UserRound size={34} />
+              <Icon name="user" size={34} />
               <p className="eyebrow">Sessao ativa</p>
               <h3>{activeAccount.name}</h3>
               <p>{activeAccount.email}</p>
@@ -257,15 +257,15 @@ export function AuthSection() {
               </label>
               <div className="form-actions">
                 <button className="primary-button" type="submit">
-                  <Save size={18} />
+                  <Icon name="save" size={18} />
                   Salvar perfil
                 </button>
                 <button className="secondary-button" type="button" onClick={logout}>
-                  <LogOut size={18} />
+                  <Icon name="logout" size={18} />
                   Sair
                 </button>
                 <button className="secondary-button danger-action" type="button" onClick={deleteAccount}>
-                  <Trash2 size={18} />
+                  <Icon name="trash" size={18} />
                   Excluir conta
                 </button>
               </div>
@@ -339,7 +339,7 @@ export function AuthSection() {
                     </select>
                   </label>
                   <button className="primary-button" type="submit">
-                    <UserPlus size={18} />
+                    <Icon name="userPlus" size={18} />
                     Registrar
                   </button>
                 </form>
@@ -365,7 +365,7 @@ export function AuthSection() {
                     />
                   </label>
                   <button className="primary-button" type="submit">
-                    <LogIn size={18} />
+                    <Icon name="login" size={18} />
                     Entrar
                   </button>
                 </form>
@@ -373,7 +373,7 @@ export function AuthSection() {
             </div>
 
             <article className="profile-panel">
-              <ShieldCheck size={36} />
+              <Icon name="shieldCheck" size={36} />
               <p className="eyebrow">Fluxo da entrega</p>
               <h3>Conta local da wiki</h3>
               <p>

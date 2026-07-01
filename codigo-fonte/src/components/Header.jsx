@@ -1,6 +1,6 @@
-import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { navItems } from '../data/wikiData.js';
+import { Icon } from './Icon.jsx';
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ export function Header() {
         title={open ? 'Fechar menu' : 'Abrir menu'}
         onClick={() => setOpen((current) => !current)}
       >
-        {open ? <X size={20} /> : <Menu size={20} />}
+        <Icon name={open ? 'close' : 'menu'} size={20} />
       </button>
 
       <nav className={open ? 'nav-list nav-list-open' : 'nav-list'}>

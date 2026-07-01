@@ -1,8 +1,8 @@
-import { Shield, Swords, Gem } from 'lucide-react';
 import { lore } from '../data/wikiData.js';
+import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
-const icons = [Shield, Gem, Swords];
+const icons = ['shield', 'gem', 'swords'];
 
 export function LoreSection() {
   return (
@@ -15,11 +15,11 @@ export function LoreSection() {
         />
         <div className="feature-grid">
           {lore.map((item, index) => {
-            const Icon = icons[index] ?? Shield;
+            const icon = icons[index] ?? 'shield';
 
             return (
               <article className="feature-card" key={item.title}>
-                <Icon size={26} />
+                <Icon name={icon} size={26} />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>

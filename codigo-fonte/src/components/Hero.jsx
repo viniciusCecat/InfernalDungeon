@@ -1,5 +1,5 @@
-import { Play, ScrollText } from 'lucide-react';
 import { highlights } from '../data/wikiData.js';
+import { Icon } from './Icon.jsx';
 
 export function Hero() {
   return (
@@ -14,11 +14,11 @@ export function Hero() {
         </p>
         <div className="hero-actions">
           <a className="primary-button" href="#conta">
-            <ScrollText size={18} />
+            <Icon name="scroll" size={18} />
             Criar conta
           </a>
           <a className="secondary-button" href="#personagens">
-            <Play size={18} />
+            <Icon name="play" size={18} />
             Explorar wiki
           </a>
         </div>
