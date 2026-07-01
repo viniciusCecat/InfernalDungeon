@@ -1,5 +1,6 @@
 Historico de commits do repositorio local em 2026-07-01.
 
+de0c960 Ajusta proposta para multiplayer e revisa icones inimigos
 f954261 Expande loja ficticia NPCs e torres
 fa91b52 Revisa icones de conta e invasores
 ff2c1ce Move icones para assets SVG e ajusta menu
