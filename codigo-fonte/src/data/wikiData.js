@@ -11,7 +11,7 @@ export const navItems = [
 export const highlights = [
   {
     value: 'Tower defense',
-    label: 'Defesa de nucleo com torres e NPCs recrutaveis.',
+    label: 'Defesa de nucleo contra invasoes de jogadores rivais.',
   },
   {
     value: 'Dungeon crawler',
@@ -27,17 +27,17 @@ export const lore = [
   {
     title: 'O nucleo da dungeon',
     text:
-      'Cada partida comeca com uma dungeon propria e um nucleo infernal. O objetivo do mestre e proteger esse nucleo, expandir salas, instalar torres e recrutar NPCs para conter invasores.',
+      'Cada jogador comeca com uma dungeon propria e um nucleo infernal. O objetivo do mestre e proteger esse nucleo, expandir salas, instalar torres e recrutar NPCs para conter invasores de outros jogadores.',
   },
   {
     title: 'Profundidade e saque',
     text:
-      'A progressao acontece em camadas. Salas mais profundas guardam recursos raros, unidades valiosas e materiais usados para melhorar defesas e preparar ataques contra outras dungeons.',
+      'A progressao acontece em camadas. Salas mais profundas guardam recursos raros, unidades valiosas e materiais usados para melhorar defesas e preparar ataques contra dungeons rivais.',
   },
   {
     title: 'Invasoes',
     text:
-      'No estado atual do projeto, as invasoes miram mestres de dungeon controlados por NPC. O modo multiplayer e uma possibilidade futura para transformar esses ataques em disputas entre jogadores.',
+      'O jogo e pensado como multiplayer: jogadores atacam dungeons de outros mestres, roubam recursos e precisam deixar a propria base pronta para contra-ataques.',
   },
 ];
 
@@ -111,7 +111,7 @@ export const units = [
     role: 'Invasor NPC',
     type: 'Agilidade',
     description:
-      'Aparece em invasoes inimigas para roubar recursos caso encontre uma rota ate o nucleo.',
+      'Unidade enviada por jogadores rivais para roubar recursos caso encontre uma rota ate o nucleo.',
     stats: ['Velocidade', 'Saque', 'Pouca vida'],
   },
   {
@@ -119,7 +119,7 @@ export const units = [
     role: 'Invasor NPC',
     type: 'Comando',
     description:
-      'Lidera pequenas invasoes de mestres NPC e fortalece inimigos proximos quando entra em uma sala importante.',
+      'Lidera ondas enviadas por mestres rivais e fortalece inimigos proximos quando entra em uma sala importante.',
     stats: ['Aura', 'Moral', 'Prioridade alta'],
   },
 ];
@@ -196,9 +196,9 @@ export const updates = [
   },
   {
     category: 'Gameplay',
-    date: 'Planejado',
-    title: 'Modo multiplayer em estudo',
-    text: 'O jogo permanece single-player, mas o design reserva espaco para invasoes entre jogadores futuramente.',
+    date: 'Base do projeto',
+    title: 'Multiplayer competitivo',
+    text: 'A proposta central e disputa entre jogadores: defender a propria dungeon e invadir bases rivais para roubar recursos.',
   },
 ];
 

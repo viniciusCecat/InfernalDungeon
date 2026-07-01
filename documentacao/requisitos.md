@@ -4,6 +4,8 @@
 
 Desenvolver uma wiki/apresentacao oficial para o jogo Infernal Dungeon, reunindo informacoes sobre universo, proposta de gameplay, personagens/unidades, comerciantes, inimigos, torres, mascaras, atualizacoes e loja ficticia. A aplicacao deve despertar interesse pelo jogo e permitir que informacoes da wiki sejam organizadas de forma clara.
 
+O jogo apresentado pela wiki tem proposta multiplayer: cada jogador administra uma dungeon propria, defende o nucleo e invade dungeons de jogadores rivais para disputar recursos.
+
 ## Escopo implementado na Etapa 2
 
 Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal componentizada e um fluxo funcional completo de acesso do visitante. Esse fluxo cobre registro, login, consulta de perfil, edicao de dados, logout e exclusao de conta local.
@@ -41,5 +43,5 @@ Nesta etapa foi implementada uma aplicacao web em React com uma pagina principal
 ## Observacoes
 
 - O projeto ainda nao implementa backend.
-- O multiplayer aparece apenas como expectativa futura, pois o escopo atual do jogo e single-player.
+- O jogo foi tratado como multiplayer desde a proposta desta versao da wiki.
 - As imagens finais do jogo podem ser adicionadas em etapas futuras. Nesta entrega, o foco e a estrutura funcional e componentizada da wiki.

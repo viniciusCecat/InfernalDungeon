@@ -10,7 +10,7 @@ export function Hero() {
         <p className="hero-lead">
           Um tower defense em dungeon onde o jogador controla um nucleo,
           constroi salas, posiciona torres, recruta NPCs e invade outras
-          dungeons para obter recursos mais raros.
+          dungeons de jogadores rivais para obter recursos mais raros.
         </p>
         <div className="hero-actions">
           <a className="primary-button" href="#conta">

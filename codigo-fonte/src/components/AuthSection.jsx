@@ -252,7 +252,7 @@ export function AuthSection() {
                   <option>Conhecer o jogo</option>
                   <option>Receber novidades</option>
                   <option>Acompanhar desenvolvimento</option>
-                  <option>Participar de teste futuro</option>
+                  <option>Encontrar grupo de invasao</option>
                 </select>
               </label>
               <label>
@@ -343,7 +343,7 @@ export function AuthSection() {
                       <option>Conhecer o jogo</option>
                       <option>Receber novidades</option>
                       <option>Acompanhar desenvolvimento</option>
-                      <option>Participar de teste futuro</option>
+                      <option>Encontrar grupo de invasao</option>
                     </select>
                   </label>
                   <button className="primary-button" type="submit">

@@ -11,7 +11,7 @@ export function LoreSection() {
         <SectionTitle
           eyebrow="Background"
           title="Universo e objetivo do jogo"
-          text="A wiki apresenta a ideia central do Infernal Dungeon e organiza os sistemas principais para futuros jogadores."
+          text="A wiki apresenta a ideia central do Infernal Dungeon e organiza os sistemas principais para jogadores."
         />
         <div className="feature-grid">
           {lore.map((item, index) => {

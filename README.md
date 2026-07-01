@@ -9,7 +9,7 @@
 
 ## Descricao resumida
 
-Infernal Dungeon e uma wiki/apresentacao oficial do jogo proposto na Etapa 1. O jogo e um tower defense dark fantasy com tema de dungeon em que o jogador controla um nucleo, posiciona torres, recruta NPCs, evolui recursos em camadas mais profundas e invade outras dungeons controladas por NPCs. O site organiza as informacoes principais do universo, personagens, comerciantes, inimigos, torres, sistema de mascaras, atualizacoes e loja ficticia.
+Infernal Dungeon e uma wiki/apresentacao oficial do jogo proposto na Etapa 1. O jogo e um tower defense dark fantasy multiplayer com tema de dungeon em que cada jogador controla um nucleo, posiciona torres, recruta NPCs, evolui recursos em camadas mais profundas e invade dungeons de jogadores rivais. O site organiza as informacoes principais do universo, personagens, comerciantes, inimigos, torres, sistema de mascaras, atualizacoes e loja ficticia.
 
 O fluxo funcional completo implementado e o acesso do visitante. O usuario consegue criar uma conta local, fazer login, consultar o perfil, editar os dados, sair da sessao e excluir a conta. Os dados ficam salvos no `localStorage` do navegador.
 
