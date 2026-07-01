@@ -1,45 +1,11 @@
 Historico de commits do repositorio local em 2026-07-01.
 
-cd09907 (HEAD -> main) Adiciona lockfile das dependencias
- codigo-fonte/package-lock.json | 1696 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 1696 insertions(+)
-
+205c812 Substitui fluxo de mascaras por login e registro
+2a8646b Renomeia checklist de evidencias
+c097bba Atualiza evidencia apos lockfile
+cd09907 Adiciona lockfile das dependencias
 7556389 Atualiza evidencia do historico Git
- evidencias/git-log.txt | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
-
 45a08de Ajusta pendencias de entrega no README
- README.md | 13 +++----------
- 1 file changed, 3 insertions(+), 10 deletions(-)
-
 6ca8088 Organiza evidencias obrigatorias
- evidencias/checklist_evidencias.md | 44 +++++++++++++++++++++++++++++++++++++++
- evidencias/git-log.txt          | 28 ++++++++++++++++++++++++++
- 2 files changed, 72 insertions(+)
-
 b32a555 Adiciona documentacao da etapa 2
- README.md                    | 78 ++++++++++++++++++++++++++++++++++++++++++++
- documentacao/participacao.md | 11 +++++++
- documentacao/referencias.md  | 22 +++++++++++++
- documentacao/requisitos.md   | 45 +++++++++++++++++++++++++
- 4 files changed, 156 insertions(+)
-
 3e1aac2 Cria estrutura React da wiki
- codigo-fonte/.gitignore                           |   5 +
- codigo-fonte/index.html                           |  16 +
- codigo-fonte/package.json                         |  19 +
- codigo-fonte/src/App.jsx                          |  25 +
- codigo-fonte/src/components/CharactersSection.jsx |  90 +++
- codigo-fonte/src/components/Footer.jsx            |   8 +
- codigo-fonte/src/components/Header.jsx            |  37 ++
- codigo-fonte/src/components/Hero.jsx              |  45 ++
- codigo-fonte/src/components/LoreSection.jsx       |  32 +
- codigo-fonte/src/components/MaskEditor.jsx        | 279 ++++++++
- codigo-fonte/src/components/NewsSection.jsx       |  29 +
- codigo-fonte/src/components/SectionTitle.jsx      |   9 +
- codigo-fonte/src/components/StoreSection.jsx      |  27 +
- codigo-fonte/src/data/wikiData.js                 | 145 +++++
- codigo-fonte/src/main.jsx                         |  10 +
- codigo-fonte/src/styles.css                       | 744 ++++++++++++++++++++++
- codigo-fonte/vite.config.js                       |   6 +
- 17 files changed, 1526 insertions(+)
