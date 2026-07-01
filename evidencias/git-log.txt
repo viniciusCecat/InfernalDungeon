@@ -1,6 +1,15 @@
 Historico de commits gerado em 2026-07-01.
 
-b32a555 (HEAD -> main) Adiciona documentacao da etapa 2
+45a08de (HEAD -> main) Ajusta pendencias de entrega no README
+ README.md | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+
+6ca8088 Organiza evidencias obrigatorias
+ evidencias/README_EVIDENCIAS.md | 44 +++++++++++++++++++++++++++++++++++++++++
+ evidencias/git-log.txt          | 28 ++++++++++++++++++++++++++
+ 2 files changed, 72 insertions(+)
+
+b32a555 Adiciona documentacao da etapa 2
  README.md                    | 78 ++++++++++++++++++++++++++++++++++++++++++++
  documentacao/participacao.md | 11 +++++++
  documentacao/referencias.md  | 22 +++++++++++++
