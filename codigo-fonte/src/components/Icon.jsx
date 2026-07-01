@@ -16,6 +16,7 @@ import scrollIcon from '../assets/icons/scroll.svg';
 import shieldIcon from '../assets/icons/shield.svg';
 import shieldCheckIcon from '../assets/icons/shield-check.svg';
 import shoppingBagIcon from '../assets/icons/shopping-bag.svg';
+import supportIcon from '../assets/icons/support.svg';
 import swordsIcon from '../assets/icons/swords.svg';
 import towerIcon from '../assets/icons/tower.svg';
 import trashIcon from '../assets/icons/trash.svg';
@@ -42,6 +43,7 @@ const icons = {
   shield: shieldIcon,
   shieldCheck: shieldCheckIcon,
   shoppingBag: shoppingBagIcon,
+  support: supportIcon,
   swords: swordsIcon,
   tower: towerIcon,
   trash: trashIcon,

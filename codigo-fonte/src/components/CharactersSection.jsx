@@ -38,6 +38,10 @@ function getUnitIcon(unit) {
     return 'shield';
   }
 
+  if (unit.role === 'NPC de suporte') {
+    return 'support';
+  }
+
   return 'gem';
 }
 
@@ -96,7 +100,12 @@ export function CharactersSection() {
                 type="button"
                 onClick={() => setSelectedName(unit.name)}
               >
-                <span>{unit.name}</span>
+                <span className="unit-row-main">
+                  <span className="unit-row-icon">
+                    <Icon name={getUnitIcon(unit)} size={26} />
+                  </span>
+                  <span>{unit.name}</span>
+                </span>
                 <small>{unit.type}</small>
               </button>
             ))}
