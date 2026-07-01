@@ -1,5 +1,6 @@
 Historico de commits do repositorio local em 2026-07-01.
 
+fa91b52 Revisa icones de conta e invasores
 ff2c1ce Move icones para assets SVG e ajusta menu
 205c812 Substitui fluxo de mascaras por login e registro
 2a8646b Renomeia checklist de evidencias
