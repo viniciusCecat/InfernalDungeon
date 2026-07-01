@@ -10,7 +10,7 @@ const categories = [
   'NPC de suporte',
   'NPC comerciante',
   'Inimigo NPC',
-  'Invasor NPC',
+  'Invasor rival',
 ];
 
 function getUnitIcon(unit) {
@@ -22,7 +22,7 @@ function getUnitIcon(unit) {
     return 'userCog';
   }
 
-  if (unit.role === 'Invasor NPC') {
+  if (unit.role === 'Invasor rival') {
     return 'invader';
   }
 

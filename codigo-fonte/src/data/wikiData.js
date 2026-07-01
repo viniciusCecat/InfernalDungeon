@@ -124,24 +124,24 @@ export const units = [
     stats: ['Mobilidade', 'Veneno', 'Pouca vida'],
   },
   {
-    name: 'Ladrao de Reliquias',
-    role: 'Invasor NPC',
-    type: 'Agilidade',
+    name: 'Mestre Rival',
+    role: 'Invasor rival',
+    type: 'PvP',
     description:
-      'Unidade enviada por jogadores rivais para roubar recursos caso encontre uma rota ate o nucleo.',
+      'Outro jogador que invade sua dungeon para testar sua defesa, quebrar rotas seguras e roubar recursos do nucleo.',
     lore:
-      'Treinado para nao lutar ate o fim, o ladrao prefere atalhos, portas laterais e salas sem vigilancia. Se escapar, leva reliquias e informacoes da base.',
-    stats: ['Velocidade', 'Saque', 'Pouca vida'],
+      'Cada mestre rival tambem possui sua propria dungeon, loja de melhorias, mascaras, ferreiros e torres. Quando entra no seu territorio, ele nao e um monstro comum: e um chefe inimigo buscando evoluir as proprias camadas.',
+    stats: ['Ataque PvP', 'Saque', 'Estrategia rival'],
   },
   {
-    name: 'Arauto da Dungeon Rival',
-    role: 'Invasor NPC',
-    type: 'Comando',
+    name: 'Campeao de Cerco',
+    role: 'Invasor rival',
+    type: 'Investida',
     description:
-      'Lidera ondas enviadas por mestres rivais e fortalece inimigos proximos quando entra em uma sala importante.',
+      'Forca ofensiva usada por mestres rivais para abrir caminho ate salas importantes durante uma invasao multiplayer.',
     lore:
-      'O arauto carrega o simbolo de outro mestre. Sua chegada e uma declaracao de guerra: ele marca salas, levanta moral e transforma invasao em cerco.',
-    stats: ['Aura', 'Moral', 'Prioridade alta'],
+      'O campeao carrega o selo de outro nucleo. Ele representa o investimento ofensivo do jogador rival: equipamentos comprados, melhorias aplicadas e mascaras escolhidas para romper a defesa.',
+    stats: ['Pressao', 'Cerco', 'Prioridade alta'],
   },
 ];
 
