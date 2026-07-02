@@ -24,12 +24,51 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="dungeon-board" aria-label="Mapa conceitual da dungeon">
-        <div className="room room-core">Nucleo</div>
-        <div className="room">Torres</div>
-        <div className="room">NPCs</div>
-        <div className="room">Recursos</div>
-        <div className="room">Invasao</div>
+      <div className="dungeon-board" aria-label="Fluxo conceitual da dungeon">
+        <span className="dungeon-route route-main" aria-hidden="true" />
+        <span className="dungeon-route route-defense" aria-hidden="true" />
+        <span className="dungeon-route route-economy" aria-hidden="true" />
+
+        <div className="room room-resource">
+          <Icon name="coinDollar" size={24} />
+          <span>Recursos</span>
+          <small>Saque</small>
+        </div>
+        <div className="room room-forge">
+          <Icon name="merchant" size={24} />
+          <span>Ferreiro</span>
+          <small>Melhorias</small>
+        </div>
+        <div className="room room-shop">
+          <Icon name="shoppingBag" size={24} />
+          <span>Loja</span>
+          <small>Contratos</small>
+        </div>
+        <div className="room room-tower">
+          <Icon name="tower" size={24} />
+          <span>Torres</span>
+          <small>Defesa</small>
+        </div>
+        <div className="room room-core">
+          <Icon name="boss" size={30} />
+          <span>Nucleo</span>
+          <small>Alvo final</small>
+        </div>
+        <div className="room room-npc">
+          <Icon name="shield" size={24} />
+          <span>NPCs</span>
+          <small>Guardas</small>
+        </div>
+        <div className="room room-mask">
+          <Icon name="mask" size={24} />
+          <span>Mascaras</span>
+          <small>Poderes</small>
+        </div>
+        <div className="room room-invasion">
+          <Icon name="invader" size={24} />
+          <span>Invasao rival</span>
+          <small>Entrada</small>
+        </div>
       </div>
 
       <div className="highlight-strip">
