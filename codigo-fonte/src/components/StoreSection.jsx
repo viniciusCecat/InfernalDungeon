@@ -130,7 +130,6 @@ export function StoreSection() {
   const [address, setAddress] = useState(emptyAddress);
   const [cart, setCart] = useState([]);
   const [quantities, setQuantities] = useState(() => createQuantityState());
-  const [databaseInfo, setDatabaseInfo] = useState(null);
   const [isLoadingStore, setIsLoadingStore] = useState(true);
   const [databaseError, setDatabaseError] = useState('');
   const [message, setMessage] = useState('');
@@ -167,22 +166,11 @@ export function StoreSection() {
     [cartItems],
   );
 
-  const totalOrders = useMemo(
-    () =>
-      orders.reduce(
-        (total, order) => total + (order.status === 'Cancelado' ? 0 : getOrderTotal(order)),
-        0,
-      ),
-    [orders],
-  );
-
   const savedAddressComplete = !findMissingAddressField(savedAddress);
-  const databaseOnline = !databaseError && Boolean(databaseInfo);
 
   function applyStoreState(data, account, shouldUpdateAddress = true) {
     setStock({ ...createInitialStock(), ...(data.stock ?? {}) });
     setOrders(data.orders ?? []);
-    setDatabaseInfo(data.database ?? null);
     setDatabaseError('');
 
     if (shouldUpdateAddress) {
@@ -200,7 +188,6 @@ export function StoreSection() {
       const data = await requestJson(`/store/state${email}`);
       applyStoreState(data, account, shouldUpdateAddress);
     } catch (requestError) {
-      setDatabaseInfo(null);
       setDatabaseError(
         requestError instanceof Error
           ? requestError.message
@@ -451,16 +438,6 @@ export function StoreSection() {
           title="Relicário do Abismo"
           text="Vitrine dark fantasy com conta vinculada, endereço salvo, carrinho, finalização e cancelamento usando banco local."
         />
-        <div className="store-status">
-          <div>
-            <strong>Banco local da loja</strong>
-            <span>{orders.length} pedido(s) registrados no banco local.</span>
-            <span>{databaseOnline ? `Arquivo: ${databaseInfo.file}` : 'Banco offline'}</span>
-          </div>
-          <div className="store-status-actions">
-            <span>Total ativo: {formatCurrency(totalOrders)}</span>
-          </div>
-        </div>
 
         {!activeAccount ? (
           <article className="store-checkout store-login-required">
