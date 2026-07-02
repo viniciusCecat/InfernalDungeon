@@ -1,22 +1,9 @@
-# Referencias de Estrutura
+# Referência
 
-## Site usado como referencia
-
-O grupo usou como referencia estrutural o site oficial de Identity V:
+Site usado como referência estrutural:
 
 ```text
 https://www.identityvgame.com/index.html?re=1
 ```
 
-## Pontos observados
-
-- Pagina inicial com nome do jogo em destaque.
-- Navegacao para secoes de historia, personagens, noticias e loja.
-- Pagina de personagens com categorias e detalhes.
-- Area de noticias/atualizacoes.
-- Loja separada como vitrine de produtos.
-
-## Adaptacao feita
-
-A implementacao nao copia codigo, textos ou imagens do site de referencia. A estrutura foi adaptada para o universo proprio de Infernal Dungeon, mantendo conteudo do projeto apresentado na Etapa 1.
-
+A implementação usa apenas a ideia de organização em páginas de apresentação, personagens, atualizações e loja. O conteúdo, textos, universo e funcionalidades são próprios do projeto Infernal Dungeon.
