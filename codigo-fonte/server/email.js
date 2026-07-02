@@ -124,10 +124,7 @@ export async function sendSupportEmail({ user, subject, message }) {
 
   return sendEmail({
     to: target,
-    replyTo: {
-      name: normalizedName,
-      address: normalizedEmail,
-    },
+    replyTo: normalizedEmail,
     subject: `[Infernal Dungeon] ${normalizedSubject}`,
     text: `Mensagem enviada por ${normalizedName} <${normalizedEmail}>:\n\n${normalizedMessage}`,
     html: `

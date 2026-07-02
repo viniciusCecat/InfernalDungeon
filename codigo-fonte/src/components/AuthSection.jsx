@@ -25,7 +25,7 @@ const emptyLogin = {
 };
 
 const emptySupport = {
-  subject: 'Teste de suporte',
+  subject: '',
   message: '',
 };
 
@@ -402,7 +402,7 @@ export function AuthSection() {
                 <input
                   value={supportForm.subject}
                   onChange={(event) => updateSupport('subject', event.target.value)}
-                  placeholder="Teste de suporte"
+                  placeholder="Assunto da mensagem"
                 />
               </label>
               <label>
@@ -410,7 +410,7 @@ export function AuthSection() {
                 <textarea
                   value={supportForm.message}
                   onChange={(event) => updateSupport('message', event.target.value)}
-                  placeholder="Escreva uma mensagem para testar o envio de e-mail."
+                  placeholder="Descreva sua dúvida, problema ou sugestão."
                   rows="4"
                 />
               </label>
