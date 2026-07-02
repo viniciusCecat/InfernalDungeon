@@ -409,7 +409,7 @@ export function AuthSection() {
                   </label>
                   <button className="primary-button" type="submit">
                     <Icon name="userPlus" size={18} />
-                    Registrar no SQLite
+                    Registrar
                   </button>
                 </form>
               ) : (
