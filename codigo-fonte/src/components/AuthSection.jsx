@@ -89,6 +89,8 @@ export function AuthSection() {
   const [registerForm, setRegisterForm] = useState(emptyRegister);
   const [loginForm, setLoginForm] = useState(emptyLogin);
   const [supportForm, setSupportForm] = useState(emptySupport);
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(false);
+  const [deleteConfirmation, setDeleteConfirmation] = useState('');
   const [profileForm, setProfileForm] = useState(() =>
     createProfileForm(readJson(sessionUserKey, null)),
   );
@@ -97,6 +99,8 @@ export function AuthSection() {
   const [isLoadingAccount, setIsLoadingAccount] = useState(false);
 
   const editableProfile = profileForm ?? createProfileForm(activeAccount);
+  const canConfirmDelete =
+    Boolean(activeAccount) && normalizeEmail(deleteConfirmation) === activeAccount.email;
 
   useEffect(() => {
     clearLegacyAccounts();
@@ -240,19 +244,34 @@ export function AuthSection() {
     clearSession();
     setActiveAccount(null);
     setProfileForm(null);
+    setIsDeleteConfirmationOpen(false);
+    setDeleteConfirmation('');
     setMode('login');
     setMessage('Sessão encerrada.');
     setError('');
   }
 
-  async function deleteAccount() {
+  function openDeleteConfirmation() {
+    clearFeedback();
+    setDeleteConfirmation('');
+    setIsDeleteConfirmationOpen(true);
+  }
+
+  function cancelDeleteConfirmation() {
+    clearFeedback();
+    setDeleteConfirmation('');
+    setIsDeleteConfirmationOpen(false);
+  }
+
+  async function deleteAccount(event) {
+    event.preventDefault();
+
     if (!activeAccount) {
       return;
     }
 
-    const confirmed = window.confirm(`Excluir a conta ${activeAccount.email}?`);
-
-    if (!confirmed) {
+    if (!canConfirmDelete) {
+      setError('Digite o e-mail da conta para confirmar a exclusão.');
       return;
     }
 
@@ -266,6 +285,8 @@ export function AuthSection() {
       clearSession();
       setActiveAccount(null);
       setProfileForm(null);
+      setDeleteConfirmation('');
+      setIsDeleteConfirmationOpen(false);
       setMode('register');
       setMessage('Conta excluída.');
     } catch (requestError) {
@@ -384,13 +405,41 @@ export function AuthSection() {
                     <Icon name="logout" size={18} />
                     Sair
                   </button>
-                  <button className="secondary-button danger-action" type="button" onClick={deleteAccount}>
+                  <button className="secondary-button danger-action" type="button" onClick={openDeleteConfirmation}>
                     <Icon name="trash" size={18} />
                     Excluir conta
                   </button>
                 </div>
               </form>
             </div>
+
+            {isDeleteConfirmationOpen ? (
+              <form className="auth-form delete-confirmation" onSubmit={deleteAccount}>
+                <h3>Confirmar exclusão da conta</h3>
+                <p>
+                  Esta ação apaga a conta <strong>{activeAccount.email}</strong> do banco local.
+                  Digite o e-mail da conta para confirmar.
+                </p>
+                <label>
+                  E-mail da conta
+                  <input
+                    type="email"
+                    value={deleteConfirmation}
+                    onChange={(event) => setDeleteConfirmation(event.target.value)}
+                    placeholder={activeAccount.email}
+                  />
+                </label>
+                <div className="form-actions">
+                  <button className="secondary-button danger-action" type="submit" disabled={!canConfirmDelete}>
+                    <Icon name="trash" size={18} />
+                    Confirmar exclusão
+                  </button>
+                  <button className="primary-button" type="button" onClick={cancelDeleteConfirmation}>
+                    Manter conta
+                  </button>
+                </div>
+              </form>
+            ) : null}
 
             <form className="auth-form support-panel" onSubmit={sendSupportMessage}>
               <h3>Suporte por e-mail</h3>

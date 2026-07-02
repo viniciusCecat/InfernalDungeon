@@ -736,6 +736,30 @@ button:disabled {
   margin-top: 18px;
 }
 
+.delete-confirmation {
+  margin-top: 18px;
+  border: 1px solid rgba(139, 0, 139, 0.32);
+  background:
+    linear-gradient(135deg, rgba(139, 0, 139, 0.08), rgba(64, 224, 208, 0.08)),
+    var(--panel);
+}
+
+.delete-confirmation h3 {
+  color: var(--magenta);
+  margin: 0 0 10px;
+}
+
+.delete-confirmation p {
+  color: var(--muted);
+  font-weight: 800;
+  margin: 0;
+}
+
+.delete-confirmation strong {
+  color: var(--indigo);
+  overflow-wrap: anywhere;
+}
+
 .support-sender {
   margin: 0;
   color: var(--muted);
