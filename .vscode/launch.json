@@ -6,9 +6,6 @@
       "type": "chrome",
       "request": "launch",
       "runtimeExecutable": "/usr/bin/brave-browser",
-      "runtimeArgs": [
-        "http://127.0.0.1:5173/api/database"
-      ],
       "url": "http://127.0.0.1:5173/",
       "webRoot": "${workspaceFolder}/codigo-fonte/src",
       "preLaunchTask": "Infernal Dungeon: dev server",

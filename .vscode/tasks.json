@@ -4,7 +4,7 @@
     {
       "label": "Infernal Dungeon: dev server",
       "type": "shell",
-      "command": "fuser -k 3001/tcp 5173/tcp 2>/dev/null || true; PATH=/tmp/codex-node/bin:$PATH npm run dev",
+      "command": "fuser -k 3001/tcp 5173/tcp 2>/dev/null || true; (sleep 4; /usr/bin/brave-browser --new-tab http://127.0.0.1:5173/api/database >/dev/null 2>&1 &) ; PATH=/tmp/codex-node/bin:$PATH npm run dev",
       "options": {
         "cwd": "${workspaceFolder}/codigo-fonte"
       },
