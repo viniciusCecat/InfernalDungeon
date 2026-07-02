@@ -317,32 +317,6 @@ export function StoreSection() {
     setMessage('Endereço de teste preenchido. Você pode salvar ou finalizar a compra com ele.');
   }
 
-  async function resetStoreData() {
-    clearFeedback();
-
-    const confirmed = window.confirm(
-      'Resetar a loja local? Isso apaga pedidos, endereço salvo e restaura o estoque inicial.',
-    );
-
-    if (!confirmed) {
-      return;
-    }
-
-    try {
-      const data = await requestJson('/store/reset', {
-        method: 'POST',
-        body: JSON.stringify({ customerEmail: activeAccount?.email ?? '' }),
-      });
-
-      applyStoreState(data, activeAccount);
-      setCart([]);
-      setQuantities(createQuantityState());
-      setMessage('Banco local resetado: pedidos apagados, estoque restaurado e endereço limpo.');
-    } catch (requestError) {
-      setError(requestError instanceof Error ? requestError.message : 'Erro ao resetar loja.');
-    }
-  }
-
   function addToCart(item) {
     clearFeedback();
 
@@ -485,12 +459,6 @@ export function StoreSection() {
           </div>
           <div className="store-status-actions">
             <span>Total ativo: {formatCurrency(totalOrders)}</span>
-            <button className="secondary-button" type="button" onClick={() => loadStoreData(activeAccount)}>
-              Recarregar banco
-            </button>
-            <button className="secondary-button danger-action" type="button" onClick={resetStoreData}>
-              Resetar loja
-            </button>
           </div>
         </div>
 
