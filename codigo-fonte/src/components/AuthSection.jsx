@@ -68,7 +68,7 @@ async function requestJson(endpoint, options = {}) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.error ?? 'Erro ao acessar o banco SQLite.');
+    throw new Error(data.error ?? 'Erro ao acessar o banco local.');
   }
 
   return data;
@@ -119,7 +119,7 @@ export function AuthSection() {
           setProfileForm(null);
         }
       } catch {
-        setError('Não foi possível carregar a sessão salva no SQLite.');
+        setError('Não foi possível carregar a sessão salva.');
       } finally {
         setIsLoadingAccount(false);
       }
@@ -165,7 +165,7 @@ export function AuthSection() {
       setActiveAccount(data.user);
       setProfileForm(createProfileForm(data.user));
       setRegisterForm(emptyRegister);
-      setMessage('Conta criada no SQLite e login realizado.');
+      setMessage('Conta criada e login realizado.');
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao criar conta.');
     }
@@ -188,7 +188,7 @@ export function AuthSection() {
       setActiveAccount(data.user);
       setProfileForm(createProfileForm(data.user));
       setLoginForm(emptyLogin);
-      setMessage('Login realizado com sucesso usando o SQLite.');
+      setMessage('Login realizado com sucesso.');
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao entrar.');
     }
@@ -216,7 +216,7 @@ export function AuthSection() {
       saveSession(data.user);
       setActiveAccount(data.user);
       setProfileForm(createProfileForm(data.user));
-      setMessage('Perfil atualizado no SQLite.');
+      setMessage('Perfil atualizado.');
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao salvar perfil.');
     }
@@ -236,7 +236,7 @@ export function AuthSection() {
       return;
     }
 
-    const confirmed = window.confirm(`Excluir a conta ${activeAccount.email} do SQLite?`);
+    const confirmed = window.confirm(`Excluir a conta ${activeAccount.email}?`);
 
     if (!confirmed) {
       return;
@@ -253,7 +253,7 @@ export function AuthSection() {
       setActiveAccount(null);
       setProfileForm(null);
       setMode('register');
-      setMessage('Conta excluída do SQLite.');
+      setMessage('Conta excluída.');
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao excluir conta.');
     }
@@ -265,10 +265,10 @@ export function AuthSection() {
         <SectionTitle
           eyebrow="Acesso"
           title="Login e registro"
-          text="Fluxo funcional da wiki: o visitante cria uma conta no SQLite, entra, consulta o perfil, altera dados e pode excluir o cadastro."
+          text="Fluxo funcional da wiki: o visitante cria uma conta, entra, consulta o perfil, altera dados e pode excluir o cadastro."
         />
 
-        {isLoadingAccount ? <p className="form-message">Carregando conta do SQLite...</p> : null}
+        {isLoadingAccount ? <p className="form-message">Carregando conta...</p> : null}
         {message ? <p className="form-message">{message}</p> : null}
         {error ? <p className="form-error">{error}</p> : null}
 
@@ -282,7 +282,7 @@ export function AuthSection() {
               <div className="account-summary">
                 <span>Interesse: {activeAccount.interest}</span>
                 <span>Criada em: {activeAccount.createdAt}</span>
-                <span>Origem: SQLite local</span>
+                <span>Origem: banco local</span>
               </div>
             </article>
 
@@ -444,7 +444,7 @@ export function AuthSection() {
             <article className="profile-panel">
               <Icon name="shieldCheck" size={36} />
               <p className="eyebrow">Fluxo da entrega</p>
-              <h3>Conta no banco SQLite</h3>
+              <h3>Conta da wiki</h3>
               <p>
                 O cadastro simula o acesso de um visitante interessado no jogo.
                 Depois do login, a página libera consulta, edição, logout e exclusão da conta.

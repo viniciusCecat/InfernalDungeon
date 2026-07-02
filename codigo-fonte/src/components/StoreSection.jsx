@@ -115,7 +115,7 @@ async function requestJson(endpoint, options = {}) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.error ?? 'Erro ao acessar o banco SQLite.');
+    throw new Error(data.error ?? 'Erro ao acessar o banco local.');
   }
 
   return data;
@@ -204,7 +204,7 @@ export function StoreSection() {
       setDatabaseError(
         requestError instanceof Error
           ? requestError.message
-          : 'Não foi possível conectar ao banco SQLite.',
+          : 'Não foi possível conectar ao banco local.',
       );
     } finally {
       setIsLoadingStore(false);
@@ -297,7 +297,7 @@ export function StoreSection() {
       });
 
       applyStoreState(data, activeAccount);
-      setMessage('Endereço salvo no banco SQLite para esta conta.');
+      setMessage('Endereço salvo para esta conta.');
       return true;
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao salvar endereço.');
@@ -321,7 +321,7 @@ export function StoreSection() {
     clearFeedback();
 
     const confirmed = window.confirm(
-      'Resetar a loja local? Isso apaga pedidos, endereço salvo e restaura o estoque inicial no SQLite.',
+      'Resetar a loja local? Isso apaga pedidos, endereço salvo e restaura o estoque inicial.',
     );
 
     if (!confirmed) {
@@ -337,7 +337,7 @@ export function StoreSection() {
       applyStoreState(data, activeAccount);
       setCart([]);
       setQuantities(createQuantityState());
-      setMessage('Banco SQLite resetado: pedidos apagados, estoque restaurado e endereço limpo.');
+      setMessage('Banco local resetado: pedidos apagados, estoque restaurado e endereço limpo.');
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao resetar loja.');
     }
@@ -352,7 +352,7 @@ export function StoreSection() {
     }
 
     if (databaseError) {
-      setError('O banco SQLite precisa estar online para montar uma compra.');
+      setError('O banco local precisa estar online para montar uma compra.');
       return;
     }
 
@@ -362,7 +362,7 @@ export function StoreSection() {
       cart.find((cartItem) => cartItem.itemId === item.id)?.quantity ?? 0;
 
     if (available <= 0) {
-      setError(`${item.name} está sem estoque no banco SQLite.`);
+      setError(`${item.name} está sem estoque no banco local.`);
       return;
     }
 
@@ -443,7 +443,7 @@ export function StoreSection() {
 
       applyStoreState(data, activeAccount);
       setCart([]);
-      setMessage(`Compra finalizada no SQLite: ${cartCount} item(ns), total ${formatCurrency(cartTotal)}.`);
+      setMessage(`Compra finalizada: ${cartCount} item(ns), total ${formatCurrency(cartTotal)}.`);
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao finalizar compra.');
       void loadStoreData(activeAccount, false);
@@ -459,7 +459,7 @@ export function StoreSection() {
       });
 
       applyStoreState(data, activeAccount, false);
-      setMessage('Pedido cancelado no SQLite e estoque devolvido ao banco.');
+      setMessage('Pedido cancelado e estoque devolvido ao banco.');
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao cancelar pedido.');
     }
@@ -471,11 +471,11 @@ export function StoreSection() {
         <SectionTitle
           eyebrow="Loja fictícia"
           title="Relicário do Abismo"
-          text="Vitrine dark fantasy com conta vinculada, endereço salvo, carrinho, finalização e cancelamento usando banco SQLite local."
+          text="Vitrine dark fantasy com conta vinculada, endereço salvo, carrinho, finalização e cancelamento usando banco local."
         />
         <div className="store-status">
           <div>
-            <strong>Banco SQLite da loja</strong>
+            <strong>Banco local da loja</strong>
             <span>{orders.length} pedido(s) registrados no banco local.</span>
             <span>{databaseOnline ? `Arquivo: ${databaseInfo.file}` : 'Banco offline'}</span>
           </div>
@@ -498,7 +498,7 @@ export function StoreSection() {
               <h3>Entre ou crie uma conta para comprar</h3>
               <p>
                 A loja usa o login local da wiki para vincular comprador ao endereço e aos pedidos
-                gravados no SQLite.
+                gravados no banco local.
               </p>
               <div className="store-actions">
                 <a className="primary-button" href="#conta">
@@ -522,7 +522,7 @@ export function StoreSection() {
               <span>
                 {savedAddressComplete
                   ? `Endereço salvo: ${formatOrderAddress(savedAddress)}`
-                  : 'Nenhum endereço salvo no SQLite para esta conta.'}
+                  : 'Nenhum endereço salvo para esta conta.'}
               </span>
             </article>
 
@@ -670,7 +670,7 @@ export function StoreSection() {
 
         {message ? <p className="form-message">{message}</p> : null}
         {error ? <p className="form-error">{error}</p> : null}
-        {databaseError ? <p className="form-error">Banco SQLite offline: {databaseError}</p> : null}
+        {databaseError ? <p className="form-error">Banco local offline: {databaseError}</p> : null}
 
         <div className="store-grid">
           {storeItems.map((item) => {
@@ -684,7 +684,7 @@ export function StoreSection() {
                 <strong>{item.price}</strong>
                 <p>{item.description}</p>
                 <div className="store-meta">
-                  <span>Estoque no SQLite: {available}</span>
+                  <span>Estoque: {available}</span>
                   <span>Status: {available > 0 ? 'Disponível' : 'Esgotado'}</span>
                 </div>
                 <label className="store-quantity">
@@ -713,10 +713,10 @@ export function StoreSection() {
         </div>
 
         {orders.length > 0 ? (
-          <section className="orders-panel" aria-label="Pedidos registrados no SQLite">
+          <section className="orders-panel" aria-label="Pedidos registrados no banco local">
             <div className="orders-panel-head">
               <div>
-                <p className="eyebrow">Histórico SQLite</p>
+                <p className="eyebrow">Histórico local</p>
                 <h3>Pedidos do banco</h3>
               </div>
               <span>{orders.length} pedido(s)</span>
