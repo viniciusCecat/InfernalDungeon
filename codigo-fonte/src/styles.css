@@ -161,7 +161,7 @@ button {
 }
 
 .hero-copy,
-.dungeon-board,
+.dungeon-showcase,
 .highlight-strip {
   position: relative;
   z-index: 1;
@@ -251,99 +251,108 @@ button {
   color: var(--magenta);
 }
 
-.dungeon-board {
+.dungeon-showcase {
   position: relative;
   display: grid;
-  gap: 18px;
+  min-height: 470px;
+  place-items: center;
   border: 1px solid rgba(64, 224, 208, 0.48);
   background:
     linear-gradient(90deg, rgba(248, 248, 255, 0.06) 1px, transparent 1px),
     linear-gradient(0deg, rgba(248, 248, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 50% 45%, rgba(64, 224, 208, 0.2), transparent 34%),
     rgba(248, 248, 255, 0.1);
-  background-size: 38px 38px;
+  background-size: 38px 38px, 38px 38px, auto, auto;
   box-shadow: var(--shadow);
   padding: 20px;
   overflow: hidden;
 }
 
-.flow-lane {
-  border: 1px solid rgba(248, 248, 255, 0.24);
-  background: rgba(248, 248, 255, 0.1);
-  padding: 16px;
-}
-
-.flow-lane > strong {
-  display: block;
-  margin-bottom: 14px;
-  color: var(--turquoise);
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.flow-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.flow-step {
+.sigil-ring {
   position: relative;
+  width: min(74%, 340px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(64, 224, 208, 0.62);
+  box-shadow:
+    inset 0 0 36px rgba(64, 224, 208, 0.18),
+    0 0 40px rgba(64, 224, 208, 0.2);
+  transform: rotate(45deg);
+}
+
+.sigil-ring::before,
+.sigil-ring::after {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(248, 248, 255, 0.22);
+  content: "";
+}
+
+.sigil-ring::after {
+  inset: 29%;
+  border-color: rgba(139, 0, 139, 0.7);
+}
+
+.sigil-ring-inner {
+  position: absolute;
+  width: min(48%, 220px);
+  border-color: rgba(248, 248, 255, 0.28);
+  transform: rotate(0deg);
+}
+
+.core-orb {
+  position: absolute;
   display: grid;
-  min-height: 122px;
-  align-content: center;
-  justify-items: center;
-  gap: 6px;
-  border: 1px solid rgba(248, 248, 255, 0.28);
-  background: rgba(248, 248, 255, 0.14);
+  width: min(42%, 190px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--turquoise);
+  background:
+    radial-gradient(circle at 50% 34%, rgba(248, 248, 255, 0.24), transparent 24%),
+    radial-gradient(circle, rgba(64, 224, 208, 0.22), rgba(75, 0, 130, 0.74) 70%);
+  box-shadow: 0 0 42px rgba(64, 224, 208, 0.32);
   color: var(--ghost);
-  font-size: 0.86rem;
   font-weight: 900;
   text-align: center;
 }
 
-.flow-step:not(:last-child)::after {
+.core-orb span {
+  max-width: 110px;
+  font-size: 0.82rem;
+  line-height: 1.15;
+}
+
+.showcase-token {
   position: absolute;
-  top: 50%;
-  right: -15px;
-  width: 14px;
-  height: 2px;
-  background: rgba(64, 224, 208, 0.72);
-  content: "";
-}
-
-.flow-step:not(:last-child)::before {
-  position: absolute;
-  top: calc(50% - 4px);
-  right: -17px;
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid rgba(64, 224, 208, 0.86);
-  border-right: 2px solid rgba(64, 224, 208, 0.86);
-  content: "";
-  transform: rotate(45deg);
-}
-
-.flow-step span,
-.flow-step small {
-  display: block;
-}
-
-.flow-step small {
-  color: rgba(248, 248, 255, 0.72);
-  font-size: 0.72rem;
-}
-
-.core-step {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
   border-color: var(--turquoise);
   background:
-    radial-gradient(circle at 50% 34%, rgba(64, 224, 208, 0.28), transparent 60%),
-    rgba(64, 224, 208, 0.14);
+    radial-gradient(circle at 50% 35%, rgba(64, 224, 208, 0.26), transparent 62%),
+    rgba(248, 248, 255, 0.16);
+  border: 1px solid rgba(64, 224, 208, 0.42);
+  box-shadow: 0 16px 34px rgba(27, 16, 36, 0.22);
 }
 
-.invasion-step {
-  border-color: rgba(64, 224, 208, 0.52);
-  background: rgba(75, 0, 130, 0.42);
+.token-tower {
+  top: 13%;
+  left: 18%;
+}
+
+.token-mask {
+  top: 15%;
+  right: 18%;
+}
+
+.token-invader {
+  right: 17%;
+  bottom: 17%;
+}
+
+.token-coin {
+  bottom: 15%;
+  left: 18%;
 }
 
 .highlight-strip {
@@ -884,7 +893,7 @@ button {
     padding: 56px 22px 34px;
   }
 
-  .dungeon-board {
+  .dungeon-showcase {
     min-height: 360px;
   }
 
@@ -925,23 +934,21 @@ button {
     height: 40px;
   }
 
-  .dungeon-board {
-    display: grid;
-    min-height: 0;
-    gap: 14px;
+  .dungeon-showcase {
+    min-height: 320px;
   }
 
-  .flow-row {
-    grid-template-columns: 1fr;
+  .showcase-token {
+    width: 52px;
+    height: 52px;
   }
 
-  .flow-step {
-    min-height: 92px;
+  .core-orb {
+    width: 150px;
   }
 
-  .flow-step:not(:last-child)::before,
-  .flow-step:not(:last-child)::after {
-    display: none;
+  .core-orb span {
+    font-size: 0.74rem;
   }
 
   .form-actions {
