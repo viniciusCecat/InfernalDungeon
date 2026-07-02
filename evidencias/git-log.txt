@@ -1,5 +1,6 @@
 Historico de commits do repositorio local em 2026-07-01.
 
+ca96271 Substitui mapa por arte visual do hero
 98868eb Simplifica fluxo visual da dungeon
 5de287e Reorganiza mapa conceitual da dungeon
 2f27182 Expande listas de mascaras e torres
