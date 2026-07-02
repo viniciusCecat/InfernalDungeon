@@ -29,7 +29,7 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
-async function sendEmail({ to, cc, subject, text, html }) {
+async function sendEmail({ to, cc, replyTo, subject, text, html }) {
   if (!isEmailConfigured()) {
     return {
       sent: false,
@@ -43,6 +43,7 @@ async function sendEmail({ to, cc, subject, text, html }) {
       from: process.env.EMAIL_FROM,
       to,
       cc,
+      replyTo,
       subject,
       text,
       html,
@@ -106,29 +107,34 @@ export async function sendOrderEmail(order) {
   });
 }
 
-export async function sendSupportEmail({ name, email, subject, message }) {
+export async function sendSupportEmail({ user, subject, message }) {
   const normalizedSubject = String(subject ?? '').trim() || 'Mensagem de suporte';
   const normalizedMessage = String(message ?? '').trim();
-  const normalizedName = String(name ?? '').trim() || 'Visitante';
+  const normalizedName = String(user?.name ?? '').trim();
+  const normalizedEmail = String(user?.email ?? '').trim();
 
-  if (!email || !normalizedMessage) {
+  if (!normalizedName || !normalizedEmail || !normalizedMessage) {
     return {
       sent: false,
-      reason: 'E-mail e mensagem são obrigatórios.',
+      reason: 'Conta e mensagem são obrigatórias.',
     };
   }
 
-  const target = process.env.SUPPORT_TO || email;
-  const copy = process.env.SUPPORT_TO && process.env.SUPPORT_TO !== email ? email : undefined;
+  const target = process.env.SUPPORT_TO || normalizedEmail;
+  const copy = process.env.SUPPORT_TO && process.env.SUPPORT_TO !== normalizedEmail ? normalizedEmail : undefined;
 
   return sendEmail({
     to: target,
+    replyTo: {
+      name: normalizedName,
+      address: normalizedEmail,
+    },
     subject: `[Infernal Dungeon] ${normalizedSubject}`,
-    text: `Mensagem enviada por ${normalizedName} <${email}>:\n\n${normalizedMessage}`,
+    text: `Mensagem enviada por ${normalizedName} <${normalizedEmail}>:\n\n${normalizedMessage}`,
     html: `
       <h1>Infernal Dungeon - Suporte</h1>
       <p><strong>Nome:</strong> ${escapeHtml(normalizedName)}</p>
-      <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
+      <p><strong>E-mail:</strong> ${escapeHtml(normalizedEmail)}</p>
       <p><strong>Assunto:</strong> ${escapeHtml(normalizedSubject)}</p>
       <p>${escapeHtml(normalizedMessage).replaceAll('\n', '<br />')}</p>
     `,

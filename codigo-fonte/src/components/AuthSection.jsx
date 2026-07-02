@@ -291,8 +291,7 @@ export function AuthSection() {
       const data = await requestJson('/support', {
         method: 'POST',
         body: JSON.stringify({
-          name: activeAccount.name,
-          email: activeAccount.email,
+          accountEmail: activeAccount.email,
           subject: supportForm.subject,
           message: supportForm.message,
         }),
@@ -304,7 +303,7 @@ export function AuthSection() {
       }
 
       setSupportForm(emptySupport);
-      setMessage(`Mensagem enviada por e-mail para ${activeAccount.email}.`);
+      setMessage(`Mensagem enviada por ${data.sender.name}. Resposta para ${data.sender.email}.`);
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao enviar suporte.');
     }
@@ -395,6 +394,9 @@ export function AuthSection() {
 
             <form className="auth-form support-panel" onSubmit={sendSupportMessage}>
               <h3>Suporte por e-mail</h3>
+              <p className="support-sender">
+                Remetente: {activeAccount.name} &lt;{activeAccount.email}&gt;
+              </p>
               <label>
                 Assunto
                 <input

@@ -197,8 +197,25 @@ app.get('/api/email/status', (_request, response) => {
 
 app.post('/api/support', async (request, response) => {
   try {
-    const email = await sendSupportEmail(request.body);
-    response.json({ email });
+    const user = getUser(String(request.body.accountEmail ?? ''));
+
+    if (!user) {
+      throw new Error('Conta não encontrada para envio de suporte.');
+    }
+
+    const email = await sendSupportEmail({
+      user,
+      subject: request.body.subject,
+      message: request.body.message,
+    });
+
+    response.json({
+      email,
+      sender: {
+        name: user.name,
+        email: user.email,
+      },
+    });
   } catch (error) {
     handleApiError(response, error);
   }
