@@ -1,10 +1,16 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
-const legacyAccountKeys = ['infernal-dungeon-accounts', 'infernal-dungeon-session'];
-const accountsKey = 'infernal-dungeon-accounts-v2';
-const sessionKey = 'infernal-dungeon-session-v2';
+const legacyAccountKeys = [
+  'infernal-dungeon-accounts',
+  'infernal-dungeon-session',
+  'infernal-dungeon-accounts-v2',
+  'infernal-dungeon-session-v2',
+];
+const sessionKey = 'infernal-dungeon-session-v3';
+const sessionUserKey = 'infernal-dungeon-session-user-v1';
+const authUpdatedEvent = 'infernal-dungeon-auth-updated';
 
 const emptyRegister = {
   name: '',
@@ -35,30 +41,92 @@ function normalizeEmail(email) {
   return email.trim().toLowerCase();
 }
 
-export function AuthSection() {
-  const [accounts, setAccounts] = useState(() => {
-    clearLegacyAccounts();
-    return readJson(accountsKey, []);
+function notifyAuthUpdated() {
+  window.dispatchEvent(new Event(authUpdatedEvent));
+}
+
+function saveSession(user) {
+  window.localStorage.setItem(sessionKey, JSON.stringify(user.email));
+  window.localStorage.setItem(sessionUserKey, JSON.stringify(user));
+  notifyAuthUpdated();
+}
+
+function clearSession() {
+  window.localStorage.removeItem(sessionKey);
+  window.localStorage.removeItem(sessionUserKey);
+  notifyAuthUpdated();
+}
+
+async function requestJson(endpoint, options = {}) {
+  const response = await fetch(`/api${endpoint}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options.headers ?? {}),
+    },
+    ...options,
   });
-  const [sessionEmail, setSessionEmail] = useState(() => readJson(sessionKey, null));
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.error ?? 'Erro ao acessar o banco SQLite.');
+  }
+
+  return data;
+}
+
+function createProfileForm(account) {
+  return account ? { ...account, password: '' } : null;
+}
+
+export function AuthSection() {
+  const [activeAccount, setActiveAccount] = useState(() => readJson(sessionUserKey, null));
   const [mode, setMode] = useState('register');
   const [registerForm, setRegisterForm] = useState(emptyRegister);
   const [loginForm, setLoginForm] = useState(emptyLogin);
-  const [profileForm, setProfileForm] = useState(null);
+  const [profileForm, setProfileForm] = useState(() =>
+    createProfileForm(readJson(sessionUserKey, null)),
+  );
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [isLoadingAccount, setIsLoadingAccount] = useState(false);
 
-  const activeAccount = useMemo(
-    () => accounts.find((account) => account.email === sessionEmail) ?? null,
-    [accounts, sessionEmail],
-  );
+  const editableProfile = profileForm ?? createProfileForm(activeAccount);
 
-  const editableProfile = profileForm ?? activeAccount;
+  useEffect(() => {
+    clearLegacyAccounts();
 
-  function saveAccounts(nextAccounts) {
-    setAccounts(nextAccounts);
-    window.localStorage.setItem(accountsKey, JSON.stringify(nextAccounts));
-  }
+    async function restoreSession() {
+      const sessionEmail = readJson(sessionKey, null);
+
+      if (!sessionEmail) {
+        return;
+      }
+
+      setIsLoadingAccount(true);
+
+      try {
+        const data = await requestJson(
+          `/users/session?email=${encodeURIComponent(sessionEmail)}`,
+        );
+
+        if (data.user) {
+          saveSession(data.user);
+          setActiveAccount(data.user);
+          setProfileForm(createProfileForm(data.user));
+        } else {
+          clearSession();
+          setActiveAccount(null);
+          setProfileForm(null);
+        }
+      } catch {
+        setError('Não foi possível carregar a sessão salva no SQLite.');
+      } finally {
+        setIsLoadingAccount(false);
+      }
+    }
+
+    void restoreSession();
+  }, []);
 
   function updateRegister(field, value) {
     setRegisterForm((current) => ({ ...current, [field]: value }));
@@ -69,7 +137,7 @@ export function AuthSection() {
   }
 
   function updateProfile(field, value) {
-    setProfileForm((current) => ({ ...(current ?? activeAccount), [field]: value }));
+    setProfileForm((current) => ({ ...(current ?? createProfileForm(activeAccount)), [field]: value }));
   }
 
   function clearFeedback() {
@@ -77,60 +145,56 @@ export function AuthSection() {
     setError('');
   }
 
-  function register(event) {
+  async function register(event) {
     event.preventDefault();
     clearFeedback();
 
     const email = normalizeEmail(registerForm.email);
 
-    if (!registerForm.name.trim() || !email || registerForm.password.length < 4) {
-      setError('Preencha nome, e-mail e uma senha com pelo menos 4 caracteres.');
-      return;
+    try {
+      const data = await requestJson('/users/register', {
+        method: 'POST',
+        body: JSON.stringify({
+          ...registerForm,
+          email,
+          name: registerForm.name.trim(),
+        }),
+      });
+
+      saveSession(data.user);
+      setActiveAccount(data.user);
+      setProfileForm(createProfileForm(data.user));
+      setRegisterForm(emptyRegister);
+      setMessage('Conta criada no SQLite e login realizado.');
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : 'Erro ao criar conta.');
     }
-
-    if (accounts.some((account) => account.email === email)) {
-      setError('Ja existe uma conta cadastrada com esse e-mail.');
-      return;
-    }
-
-    const nextAccount = {
-      ...registerForm,
-      name: registerForm.name.trim(),
-      email,
-      createdAt: new Date().toLocaleDateString('pt-BR'),
-    };
-    const nextAccounts = [nextAccount, ...accounts];
-
-    saveAccounts(nextAccounts);
-    window.localStorage.setItem(sessionKey, JSON.stringify(email));
-    setSessionEmail(email);
-    setProfileForm(nextAccount);
-    setRegisterForm(emptyRegister);
-    setMessage('Conta criada e login realizado.');
   }
 
-  function login(event) {
+  async function login(event) {
     event.preventDefault();
     clearFeedback();
 
-    const email = normalizeEmail(loginForm.email);
-    const account = accounts.find(
-      (item) => item.email === email && item.password === loginForm.password,
-    );
+    try {
+      const data = await requestJson('/users/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: normalizeEmail(loginForm.email),
+          password: loginForm.password,
+        }),
+      });
 
-    if (!account) {
-      setError('E-mail ou senha invalidos.');
-      return;
+      saveSession(data.user);
+      setActiveAccount(data.user);
+      setProfileForm(createProfileForm(data.user));
+      setLoginForm(emptyLogin);
+      setMessage('Login realizado com sucesso usando o SQLite.');
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : 'Erro ao entrar.');
     }
-
-    window.localStorage.setItem(sessionKey, JSON.stringify(account.email));
-    setSessionEmail(account.email);
-    setProfileForm(account);
-    setLoginForm(emptyLogin);
-    setMessage('Login realizado com sucesso.');
   }
 
-  function saveProfile(event) {
+  async function saveProfile(event) {
     event.preventDefault();
     clearFeedback();
 
@@ -138,67 +202,61 @@ export function AuthSection() {
       return;
     }
 
-    const nextEmail = normalizeEmail(editableProfile.email);
+    try {
+      const data = await requestJson(`/users/${encodeURIComponent(activeAccount.email)}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          name: editableProfile.name,
+          email: normalizeEmail(editableProfile.email),
+          interest: editableProfile.interest,
+          password: editableProfile.password,
+        }),
+      });
 
-    if (!editableProfile.name.trim() || !nextEmail) {
-      setError('Nome e e-mail sao obrigatorios.');
-      return;
+      saveSession(data.user);
+      setActiveAccount(data.user);
+      setProfileForm(createProfileForm(data.user));
+      setMessage('Perfil atualizado no SQLite.');
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : 'Erro ao salvar perfil.');
     }
-
-    const emailInUse = accounts.some(
-      (account) => account.email === nextEmail && account.email !== activeAccount.email,
-    );
-
-    if (emailInUse) {
-      setError('Esse e-mail ja esta em uso em outra conta local.');
-      return;
-    }
-
-    const updatedAccount = {
-      ...editableProfile,
-      name: editableProfile.name.trim(),
-      email: nextEmail,
-      password: editableProfile.password || activeAccount.password,
-    };
-    const nextAccounts = accounts.map((account) =>
-      account.email === activeAccount.email ? updatedAccount : account,
-    );
-
-    saveAccounts(nextAccounts);
-    window.localStorage.setItem(sessionKey, JSON.stringify(nextEmail));
-    setSessionEmail(nextEmail);
-    setProfileForm(updatedAccount);
-    setMessage('Perfil atualizado.');
   }
 
   function logout() {
-    window.localStorage.removeItem(sessionKey);
-    setSessionEmail(null);
+    clearSession();
+    setActiveAccount(null);
     setProfileForm(null);
     setMode('login');
-    setMessage('Sessao encerrada.');
+    setMessage('Sessão encerrada.');
     setError('');
   }
 
-  function deleteAccount() {
+  async function deleteAccount() {
     if (!activeAccount) {
       return;
     }
 
-    const confirmed = window.confirm(`Excluir a conta ${activeAccount.email}?`);
+    const confirmed = window.confirm(`Excluir a conta ${activeAccount.email} do SQLite?`);
 
     if (!confirmed) {
       return;
     }
 
-    const nextAccounts = accounts.filter((account) => account.email !== activeAccount.email);
-    saveAccounts(nextAccounts);
-    window.localStorage.removeItem(sessionKey);
-    setSessionEmail(null);
-    setProfileForm(null);
-    setMode('register');
-    setMessage('Conta excluida.');
-    setError('');
+    clearFeedback();
+
+    try {
+      await requestJson(`/users/${encodeURIComponent(activeAccount.email)}`, {
+        method: 'DELETE',
+      });
+
+      clearSession();
+      setActiveAccount(null);
+      setProfileForm(null);
+      setMode('register');
+      setMessage('Conta excluída do SQLite.');
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : 'Erro ao excluir conta.');
+    }
   }
 
   return (
@@ -207,9 +265,10 @@ export function AuthSection() {
         <SectionTitle
           eyebrow="Acesso"
           title="Login e registro"
-          text="Fluxo funcional da wiki: o visitante cria uma conta local, entra, consulta o perfil, altera dados e pode excluir o cadastro."
+          text="Fluxo funcional da wiki: o visitante cria uma conta no SQLite, entra, consulta o perfil, altera dados e pode excluir o cadastro."
         />
 
+        {isLoadingAccount ? <p className="form-message">Carregando conta do SQLite...</p> : null}
         {message ? <p className="form-message">{message}</p> : null}
         {error ? <p className="form-error">{error}</p> : null}
 
@@ -217,12 +276,13 @@ export function AuthSection() {
           <div className="auth-layout">
             <article className="profile-panel">
               <Icon name="user" size={34} />
-              <p className="eyebrow">Sessao ativa</p>
+              <p className="eyebrow">Sessão ativa</p>
               <h3>{activeAccount.name}</h3>
               <p>{activeAccount.email}</p>
               <div className="account-summary">
                 <span>Interesse: {activeAccount.interest}</span>
                 <span>Criada em: {activeAccount.createdAt}</span>
+                <span>Origem: SQLite local</span>
               </div>
             </article>
 
@@ -252,15 +312,16 @@ export function AuthSection() {
                   <option>Conhecer o jogo</option>
                   <option>Receber novidades</option>
                   <option>Acompanhar desenvolvimento</option>
-                  <option>Encontrar grupo de invasao</option>
+                  <option>Encontrar grupo de invasão</option>
                 </select>
               </label>
               <label>
-                Senha
+                Nova senha
                 <input
                   type="password"
                   value={editableProfile?.password ?? ''}
                   onChange={(event) => updateProfile('password', event.target.value)}
+                  placeholder="Deixe em branco para manter"
                 />
               </label>
               <div className="form-actions">
@@ -331,7 +392,7 @@ export function AuthSection() {
                       type="password"
                       value={registerForm.password}
                       onChange={(event) => updateRegister('password', event.target.value)}
-                      placeholder="Minimo 4 caracteres"
+                      placeholder="Mínimo 4 caracteres"
                     />
                   </label>
                   <label>
@@ -343,12 +404,12 @@ export function AuthSection() {
                       <option>Conhecer o jogo</option>
                       <option>Receber novidades</option>
                       <option>Acompanhar desenvolvimento</option>
-                      <option>Encontrar grupo de invasao</option>
+                      <option>Encontrar grupo de invasão</option>
                     </select>
                   </label>
                   <button className="primary-button" type="submit">
                     <Icon name="userPlus" size={18} />
-                    Registrar
+                    Registrar no SQLite
                   </button>
                 </form>
               ) : (
@@ -383,10 +444,10 @@ export function AuthSection() {
             <article className="profile-panel">
               <Icon name="shieldCheck" size={36} />
               <p className="eyebrow">Fluxo da entrega</p>
-              <h3>Conta local da wiki</h3>
+              <h3>Conta no banco SQLite</h3>
               <p>
                 O cadastro simula o acesso de um visitante interessado no jogo.
-                Depois do login, a pagina libera consulta, edicao, logout e exclusao da conta.
+                Depois do login, a página libera consulta, edição, logout e exclusão da conta.
               </p>
             </article>
           </div>

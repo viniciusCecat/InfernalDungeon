@@ -7,9 +7,9 @@ export function NewsSection() {
     <section className="page-section news-section" id="atualizacoes">
       <div className="content-shell">
         <SectionTitle
-          eyebrow="Atualizacoes"
-          title="Devlog e anuncios"
-          text="Area reservada para eventos, correcoes de bugs e comunicados do projeto."
+          eyebrow="Atualizações"
+          title="Devlog e anúncios"
+          text="Área reservada para eventos, correções de bugs e comunicados do projeto."
         />
         <div className="news-list">
           {updates.map((update) => (

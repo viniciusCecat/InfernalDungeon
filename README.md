@@ -7,13 +7,13 @@
 | Vinicius Cecatto |
 | Leonardo Scheffer Nunes |
 
-## Descricao resumida
+## Descrição resumida
 
-Infernal Dungeon e uma wiki/apresentacao oficial do jogo proposto na Etapa 1. O jogo e um tower defense dark fantasy multiplayer com tema de dungeon em que cada jogador controla um nucleo, posiciona torres, recruta NPCs, evolui recursos em camadas mais profundas e invade dungeons de jogadores rivais. O site organiza as informacoes principais do universo, personagens, comerciantes, inimigos, torres, sistema de mascaras, atualizacoes e loja ficticia.
+Infernal Dungeon é uma wiki/apresentação oficial do jogo proposto na Etapa 1. O jogo é um tower defense dark fantasy multiplayer com tema de dungeon em que cada jogador controla um núcleo, posiciona torres, recruta NPCs, evolui recursos em camadas mais profundas e invade dungeons de jogadores rivais. O site organiza as informações principais do universo, personagens, comerciantes, inimigos, torres, sistema de máscaras, atualizações e loja fictícia.
 
-O fluxo funcional completo implementado e o acesso do visitante. O usuario consegue criar uma conta local, fazer login, consultar o perfil, editar os dados, sair da sessao e excluir a conta. Os dados ficam salvos no `localStorage` do navegador.
+Os fluxos funcionais completos implementados são o acesso do visitante e a compra na loja fictícia. O usuário consegue criar uma conta, fazer login, consultar o perfil, editar os dados, sair da sessão, excluir a conta, salvar endereço de entrega, montar carrinho, finalizar compra e cancelar pedidos vinculados ao login. Contas, produtos, estoque, endereços e pedidos ficam salvos em um banco SQLite local.
 
-A wiki foi organizada em paginas separadas dentro da aplicacao React: Inicio, Universo, Personagens, Mascaras, Torres, Conta, Atualizacoes e Loja.
+A wiki foi organizada em páginas separadas dentro da aplicação React: Início, Universo, Personagens, Máscaras, Torres, Conta, Atualizações e Loja.
 
 ## Tecnologias utilizadas
 
@@ -22,18 +22,21 @@ A wiki foi organizada em paginas separadas dentro da aplicacao React: Inicio, Un
 - JavaScript
 - HTML
 - CSS
+- Node.js
+- Express
+- SQLite local com SQL.js
 - SVGs locais
 - Git e GitHub
 
-## Instrucoes para execucao
+## Instruções para execução
 
-1. Acesse a pasta do codigo:
+1. Acesse a pasta do código:
 
 ```bash
 cd InfernalDungeon/codigo-fonte
 ```
 
-2. Instale as dependencias:
+2. Instale as dependências:
 
 ```bash
 npm install
@@ -45,31 +48,44 @@ npm install
 npm run dev
 ```
 
-4. Abra o endereco exibido pelo Vite no navegador, normalmente:
+4. O comando sobe o frontend e a API do banco ao mesmo tempo. Abra o endereço exibido pelo Vite no navegador, normalmente:
 
 ```text
 http://localhost:5173
 ```
 
+A API da loja roda em `http://127.0.0.1:3001` e o arquivo do banco é criado em `codigo-fonte/server/data/infernal-dungeon.sqlite`.
+
+Para visualizar o banco no navegador, acesse:
+
+```text
+http://127.0.0.1:5173/api/database
+```
+
+Para visualizar os dados em JSON, acesse:
+
+```text
+http://127.0.0.1:5173/api/database/json
+```
+
 ## Funcionalidades implementadas
 
-- Pagina inicial de apresentacao do jogo.
-- Pagina de background/universo do Infernal Dungeon.
-- Pagina de personagens, NPCs comerciantes, inimigos, mestres rivais e invasores rivais com filtro por categoria e lore expandida.
-- Pagina de mascaras com poderes, uso, recarga e risco.
-- Pagina de torres infernais com dano, alcance, recarga e funcao.
-- Sistema de login e registro com consulta, edicao e exclusao de conta local.
-- Pagina de atualizacoes/devlog.
-- Pagina de loja ficticia com produtos inventados para o universo do jogo.
+- Página inicial de apresentação do jogo.
+- Página de background/universo do Infernal Dungeon.
+- Página de personagens, NPCs comerciantes, inimigos, mestres rivais e invasores rivais com filtro por categoria e lore expandida.
+- Página de máscaras com poderes, uso, recarga e risco.
+- Página de torres infernais com dano, alcance, recarga e função.
+- Sistema de login e registro com consulta, edição e exclusão de conta no SQLite.
+- Página de atualizações/devlog.
+- Página de loja fictícia com produtos, bloqueio para usuário sem login, endereço salvo, carrinho, finalização de compra, cancelamento de pedido, estoque controlado no SQLite e registro de pedidos no banco.
 - Interface componentizada em React.
-- Persistencia local da conta usando `localStorage`.
+- Persistência de contas e loja usando SQLite local com tabelas de usuários, produtos, pedidos, itens do pedido e endereços.
+- Uso de `localStorage` apenas para manter a sessão ativa do navegador durante a demonstração.
 
-## Link do repositorio
+## Link do repositório
 
-Pendente de publicacao no GitHub. Antes do envio final, criar o repositorio, executar `git remote add origin <url-do-repositorio>`, fazer `git push -u origin main` e substituir esta linha pelo link publico do repositorio.
+https://github.com/viniciusCecat/InfernalDungeon
 
-Link: pendente.
+## Link do vídeo de demonstração
 
-## Link do video de demonstracao
-
-Video pendente de gravacao. Inserir aqui o link do video de demonstracao apos o upload.
+Vídeo pendente de gravação. Inserir aqui o link do vídeo de demonstração após o upload.

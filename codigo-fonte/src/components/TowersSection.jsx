@@ -9,7 +9,7 @@ export function TowersSection() {
         <SectionTitle
           eyebrow="Defesa da dungeon"
           title="Torres infernais"
-          text="As torres definem o ritmo da defesa: algumas seguram hordas, outras punem invasores resistentes ou protegem o nucleo."
+          text="As torres definem o ritmo da defesa: algumas seguram hordas, outras punem invasores resistentes ou protegem o núcleo."
         />
 
         <div className="tower-grid">

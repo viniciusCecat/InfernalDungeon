@@ -7,9 +7,9 @@ export function MasksSection() {
     <section className="page-section masks-section" id="mascaras">
       <div className="content-shell">
         <SectionTitle
-          eyebrow="Sistema de mascaras"
+          eyebrow="Sistema de máscaras"
           title="Poderes do mestre"
-          text="As mascaras funcionam como habilidades de jogador e definem estilos de defesa, invasao e controle durante partidas multiplayer."
+          text="As máscaras funcionam como habilidades de jogador e definem estilos de defesa, invasão e controle durante partidas multiplayer."
         />
 
         <div className="mask-grid">

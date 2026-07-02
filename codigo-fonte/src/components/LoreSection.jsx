@@ -2,7 +2,7 @@ import { lore } from '../data/wikiData.js';
 import { Icon } from './Icon.jsx';
 import { SectionTitle } from './SectionTitle.jsx';
 
-const icons = ['shield', 'gem', 'swords'];
+const icons = ['shield', 'boss', 'gem', 'swords', 'mask'];
 
 export function LoreSection() {
   return (

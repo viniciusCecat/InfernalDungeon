@@ -81,7 +81,7 @@ export function CharactersSection() {
           <SectionTitle
             eyebrow="Personagens e unidades"
             title="Elenco inicial da wiki"
-            text="A apresentacao segue a ideia de catalogo de personagens: categorias, lista e painel de detalhes."
+            text="A apresentação segue a ideia de catálogo de personagens: categorias, lista e painel de detalhes."
           />
 
           <div className="segmented-control" aria-label="Filtro de personagens">

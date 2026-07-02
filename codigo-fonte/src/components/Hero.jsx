@@ -8,8 +8,8 @@ export function Hero() {
         <p className="eyebrow">Wiki do projeto</p>
         <h1>Infernal Dungeon</h1>
         <p className="hero-lead">
-          Um tower defense em dungeon onde o jogador controla um nucleo,
-          constroi salas, posiciona torres, recruta NPCs e invade outras
+          Um tower defense em dungeon onde o jogador controla um núcleo,
+          constrói salas, posiciona torres, recruta NPCs e invade outras
           dungeons de jogadores rivais para obter recursos mais raros.
         </p>
         <div className="hero-actions">
@@ -28,7 +28,7 @@ export function Hero() {
         <div className="sigil-ring" aria-hidden="true" />
         <div className="sigil-ring sigil-ring-inner" aria-hidden="true" />
         <div className="core-orb">
-          <span>Nucleo Infernal</span>
+          <span>Núcleo Infernal</span>
         </div>
       </div>
 

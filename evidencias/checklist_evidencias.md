@@ -14,8 +14,9 @@ Salve nesta pasta os arquivos que comprovam o desenvolvimento.
 - `08-conta-perfil.png`: perfil logado.
 - `09-conta-edicao-exclusao.png`: edicao do perfil ou confirmacao de exclusao.
 - `10-atualizacoes-loja.png`: paginas de atualizacoes e loja ficticia.
-- `11-git-log.png`: historico de commits do repositorio.
-- `12-repositorio-github.png`: pagina do repositorio no GitHub.
+- `11-banco-sqlite.png`: visualizacao do banco em `/api/database`.
+- `12-git-log.png`: historico de commits do repositorio.
+- `13-repositorio-github.png`: pagina do repositorio no GitHub.
 
 ## Video
 
@@ -33,15 +34,8 @@ Duracao maxima: 10 minutos.
    - consultar perfil;
    - editar perfil;
    - sair e excluir a conta.
-8. Mostrar atualizacoes.
-9. Mostrar rapidamente a organizacao do codigo em componentes.
-10. Explicar a divisao de atividades da dupla.
-
-## Git
-
-Inclua prints ou arquivos mostrando:
-
-- link do repositorio;
-- historico de commits;
-- mensagens descritivas;
-- participacao dos integrantes, quando houver commits de ambos.
+8. Demonstrar a loja com endereco, carrinho, finalizacao e cancelamento.
+9. Abrir `/api/database` para evidenciar as tabelas do SQLite.
+10. Mostrar atualizacoes.
+11. Mostrar rapidamente a organizacao do codigo em componentes.
+12. Explicar a divisao de atividades da dupla.
