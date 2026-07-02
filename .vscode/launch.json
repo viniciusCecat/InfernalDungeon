@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Infernal Dungeon: Brave",
+      "type": "chrome",
+      "request": "launch",
+      "runtimeExecutable": "/usr/bin/brave-browser",
+      "url": "http://127.0.0.1:5173/",
+      "webRoot": "${workspaceFolder}/codigo-fonte/src",
+      "preLaunchTask": "Infernal Dungeon: dev server",
+      "postDebugTask": "Infernal Dungeon: stop dev server",
+      "sourceMaps": true
+    },
+    {
+      "name": "Infernal Dungeon: API Node",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "/tmp/codex-node/bin/node",
+      "program": "${workspaceFolder}/codigo-fonte/server/index.js",
+      "cwd": "${workspaceFolder}/codigo-fonte",
+      "envFile": "${workspaceFolder}/codigo-fonte/.env",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

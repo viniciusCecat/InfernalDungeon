@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Infernal Dungeon: dev server",
+      "type": "shell",
+      "command": "fuser -k 3001/tcp 5173/tcp 2>/dev/null || true; PATH=/tmp/codex-node/bin:$PATH npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/codigo-fonte"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*infernal-dungeon-wiki.*dev.*",
+          "endsPattern": ".*Local:.*http://127\\.0\\.0\\.1:5173/.*"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Infernal Dungeon: stop dev server",
+      "type": "shell",
+      "command": "fuser -k 3001/tcp 5173/tcp 2>/dev/null || true",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "clear": false
+      }
+    }
+  ]
+}
