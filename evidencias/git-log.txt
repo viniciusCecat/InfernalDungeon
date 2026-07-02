@@ -1,5 +1,6 @@
 Historico de commits do repositorio local em 2026-07-01.
 
+5d957e1 Limpa arte visual do hero
 ca96271 Substitui mapa por arte visual do hero
 98868eb Simplifica fluxo visual da dungeon
 5de287e Reorganiza mapa conceitual da dungeon
