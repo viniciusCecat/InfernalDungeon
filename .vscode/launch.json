@@ -3,17 +3,10 @@
   "configurations": [
     {
       "name": "Infernal Dungeon: Brave",
-      "type": "chrome",
+      "type": "node-terminal",
       "request": "launch",
-      "runtimeExecutable": "/usr/bin/brave-browser",
-      "runtimeArgs": [
-        "http://127.0.0.1:5173/api/database"
-      ],
-      "url": "http://127.0.0.1:5173/",
-      "webRoot": "${workspaceFolder}/codigo-fonte/src",
-      "preLaunchTask": "Infernal Dungeon: dev server",
-      "postDebugTask": "Infernal Dungeon: stop dev server",
-      "sourceMaps": true
+      "command": "fuser -k 3001/tcp 5173/tcp 2>/dev/null || true; (sleep 4; /usr/bin/brave-browser --new-window http://127.0.0.1:5173/ http://127.0.0.1:5173/api/database >/dev/null 2>&1 &) ; PATH=/tmp/codex-node/bin:$PATH npm run dev",
+      "cwd": "${workspaceFolder}/codigo-fonte"
     },
     {
       "name": "Infernal Dungeon: API Node",
