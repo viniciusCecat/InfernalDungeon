@@ -25,4 +25,4 @@ as principais etapas para facilitar a consulta nas evidencias.
 - a3952cd: remocao do status tecnico da loja.
 - b29edb0: ajuste do exemplo no registro.
 - 7835f9c: documento de requisitos atualizado.
-
+- fcc2ddd: etapa de pagamento ficticio na loja.
