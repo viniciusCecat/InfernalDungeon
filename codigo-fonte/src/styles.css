@@ -253,8 +253,8 @@ button {
 
 .dungeon-board {
   position: relative;
-  display: block;
-  min-height: 450px;
+  display: grid;
+  gap: 18px;
   border: 1px solid rgba(64, 224, 208, 0.48);
   background:
     linear-gradient(90deg, rgba(248, 248, 255, 0.06) 1px, transparent 1px),
@@ -266,15 +266,34 @@ button {
   overflow: hidden;
 }
 
-.room {
-  position: absolute;
+.flow-lane {
+  border: 1px solid rgba(248, 248, 255, 0.24);
+  background: rgba(248, 248, 255, 0.1);
+  padding: 16px;
+}
+
+.flow-lane > strong {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--turquoise);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flow-row {
   display: grid;
-  width: 27%;
-  min-width: 116px;
-  min-height: 82px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.flow-step {
+  position: relative;
+  display: grid;
+  min-height: 122px;
   align-content: center;
   justify-items: center;
-  gap: 4px;
+  gap: 6px;
   border: 1px solid rgba(248, 248, 255, 0.28);
   background: rgba(248, 248, 255, 0.14);
   color: var(--ghost);
@@ -283,133 +302,48 @@ button {
   text-align: center;
 }
 
-.room span,
-.room small {
-  display: block;
-}
-
-.room small {
-  color: rgba(248, 248, 255, 0.72);
-  font-size: 0.72rem;
-}
-
-.room-core {
-  top: 38%;
-  left: 50%;
-  width: 31%;
-  min-height: 112px;
-  border-color: var(--turquoise);
-  background:
-    radial-gradient(circle at 50% 34%, rgba(64, 224, 208, 0.28), transparent 60%),
-    rgba(64, 224, 208, 0.14);
-  transform: translate(-50%, -50%);
-}
-
-.room-resource {
-  top: 7%;
-  left: 6%;
-}
-
-.room-forge {
-  top: 7%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.room-shop {
-  top: 7%;
-  right: 6%;
-}
-
-.room-tower {
-  top: 42%;
-  left: 6%;
-}
-
-.room-npc {
-  top: 42%;
-  right: 6%;
-}
-
-.room-mask {
-  bottom: 7%;
-  left: 16%;
-}
-
-.room-invasion {
-  right: 16%;
-  bottom: 7%;
-  border-color: rgba(64, 224, 208, 0.52);
-  background: rgba(75, 0, 130, 0.42);
-}
-
-.dungeon-route {
+.flow-step:not(:last-child)::after {
   position: absolute;
-  z-index: 0;
-  display: block;
-  background: rgba(64, 224, 208, 0.66);
-  box-shadow: 0 0 18px rgba(64, 224, 208, 0.24);
-  pointer-events: none;
-}
-
-.route-main {
-  right: 29%;
-  bottom: 23%;
-  width: 2px;
-  height: 35%;
-}
-
-.route-defense {
-  top: 52%;
-  left: 24%;
-  width: 52%;
+  top: 50%;
+  right: -15px;
+  width: 14px;
   height: 2px;
+  background: rgba(64, 224, 208, 0.72);
+  content: "";
 }
 
-.route-economy {
-  top: 27%;
-  left: 19%;
-  width: 62%;
-  height: 2px;
-}
-
-.dungeon-route::before,
-.dungeon-route::after {
+.flow-step:not(:last-child)::before {
   position: absolute;
+  top: calc(50% - 4px);
+  right: -17px;
   width: 8px;
   height: 8px;
-  border: 2px solid var(--turquoise);
-  background: var(--indigo);
+  border-top: 2px solid rgba(64, 224, 208, 0.86);
+  border-right: 2px solid rgba(64, 224, 208, 0.86);
   content: "";
   transform: rotate(45deg);
 }
 
-.route-main::before,
-.route-main::after {
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
+.flow-step span,
+.flow-step small {
+  display: block;
 }
 
-.route-main::before {
-  top: -5px;
+.flow-step small {
+  color: rgba(248, 248, 255, 0.72);
+  font-size: 0.72rem;
 }
 
-.route-main::after {
-  bottom: -5px;
+.core-step {
+  border-color: var(--turquoise);
+  background:
+    radial-gradient(circle at 50% 34%, rgba(64, 224, 208, 0.28), transparent 60%),
+    rgba(64, 224, 208, 0.14);
 }
 
-.route-defense::before,
-.route-economy::before {
-  left: -5px;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.route-defense::after,
-.route-economy::after {
-  right: -5px;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
+.invasion-step {
+  border-color: rgba(64, 224, 208, 0.52);
+  background: rgba(75, 0, 130, 0.42);
 }
 
 .highlight-strip {
@@ -994,27 +928,20 @@ button {
   .dungeon-board {
     display: grid;
     min-height: 0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 14px;
   }
 
-  .dungeon-route {
+  .flow-row {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-step {
+    min-height: 92px;
+  }
+
+  .flow-step:not(:last-child)::before,
+  .flow-step:not(:last-child)::after {
     display: none;
-  }
-
-  .room {
-    position: static;
-    width: auto;
-    min-width: 0;
-    min-height: 94px;
-    grid-column: auto;
-    grid-row: auto;
-    transform: none;
-  }
-
-  .room-core {
-    grid-column: 1 / -1;
-    width: auto;
   }
 
   .form-actions {
