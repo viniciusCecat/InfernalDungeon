@@ -1,5 +1,6 @@
 Historico de commits do repositorio local em 2026-07-01.
 
+5de287e Reorganiza mapa conceitual da dungeon
 2f27182 Expande listas de mascaras e torres
 6b679e1 Corrige papel duplo do mestre rival
 270dcdc Define mestre rival como chefe final
