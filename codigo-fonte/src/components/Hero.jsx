@@ -28,20 +28,7 @@ export function Hero() {
         <div className="sigil-ring" aria-hidden="true" />
         <div className="sigil-ring sigil-ring-inner" aria-hidden="true" />
         <div className="core-orb">
-          <Icon name="boss" size={46} />
           <span>Nucleo Infernal</span>
-        </div>
-        <div className="showcase-token token-tower">
-          <Icon name="tower" size={24} />
-        </div>
-        <div className="showcase-token token-mask">
-          <Icon name="mask" size={24} />
-        </div>
-        <div className="showcase-token token-invader">
-          <Icon name="invader" size={24} />
-        </div>
-        <div className="showcase-token token-coin">
-          <Icon name="coinDollar" size={24} />
         </div>
       </div>
 
