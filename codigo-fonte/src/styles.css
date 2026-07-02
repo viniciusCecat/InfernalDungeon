@@ -736,6 +736,7 @@ button:disabled {
   margin-top: 18px;
 }
 
+.edit-confirmation,
 .delete-confirmation {
   margin-top: 18px;
   border: 1px solid rgba(139, 0, 139, 0.32);
@@ -744,20 +745,38 @@ button:disabled {
     var(--panel);
 }
 
+.edit-confirmation h3,
 .delete-confirmation h3 {
   color: var(--magenta);
   margin: 0 0 10px;
 }
 
+.edit-confirmation p,
 .delete-confirmation p {
   color: var(--muted);
   font-weight: 800;
   margin: 0;
 }
 
+.edit-confirmation strong,
 .delete-confirmation strong {
   color: var(--indigo);
   overflow-wrap: anywhere;
+}
+
+.confirmation-summary {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.confirmation-summary span {
+  border: 1px solid var(--soft-line);
+  background: rgba(64, 224, 208, 0.1);
+  color: var(--indigo);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+  padding: 10px 12px;
 }
 
 .support-sender {

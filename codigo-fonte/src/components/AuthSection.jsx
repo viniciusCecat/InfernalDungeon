@@ -73,7 +73,7 @@ async function requestJson(endpoint, options = {}) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.error ?? 'Erro ao acessar o banco local.');
+    throw new Error(data.error ?? 'Erro ao acessar o sistema.');
   }
 
   return data;
@@ -89,6 +89,7 @@ export function AuthSection() {
   const [registerForm, setRegisterForm] = useState(emptyRegister);
   const [loginForm, setLoginForm] = useState(emptyLogin);
   const [supportForm, setSupportForm] = useState(emptySupport);
+  const [isProfileConfirmationOpen, setIsProfileConfirmationOpen] = useState(false);
   const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(false);
   const [deleteConfirmation, setDeleteConfirmation] = useState('');
   const [profileForm, setProfileForm] = useState(() =>
@@ -99,6 +100,16 @@ export function AuthSection() {
   const [isLoadingAccount, setIsLoadingAccount] = useState(false);
 
   const editableProfile = profileForm ?? createProfileForm(activeAccount);
+  const hasProfileChanges = Boolean(
+    activeAccount
+      && editableProfile
+      && (
+        editableProfile.name.trim() !== activeAccount.name
+        || normalizeEmail(editableProfile.email) !== activeAccount.email
+        || editableProfile.interest !== activeAccount.interest
+        || Boolean(editableProfile.password)
+      ),
+  );
   const canConfirmDelete =
     Boolean(activeAccount) && normalizeEmail(deleteConfirmation) === activeAccount.email;
 
@@ -147,6 +158,7 @@ export function AuthSection() {
   }
 
   function updateProfile(field, value) {
+    setIsProfileConfirmationOpen(false);
     setProfileForm((current) => ({ ...(current ?? createProfileForm(activeAccount)), [field]: value }));
   }
 
@@ -212,6 +224,29 @@ export function AuthSection() {
     }
   }
 
+  function openProfileConfirmation(event) {
+    event.preventDefault();
+    clearFeedback();
+
+    if (!activeAccount || !editableProfile) {
+      return;
+    }
+
+    if (!hasProfileChanges) {
+      setError('Altere algum dado antes de salvar o perfil.');
+      return;
+    }
+
+    setIsDeleteConfirmationOpen(false);
+    setDeleteConfirmation('');
+    setIsProfileConfirmationOpen(true);
+  }
+
+  function cancelProfileConfirmation() {
+    clearFeedback();
+    setIsProfileConfirmationOpen(false);
+  }
+
   async function saveProfile(event) {
     event.preventDefault();
     clearFeedback();
@@ -234,6 +269,7 @@ export function AuthSection() {
       saveSession(data.user);
       setActiveAccount(data.user);
       setProfileForm(createProfileForm(data.user));
+      setIsProfileConfirmationOpen(false);
       setMessage('Perfil atualizado.');
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao salvar perfil.');
@@ -244,6 +280,7 @@ export function AuthSection() {
     clearSession();
     setActiveAccount(null);
     setProfileForm(null);
+    setIsProfileConfirmationOpen(false);
     setIsDeleteConfirmationOpen(false);
     setDeleteConfirmation('');
     setMode('login');
@@ -253,6 +290,7 @@ export function AuthSection() {
 
   function openDeleteConfirmation() {
     clearFeedback();
+    setIsProfileConfirmationOpen(false);
     setDeleteConfirmation('');
     setIsDeleteConfirmationOpen(true);
   }
@@ -354,11 +392,11 @@ export function AuthSection() {
                 <div className="account-summary">
                   <span>Interesse: {activeAccount.interest}</span>
                   <span>Criada em: {activeAccount.createdAt}</span>
-                  <span>Origem: banco local</span>
+                  <span>Origem: cadastro da wiki</span>
                 </div>
               </article>
 
-              <form className="auth-form" onSubmit={saveProfile}>
+              <form className="auth-form" onSubmit={openProfileConfirmation}>
                 <h3>Editar perfil</h3>
                 <label>
                   Nome
@@ -413,11 +451,35 @@ export function AuthSection() {
               </form>
             </div>
 
+            {isProfileConfirmationOpen ? (
+              <form className="auth-form edit-confirmation" onSubmit={saveProfile}>
+                <h3>Confirmar edição do perfil</h3>
+                <p>Revise os dados antes de salvar as alterações.</p>
+                <div className="confirmation-summary">
+                  <span>Nome: {editableProfile.name}</span>
+                  <span>E-mail: {normalizeEmail(editableProfile.email)}</span>
+                  <span>Interesse: {editableProfile.interest}</span>
+                  <span>
+                    Senha: {editableProfile.password ? 'nova senha informada' : 'sem alteração'}
+                  </span>
+                </div>
+                <div className="form-actions">
+                  <button className="primary-button" type="submit">
+                    <Icon name="save" size={18} />
+                    Confirmar edição
+                  </button>
+                  <button className="secondary-button" type="button" onClick={cancelProfileConfirmation}>
+                    Voltar
+                  </button>
+                </div>
+              </form>
+            ) : null}
+
             {isDeleteConfirmationOpen ? (
               <form className="auth-form delete-confirmation" onSubmit={deleteAccount}>
                 <h3>Confirmar exclusão da conta</h3>
                 <p>
-                  Esta ação apaga a conta <strong>{activeAccount.email}</strong> do banco local.
+                  Esta ação apaga a conta <strong>{activeAccount.email}</strong> do sistema.
                   Digite o e-mail da conta para confirmar.
                 </p>
                 <label>

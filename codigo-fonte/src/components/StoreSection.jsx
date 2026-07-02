@@ -122,7 +122,7 @@ async function requestJson(endpoint, options = {}) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.error ?? 'Erro ao acessar o banco local.');
+    throw new Error(data.error ?? 'Erro ao acessar a loja.');
   }
 
   return data;
@@ -200,7 +200,7 @@ export function StoreSection() {
       setDatabaseError(
         requestError instanceof Error
           ? requestError.message
-          : 'Não foi possível conectar ao banco local.',
+          : 'Não foi possível conectar à loja.',
       );
     } finally {
       setIsLoadingStore(false);
@@ -333,7 +333,7 @@ export function StoreSection() {
     }
 
     if (databaseError) {
-      setError('O banco local precisa estar online para montar uma compra.');
+      setError('A loja precisa estar disponível para montar uma compra.');
       return;
     }
 
@@ -343,7 +343,7 @@ export function StoreSection() {
       cart.find((cartItem) => cartItem.itemId === item.id)?.quantity ?? 0;
 
     if (available <= 0) {
-      setError(`${item.name} está sem estoque no banco local.`);
+      setError(`${item.name} está sem estoque disponível.`);
       return;
     }
 
@@ -503,7 +503,7 @@ export function StoreSection() {
         <SectionTitle
           eyebrow="Loja fictícia"
           title="Relicário do Abismo"
-          text="Vitrine dark fantasy com conta vinculada, endereço salvo, carrinho, pagamento fictício e cancelamento usando banco local."
+          text="Vitrine dark fantasy com conta vinculada, endereço salvo, carrinho, pagamento fictício e cancelamento de pedidos."
         />
 
         {!activeAccount ? (
@@ -514,7 +514,7 @@ export function StoreSection() {
               <h3>Entre ou crie uma conta para comprar</h3>
               <p>
                 A loja usa o login local da wiki para vincular comprador ao endereço e aos pedidos
-                gravados no banco local.
+                registrados no sistema.
               </p>
               <div className="store-actions">
                 <a className="primary-button" href="#conta">
@@ -735,7 +735,7 @@ export function StoreSection() {
 
         {message ? <p className="form-message">{message}</p> : null}
         {error ? <p className="form-error">{error}</p> : null}
-        {databaseError ? <p className="form-error">Banco local offline: {databaseError}</p> : null}
+        {databaseError ? <p className="form-error">Loja indisponível: {databaseError}</p> : null}
 
         <div className="store-grid">
           {storeItems.map((item) => {
@@ -778,7 +778,7 @@ export function StoreSection() {
         </div>
 
         {orders.length > 0 ? (
-          <section className="orders-panel" aria-label="Pedidos registrados no banco local">
+          <section className="orders-panel" aria-label="Pedidos registrados">
             <div className="orders-panel-head">
               <div>
                 <p className="eyebrow">Histórico local</p>
