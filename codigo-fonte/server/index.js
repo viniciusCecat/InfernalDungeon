@@ -15,7 +15,12 @@ import {
   saveAddress,
   updateUser,
 } from './database.js';
-import { getEmailConfigStatus, sendOrderEmail, sendWelcomeEmail } from './email.js';
+import {
+  getEmailConfigStatus,
+  sendOrderEmail,
+  sendSupportEmail,
+  sendWelcomeEmail,
+} from './email.js';
 
 const app = express();
 const port = Number(process.env.PORT) || 3001;
@@ -188,6 +193,15 @@ app.get('/api/health', (_request, response) => {
 
 app.get('/api/email/status', (_request, response) => {
   response.json(getEmailConfigStatus());
+});
+
+app.post('/api/support', async (request, response) => {
+  try {
+    const email = await sendSupportEmail(request.body);
+    response.json({ email });
+  } catch (error) {
+    handleApiError(response, error);
+  }
 });
 
 app.get('/api/database', (_request, response) => {

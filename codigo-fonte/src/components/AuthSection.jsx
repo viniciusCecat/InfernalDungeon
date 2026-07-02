@@ -24,6 +24,11 @@ const emptyLogin = {
   password: '',
 };
 
+const emptySupport = {
+  subject: 'Teste de suporte',
+  message: '',
+};
+
 function readJson(key, fallback) {
   try {
     const value = window.localStorage.getItem(key);
@@ -83,6 +88,7 @@ export function AuthSection() {
   const [mode, setMode] = useState('register');
   const [registerForm, setRegisterForm] = useState(emptyRegister);
   const [loginForm, setLoginForm] = useState(emptyLogin);
+  const [supportForm, setSupportForm] = useState(emptySupport);
   const [profileForm, setProfileForm] = useState(() =>
     createProfileForm(readJson(sessionUserKey, null)),
   );
@@ -138,6 +144,10 @@ export function AuthSection() {
 
   function updateProfile(field, value) {
     setProfileForm((current) => ({ ...(current ?? createProfileForm(activeAccount)), [field]: value }));
+  }
+
+  function updateSupport(field, value) {
+    setSupportForm((current) => ({ ...current, [field]: value }));
   }
 
   function clearFeedback() {
@@ -263,6 +273,43 @@ export function AuthSection() {
     }
   }
 
+  async function sendSupportMessage(event) {
+    event.preventDefault();
+    clearFeedback();
+
+    if (!activeAccount) {
+      setError('Entre na conta para enviar uma mensagem de suporte.');
+      return;
+    }
+
+    if (!supportForm.message.trim()) {
+      setError('Escreva uma mensagem antes de enviar.');
+      return;
+    }
+
+    try {
+      const data = await requestJson('/support', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: activeAccount.name,
+          email: activeAccount.email,
+          subject: supportForm.subject,
+          message: supportForm.message,
+        }),
+      });
+
+      if (!data.email?.sent) {
+        setError(data.email?.reason ?? 'Não foi possível enviar o e-mail.');
+        return;
+      }
+
+      setSupportForm(emptySupport);
+      setMessage(`Mensagem enviada por e-mail para ${activeAccount.email}.`);
+    } catch (requestError) {
+      setError(requestError instanceof Error ? requestError.message : 'Erro ao enviar suporte.');
+    }
+  }
+
   return (
     <section className="page-section auth-section" id="conta">
       <div className="content-shell">
@@ -277,73 +324,100 @@ export function AuthSection() {
         {error ? <p className="form-error">{error}</p> : null}
 
         {activeAccount ? (
-          <div className="auth-layout">
-            <article className="profile-panel">
-              <Icon name="user" size={34} />
-              <p className="eyebrow">Sessão ativa</p>
-              <h3>{activeAccount.name}</h3>
-              <p>{activeAccount.email}</p>
-              <div className="account-summary">
-                <span>Interesse: {activeAccount.interest}</span>
-                <span>Criada em: {activeAccount.createdAt}</span>
-                <span>Origem: banco local</span>
-              </div>
-            </article>
+          <>
+            <div className="auth-layout">
+              <article className="profile-panel">
+                <Icon name="user" size={34} />
+                <p className="eyebrow">Sessão ativa</p>
+                <h3>{activeAccount.name}</h3>
+                <p>{activeAccount.email}</p>
+                <div className="account-summary">
+                  <span>Interesse: {activeAccount.interest}</span>
+                  <span>Criada em: {activeAccount.createdAt}</span>
+                  <span>Origem: banco local</span>
+                </div>
+              </article>
 
-            <form className="auth-form" onSubmit={saveProfile}>
-              <h3>Editar perfil</h3>
+              <form className="auth-form" onSubmit={saveProfile}>
+                <h3>Editar perfil</h3>
+                <label>
+                  Nome
+                  <input
+                    value={editableProfile?.name ?? ''}
+                    onChange={(event) => updateProfile('name', event.target.value)}
+                  />
+                </label>
+                <label>
+                  E-mail
+                  <input
+                    type="email"
+                    value={editableProfile?.email ?? ''}
+                    onChange={(event) => updateProfile('email', event.target.value)}
+                  />
+                </label>
+                <label>
+                  Interesse
+                  <select
+                    value={editableProfile?.interest ?? 'Conhecer o jogo'}
+                    onChange={(event) => updateProfile('interest', event.target.value)}
+                  >
+                    <option>Conhecer o jogo</option>
+                    <option>Receber novidades</option>
+                    <option>Acompanhar desenvolvimento</option>
+                    <option>Encontrar grupo de invasão</option>
+                  </select>
+                </label>
+                <label>
+                  Nova senha
+                  <input
+                    type="password"
+                    value={editableProfile?.password ?? ''}
+                    onChange={(event) => updateProfile('password', event.target.value)}
+                    placeholder="Deixe em branco para manter"
+                  />
+                </label>
+                <div className="form-actions">
+                  <button className="primary-button" type="submit">
+                    <Icon name="save" size={18} />
+                    Salvar perfil
+                  </button>
+                  <button className="secondary-button" type="button" onClick={logout}>
+                    <Icon name="logout" size={18} />
+                    Sair
+                  </button>
+                  <button className="secondary-button danger-action" type="button" onClick={deleteAccount}>
+                    <Icon name="trash" size={18} />
+                    Excluir conta
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <form className="auth-form support-panel" onSubmit={sendSupportMessage}>
+              <h3>Suporte por e-mail</h3>
               <label>
-                Nome
+                Assunto
                 <input
-                  value={editableProfile?.name ?? ''}
-                  onChange={(event) => updateProfile('name', event.target.value)}
+                  value={supportForm.subject}
+                  onChange={(event) => updateSupport('subject', event.target.value)}
+                  placeholder="Teste de suporte"
                 />
               </label>
               <label>
-                E-mail
-                <input
-                  type="email"
-                  value={editableProfile?.email ?? ''}
-                  onChange={(event) => updateProfile('email', event.target.value)}
+                Mensagem
+                <textarea
+                  value={supportForm.message}
+                  onChange={(event) => updateSupport('message', event.target.value)}
+                  placeholder="Escreva uma mensagem para testar o envio de e-mail."
+                  rows="4"
                 />
               </label>
-              <label>
-                Interesse
-                <select
-                  value={editableProfile?.interest ?? 'Conhecer o jogo'}
-                  onChange={(event) => updateProfile('interest', event.target.value)}
-                >
-                  <option>Conhecer o jogo</option>
-                  <option>Receber novidades</option>
-                  <option>Acompanhar desenvolvimento</option>
-                  <option>Encontrar grupo de invasão</option>
-                </select>
-              </label>
-              <label>
-                Nova senha
-                <input
-                  type="password"
-                  value={editableProfile?.password ?? ''}
-                  onChange={(event) => updateProfile('password', event.target.value)}
-                  placeholder="Deixe em branco para manter"
-                />
-              </label>
-              <div className="form-actions">
-                <button className="primary-button" type="submit">
-                  <Icon name="save" size={18} />
-                  Salvar perfil
-                </button>
-                <button className="secondary-button" type="button" onClick={logout}>
-                  <Icon name="logout" size={18} />
-                  Sair
-                </button>
-                <button className="secondary-button danger-action" type="button" onClick={deleteAccount}>
-                  <Icon name="trash" size={18} />
-                  Excluir conta
-                </button>
-              </div>
+              <button className="primary-button" type="submit">
+                <Icon name="save" size={18} />
+                Enviar suporte
+              </button>
             </form>
-          </div>
+          </>
         ) : (
           <div className="auth-layout">
             <div className="auth-card">

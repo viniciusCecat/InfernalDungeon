@@ -732,6 +732,10 @@ button:disabled {
   margin-top: 20px;
 }
 
+.support-panel {
+  margin-top: 18px;
+}
+
 .form-error,
 .form-message {
   border: 1px solid var(--line);

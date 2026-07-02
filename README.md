@@ -85,9 +85,11 @@ SMTP_SECURE=true
 SMTP_USER=seu-email@gmail.com
 SMTP_PASS=sua-senha-de-app
 EMAIL_FROM="Infernal Dungeon <seu-email@gmail.com>"
+SUPPORT_TO=
 ```
 
 O arquivo `.env` nao deve ser enviado ao GitHub. A senha usada deve ser senha de app, nao a senha normal da conta.
+Se `SUPPORT_TO` ficar vazio, as mensagens de suporte sao enviadas para o e-mail da conta logada.
 
 ## Funcionalidades implementadas
 
@@ -102,7 +104,7 @@ O arquivo `.env` nao deve ser enviado ao GitHub. A senha usada deve ser senha de
 - Interface componentizada em React.
 - Persistência de contas e loja usando SQLite local com tabelas de usuários, produtos, pedidos, itens do pedido e endereços.
 - Uso de `localStorage` apenas para manter a sessão ativa do navegador durante a demonstração.
-- Envio opcional de e-mail real para cadastro e confirmação de pedido quando SMTP estiver configurado.
+- Envio opcional de e-mail real para cadastro, confirmação de pedido e suporte quando SMTP estiver configurado.
 
 ## Link do repositório
 

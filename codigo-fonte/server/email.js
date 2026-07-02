@@ -20,7 +20,16 @@ function createTransporter() {
   });
 }
 
-async function sendEmail({ to, subject, text, html }) {
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+async function sendEmail({ to, cc, subject, text, html }) {
   if (!isEmailConfigured()) {
     return {
       sent: false,
@@ -33,6 +42,7 @@ async function sendEmail({ to, subject, text, html }) {
     const result = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to,
+      cc,
       subject,
       text,
       html,
@@ -93,5 +103,35 @@ export async function sendOrderEmail(order) {
       <p><strong>Itens:</strong> ${items}</p>
       <p><strong>Total:</strong> R$ ${order.totalValue.toFixed(2)}</p>
     `,
+  });
+}
+
+export async function sendSupportEmail({ name, email, subject, message }) {
+  const normalizedSubject = String(subject ?? '').trim() || 'Mensagem de suporte';
+  const normalizedMessage = String(message ?? '').trim();
+  const normalizedName = String(name ?? '').trim() || 'Visitante';
+
+  if (!email || !normalizedMessage) {
+    return {
+      sent: false,
+      reason: 'E-mail e mensagem são obrigatórios.',
+    };
+  }
+
+  const target = process.env.SUPPORT_TO || email;
+  const copy = process.env.SUPPORT_TO && process.env.SUPPORT_TO !== email ? email : undefined;
+
+  return sendEmail({
+    to: target,
+    subject: `[Infernal Dungeon] ${normalizedSubject}`,
+    text: `Mensagem enviada por ${normalizedName} <${email}>:\n\n${normalizedMessage}`,
+    html: `
+      <h1>Infernal Dungeon - Suporte</h1>
+      <p><strong>Nome:</strong> ${escapeHtml(normalizedName)}</p>
+      <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Assunto:</strong> ${escapeHtml(normalizedSubject)}</p>
+      <p>${escapeHtml(normalizedMessage).replaceAll('\n', '<br />')}</p>
+    `,
+    ...(copy ? { cc: copy } : {}),
   });
 }
