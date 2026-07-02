@@ -454,7 +454,7 @@ export function AuthSection() {
                     <input
                       value={registerForm.name}
                       onChange={(event) => updateRegister('name', event.target.value)}
-                      placeholder="Vinicius Cecatto"
+                      placeholder="Ex.: Mestre da Cripta"
                     />
                   </label>
                   <label>
