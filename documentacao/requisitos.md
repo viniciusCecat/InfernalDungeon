@@ -34,11 +34,13 @@ O sistema tambem deve demonstrar um fluxo funcional completo com conta de usuari
 - RF15: Permitir salvar endereco de entrega vinculado a conta.
 - RF16: Permitir adicionar produtos ao carrinho.
 - RF17: Permitir alterar e remover itens do carrinho.
-- RF18: Permitir finalizar compra.
-- RF19: Registrar pedidos no banco local.
-- RF20: Controlar estoque da loja no banco local.
-- RF21: Permitir cancelamento de pedido.
-- RF22: Exibir uma pagina de visualizacao do banco local para evidencias.
+- RF18: Validar carrinho e endereco antes de liberar pagamento.
+- RF19: Exibir etapa de pagamento ficticio claramente identificada como demonstracao.
+- RF20: Permitir finalizar compra apos confirmacao do pagamento ficticio.
+- RF21: Registrar pedidos no banco local.
+- RF22: Controlar estoque da loja no banco local.
+- RF23: Permitir cancelamento de pedido.
+- RF24: Exibir uma pagina de visualizacao do banco local para evidencias.
 
 ## Requisitos nao funcionais considerados
 
@@ -64,10 +66,11 @@ O sistema tambem deve demonstrar um fluxo funcional completo com conta de usuari
 5. Usuario acessa a loja.
 6. Usuario salva um endereco.
 7. Usuario adiciona produtos ao carrinho.
-8. Usuario finaliza a compra.
-9. Sistema registra pedido e reduz estoque no banco.
-10. Usuario pode cancelar o pedido.
-11. Sistema registra o cancelamento e devolve o estoque.
+8. Sistema valida carrinho e endereco.
+9. Usuario confirma um pagamento ficticio.
+10. Sistema registra pedido e reduz estoque no banco.
+11. Usuario pode cancelar o pedido.
+12. Sistema registra o cancelamento e devolve o estoque.
 
 ## Banco de dados
 
@@ -90,4 +93,3 @@ Visualizacao no navegador:
 ```text
 http://127.0.0.1:5173/api/database
 ```
-

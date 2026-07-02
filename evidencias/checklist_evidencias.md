@@ -34,7 +34,7 @@ Duracao maxima: 10 minutos.
    - consultar perfil;
    - editar perfil;
    - sair e excluir a conta.
-8. Demonstrar a loja com endereco, carrinho, finalizacao e cancelamento.
+8. Demonstrar a loja com endereco, carrinho, pagamento ficticio, finalizacao e cancelamento.
 9. Abrir `/api/database` para evidenciar as tabelas do SQLite.
 10. Mostrar atualizacoes.
 11. Mostrar rapidamente a organizacao do codigo em componentes.

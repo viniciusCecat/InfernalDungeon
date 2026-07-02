@@ -1011,6 +1011,96 @@ button:disabled {
   margin-top: 14px;
 }
 
+.payment-panel {
+  border: 1px solid rgba(64, 224, 208, 0.42);
+  background:
+    linear-gradient(135deg, rgba(75, 0, 130, 0.28), rgba(139, 0, 139, 0.24)),
+    rgba(20, 12, 28, 0.38);
+  margin-bottom: 18px;
+  padding: 18px;
+}
+
+.payment-panel-head,
+.payment-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.payment-panel-head {
+  border-bottom: 1px solid rgba(64, 224, 208, 0.24);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+}
+
+.payment-panel-head h3,
+.payment-panel-head p {
+  margin: 0;
+}
+
+.payment-panel-head h3,
+.payment-panel-head strong {
+  color: var(--ghost);
+}
+
+.payment-warning {
+  border: 1px solid rgba(64, 224, 208, 0.34);
+  background: rgba(64, 224, 208, 0.12);
+  color: var(--ghost);
+  font-weight: 900;
+  margin: 0 0 14px;
+  padding: 12px;
+}
+
+.payment-summary {
+  color: rgba(248, 248, 255, 0.82);
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.payment-summary span {
+  overflow-wrap: anywhere;
+}
+
+.payment-form {
+  display: grid;
+  gap: 14px;
+}
+
+.payment-form label {
+  display: grid;
+  gap: 7px;
+  color: rgba(248, 248, 255, 0.82);
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.payment-form select {
+  width: 100%;
+  border: 1px solid rgba(64, 224, 208, 0.34);
+  background: rgba(248, 248, 255, 0.94);
+  color: var(--text);
+  outline: none;
+  padding: 11px 12px;
+}
+
+.payment-form select:focus {
+  border-color: var(--turquoise);
+  box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.18);
+}
+
+.payment-form .payment-confirmation {
+  align-items: start;
+  display: flex;
+  gap: 10px;
+}
+
+.payment-form .payment-confirmation input {
+  accent-color: var(--turquoise);
+  margin-top: 2px;
+}
+
 .store-meta {
   display: grid;
   gap: 6px;
@@ -1193,7 +1283,9 @@ button:disabled {
 
   .cart-panel-head,
   .cart-total,
-  .cart-actions {
+  .cart-actions,
+  .payment-panel-head,
+  .payment-summary {
     align-items: flex-start;
     flex-direction: column;
   }

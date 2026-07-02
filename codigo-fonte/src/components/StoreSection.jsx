@@ -17,14 +17,21 @@ const emptyAddress = {
   note: '',
 };
 
-const testAddress = {
+const exampleAddress = {
   street: 'Rua das Catacumbas',
   number: '13',
   district: 'Distrito das Forjas',
   city: 'Curitiba',
   state: 'PR',
   zip: '80000-000',
-  note: 'Endereço fictício para teste da loja.',
+  note: 'Entrega no salão principal da dungeon.',
+};
+
+const paymentMethods = ['Pix fictício', 'Cartão fictício', 'Boleto fictício'];
+
+const emptyPayment = {
+  method: paymentMethods[0],
+  confirmed: false,
 };
 
 function createInitialStock() {
@@ -130,6 +137,8 @@ export function StoreSection() {
   const [address, setAddress] = useState(emptyAddress);
   const [cart, setCart] = useState([]);
   const [quantities, setQuantities] = useState(() => createQuantityState());
+  const [pendingCheckout, setPendingCheckout] = useState(null);
+  const [paymentForm, setPaymentForm] = useState(emptyPayment);
   const [isLoadingStore, setIsLoadingStore] = useState(true);
   const [databaseError, setDatabaseError] = useState('');
   const [message, setMessage] = useState('');
@@ -205,6 +214,7 @@ export function StoreSection() {
       const nextAccount = readAccountSession();
       setActiveAccount(nextAccount);
       setCart([]);
+      setPendingCheckout(null);
       setMessage('');
       setError('');
       void loadStoreData(nextAccount);
@@ -231,10 +241,12 @@ export function StoreSection() {
   }
 
   function updateAddress(field, value) {
+    setPendingCheckout(null);
     setAddress((current) => ({ ...current, [field]: value }));
   }
 
   function updateQuantity(itemId, value, available) {
+    setPendingCheckout(null);
     const parsed = Number.parseInt(value, 10);
     const safeAvailable = Math.max(available, 1);
     const nextValue = Number.isFinite(parsed)
@@ -245,6 +257,7 @@ export function StoreSection() {
   }
 
   function updateCartQuantity(itemId, value) {
+    setPendingCheckout(null);
     const available = stock[itemId] ?? 0;
     const parsed = Number.parseInt(value, 10);
     const nextValue = Number.isFinite(parsed)
@@ -294,18 +307,25 @@ export function StoreSection() {
 
   function clearAddressForm() {
     clearFeedback();
+    setPendingCheckout(null);
     setAddress(emptyAddress);
     setMessage('Campos de endereço limpos. O endereço salvo só muda se você salvar de novo.');
   }
 
-  function fillTestAddress() {
+  function fillExampleAddress() {
     clearFeedback();
-    setAddress(testAddress);
-    setMessage('Endereço de teste preenchido. Você pode salvar ou finalizar a compra com ele.');
+    setPendingCheckout(null);
+    setAddress(exampleAddress);
+    setMessage('Endereço de exemplo preenchido. Você pode salvar ou avançar para o pagamento.');
+  }
+
+  function updatePayment(field, value) {
+    setPaymentForm((current) => ({ ...current, [field]: value }));
   }
 
   function addToCart(item) {
     clearFeedback();
+    setPendingCheckout(null);
 
     if (!activeAccount) {
       setError('Entre ou crie uma conta antes de montar uma compra.');
@@ -351,6 +371,7 @@ export function StoreSection() {
 
   function removeFromCart(itemId) {
     clearFeedback();
+    setPendingCheckout(null);
     setCart((current) => current.filter((cartItem) => cartItem.itemId !== itemId));
     setMessage('Item removido do carrinho.');
   }
@@ -364,10 +385,11 @@ export function StoreSection() {
     }
 
     setCart([]);
+    setPendingCheckout(null);
     setMessage('Compra cancelada. O carrinho foi limpo e nenhum estoque foi alterado.');
   }
 
-  async function finalizePurchase() {
+  function finalizePurchase() {
     clearFeedback();
 
     if (!activeAccount) {
@@ -388,15 +410,58 @@ export function StoreSection() {
       return;
     }
 
+    setPendingCheckout({
+      customerName: activeAccount.name,
+      customerEmail: activeAccount.email,
+      address: normalizedAddress,
+      items: cartItems.map((item) => ({
+        itemId: item.id,
+        itemName: item.name,
+        quantity: item.quantity,
+        subtotal: item.subtotal,
+      })),
+      count: cartCount,
+      total: cartTotal,
+    });
+    setPaymentForm(emptyPayment);
+    setMessage('Endereço e carrinho validados. Continue no pagamento fictício.');
+  }
+
+  function cancelPayment() {
+    clearFeedback();
+    setPendingCheckout(null);
+    setPaymentForm(emptyPayment);
+    setMessage('Pagamento fictício cancelado. O carrinho continua disponível.');
+  }
+
+  async function confirmPayment(event) {
+    event.preventDefault();
+    clearFeedback();
+
+    if (!pendingCheckout) {
+      setError('Valide a compra antes de confirmar o pagamento.');
+      return;
+    }
+
+    if (!paymentForm.method) {
+      setError('Selecione uma forma de pagamento fictícia.');
+      return;
+    }
+
+    if (!paymentForm.confirmed) {
+      setError('Confirme que o pagamento é fictício para registrar o pedido.');
+      return;
+    }
+
     try {
       const data = await requestJson('/store/orders', {
         method: 'POST',
         body: JSON.stringify({
-          customerName: activeAccount.name,
-          customerEmail: activeAccount.email,
-          address: normalizedAddress,
-          items: cartItems.map((item) => ({
-            itemId: item.id,
+          customerName: pendingCheckout.customerName,
+          customerEmail: pendingCheckout.customerEmail,
+          address: pendingCheckout.address,
+          items: pendingCheckout.items.map((item) => ({
+            itemId: item.itemId,
             quantity: item.quantity,
           })),
         }),
@@ -404,10 +469,12 @@ export function StoreSection() {
 
       applyStoreState(data, activeAccount);
       setCart([]);
+      setPendingCheckout(null);
+      setPaymentForm(emptyPayment);
       setMessage(
         data.email?.sent
-          ? `Compra finalizada: ${cartCount} item(ns), total ${formatCurrency(cartTotal)}. Confirmação enviada para ${activeAccount.email}.`
-          : `Compra finalizada: ${cartCount} item(ns), total ${formatCurrency(cartTotal)}.`,
+          ? `Pagamento fictício aprovado: ${pendingCheckout.count} item(ns), total ${formatCurrency(pendingCheckout.total)}. Confirmação enviada para ${pendingCheckout.customerEmail}.`
+          : `Pagamento fictício aprovado: ${pendingCheckout.count} item(ns), total ${formatCurrency(pendingCheckout.total)}.`,
       );
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao finalizar compra.');
@@ -436,7 +503,7 @@ export function StoreSection() {
         <SectionTitle
           eyebrow="Loja fictícia"
           title="Relicário do Abismo"
-          text="Vitrine dark fantasy com conta vinculada, endereço salvo, carrinho, finalização e cancelamento usando banco local."
+          text="Vitrine dark fantasy com conta vinculada, endereço salvo, carrinho, pagamento fictício e cancelamento usando banco local."
         />
 
         {!activeAccount ? (
@@ -543,8 +610,8 @@ export function StoreSection() {
                 <button className="secondary-button" type="button" onClick={clearAddressForm}>
                   Limpar campos
                 </button>
-                <button className="secondary-button" type="button" onClick={fillTestAddress}>
-                  Usar endereço teste
+                <button className="secondary-button" type="button" onClick={fillExampleAddress}>
+                  Preencher exemplo
                 </button>
               </div>
             </form>
@@ -604,7 +671,7 @@ export function StoreSection() {
               onClick={finalizePurchase}
             >
               <Icon name="shoppingBag" size={18} />
-              Finalizar compra
+              Validar e ir para pagamento
             </button>
             <button
               className="secondary-button danger-action"
@@ -616,6 +683,55 @@ export function StoreSection() {
             </button>
           </div>
         </section>
+
+        {pendingCheckout ? (
+          <section className="payment-panel" aria-label="Pagamento fictício">
+            <div className="payment-panel-head">
+              <div>
+                <p className="eyebrow">Pagamento fictício</p>
+                <h3>Simulação de pagamento</h3>
+              </div>
+              <strong>{formatCurrency(pendingCheckout.total)}</strong>
+            </div>
+            <p className="payment-warning">
+              Ambiente de demonstração: nenhum pagamento real será processado.
+            </p>
+            <div className="payment-summary">
+              <span>Itens validados: {pendingCheckout.count}</span>
+              <span>Entrega: {formatOrderAddress(pendingCheckout.address)}</span>
+            </div>
+            <form className="payment-form" onSubmit={confirmPayment}>
+              <label>
+                Forma de pagamento
+                <select
+                  value={paymentForm.method}
+                  onChange={(event) => updatePayment('method', event.target.value)}
+                >
+                  {paymentMethods.map((method) => (
+                    <option key={method}>{method}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="payment-confirmation">
+                <input
+                  type="checkbox"
+                  checked={paymentForm.confirmed}
+                  onChange={(event) => updatePayment('confirmed', event.target.checked)}
+                />
+                Confirmo que esta etapa é fictícia e serve apenas para registrar o pedido.
+              </label>
+              <div className="cart-actions">
+                <button className="primary-button" type="submit">
+                  <Icon name="shoppingBag" size={18} />
+                  Confirmar pagamento fictício
+                </button>
+                <button className="secondary-button danger-action" type="button" onClick={cancelPayment}>
+                  Voltar ao carrinho
+                </button>
+              </div>
+            </form>
+          </section>
+        ) : null}
 
         {message ? <p className="form-message">{message}</p> : null}
         {error ? <p className="form-error">{error}</p> : null}

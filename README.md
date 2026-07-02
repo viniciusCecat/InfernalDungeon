@@ -11,7 +11,7 @@
 
 Infernal Dungeon é uma wiki/apresentação oficial do jogo proposto na Etapa 1. O jogo é um tower defense dark fantasy multiplayer com tema de dungeon em que cada jogador controla um núcleo, posiciona torres, recruta NPCs, evolui recursos em camadas mais profundas e invade dungeons de jogadores rivais. O site organiza as informações principais do universo, personagens, comerciantes, inimigos, torres, sistema de máscaras, atualizações e loja fictícia.
 
-Os fluxos funcionais completos implementados são o acesso do visitante e a compra na loja fictícia. O usuário consegue criar uma conta, fazer login, consultar o perfil, editar os dados, sair da sessão, excluir a conta, salvar endereço de entrega, montar carrinho, finalizar compra e cancelar pedidos vinculados ao login. Contas, produtos, estoque, endereços e pedidos ficam salvos em um banco SQLite local.
+Os fluxos funcionais completos implementados são o acesso do visitante e a compra na loja fictícia. O usuário consegue criar uma conta, fazer login, consultar o perfil, editar os dados, sair da sessão, excluir a conta, salvar endereço de entrega, montar carrinho, validar a compra, passar por pagamento fictício, finalizar o pedido e cancelar pedidos vinculados ao login. Contas, produtos, estoque, endereços e pedidos ficam salvos em um banco SQLite local.
 
 A wiki foi organizada em páginas separadas dentro da aplicação React: Início, Universo, Personagens, Máscaras, Torres, Conta, Atualizações e Loja.
 
@@ -100,7 +100,7 @@ Se `SUPPORT_TO` ficar vazio, as mensagens de suporte sao enviadas para o e-mail 
 - Página de torres infernais com dano, alcance, recarga e função.
 - Sistema de login e registro com consulta, edição e exclusão de conta no SQLite.
 - Página de atualizações/devlog.
-- Página de loja fictícia com produtos, bloqueio para usuário sem login, endereço salvo, carrinho, finalização de compra, cancelamento de pedido, estoque controlado no SQLite e registro de pedidos no banco.
+- Página de loja fictícia com produtos, bloqueio para usuário sem login, endereço salvo, carrinho, validação de compra, pagamento fictício, cancelamento de pedido, estoque controlado no SQLite e registro de pedidos no banco.
 - Interface componentizada em React.
 - Persistência de contas e loja usando SQLite local com tabelas de usuários, produtos, pedidos, itens do pedido e endereços.
 - Uso de `localStorage` apenas para manter a sessão ativa do navegador durante a demonstração.
