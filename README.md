@@ -89,7 +89,7 @@ SUPPORT_TO=
 ```
 
 O arquivo `.env` nao deve ser enviado ao GitHub. A senha usada deve ser senha de app, nao a senha normal da conta.
-Se `SUPPORT_TO` ficar vazio, as mensagens de suporte sao enviadas para o e-mail da conta logada.
+Se `SUPPORT_TO` ficar vazio, as mensagens de suporte sao enviadas para o e-mail configurado em `EMAIL_FROM`. O e-mail da conta logada fica como resposta da mensagem.
 
 ## Funcionalidades implementadas
 

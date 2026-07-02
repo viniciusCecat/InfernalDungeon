@@ -120,8 +120,7 @@ export async function sendSupportEmail({ user, subject, message }) {
     };
   }
 
-  const target = process.env.SUPPORT_TO || normalizedEmail;
-  const copy = process.env.SUPPORT_TO && process.env.SUPPORT_TO !== normalizedEmail ? normalizedEmail : undefined;
+  const target = process.env.SUPPORT_TO || process.env.EMAIL_FROM;
 
   return sendEmail({
     to: target,
@@ -138,6 +137,5 @@ export async function sendSupportEmail({ user, subject, message }) {
       <p><strong>Assunto:</strong> ${escapeHtml(normalizedSubject)}</p>
       <p>${escapeHtml(normalizedMessage).replaceAll('\n', '<br />')}</p>
     `,
-    ...(copy ? { cc: copy } : {}),
   });
 }
