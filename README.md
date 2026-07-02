@@ -42,28 +42,6 @@ Visualização do banco:
 http://127.0.0.1:5173/api/database
 ```
 
-## E-mail opcional
-
-Para ativar envio real de e-mail, copie o exemplo:
-
-```bash
-cp .env.example .env
-```
-
-Preencha:
-
-```text
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
-SMTP_SECURE=true
-SMTP_USER=seu-email@gmail.com
-SMTP_PASS=sua-senha-de-app
-EMAIL_FROM="Infernal Dungeon <seu-email@gmail.com>"
-SUPPORT_TO=
-```
-
-O arquivo `.env` não deve ser enviado ao GitHub.
-
 ## Funcionalidades
 
 - Página inicial do jogo.
