@@ -1,4 +1,4 @@
-Resumo do historico de desenvolvimento em 2026-07-01.
+Resumo atualizado do historico de desenvolvimento em 2026-07-02.
 
 O historico completo esta disponivel no repositorio Git/GitHub. Este arquivo resume
 as principais etapas para facilitar a consulta nas evidencias.
@@ -14,4 +14,15 @@ as principais etapas para facilitar a consulta nas evidencias.
 - 2f27182: expansao das listas de mascaras e torres.
 - ca96271: substituicao do mapa por arte visual no hero.
 - 5d957e1: limpeza final da arte visual do hero.
-- commit final: integracao de login, registro, loja e visualizacao do banco SQLite.
+- 508eb19: integracao de banco SQLite, login, registro, loja e visualizacao do banco.
+- e9db54b: envio opcional de e-mail para cadastro e pedidos.
+- 201e67e: formulario de suporte por e-mail.
+- c1b1ebd: suporte usando conta cadastrada no banco.
+- 5040836: correcao do destinatario do suporte.
+- 89d06ca: configuracao de Run and Debug no VS Code.
+- dfc8a69: abertura do site e banco no mesmo Brave pelo debug.
+- 55018d5: remocao de botoes administrativos da loja.
+- a3952cd: remocao do status tecnico da loja.
+- b29edb0: ajuste do exemplo no registro.
+- 7835f9c: documento de requisitos atualizado.
+
