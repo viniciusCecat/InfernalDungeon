@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
 import {
@@ -14,6 +15,7 @@ import {
   saveAddress,
   updateUser,
 } from './database.js';
+import { getEmailConfigStatus, sendOrderEmail, sendWelcomeEmail } from './email.js';
 
 const app = express();
 const port = Number(process.env.PORT) || 3001;
@@ -184,6 +186,10 @@ app.get('/api/health', (_request, response) => {
   response.json({ ok: true, database: 'SQLite' });
 });
 
+app.get('/api/email/status', (_request, response) => {
+  response.json(getEmailConfigStatus());
+});
+
 app.get('/api/database', (_request, response) => {
   response.type('html').send(renderDatabasePage(getDatabaseSnapshot()));
 });
@@ -198,7 +204,11 @@ app.get('/api/users/session', (request, response) => {
 
 app.post('/api/users/register', (request, response) => {
   try {
-    response.status(201).json({ user: registerUser(request.body) });
+    const user = registerUser(request.body);
+
+    sendWelcomeEmail(user).then((email) => {
+      response.status(201).json({ user, email });
+    });
   } catch (error) {
     handleApiError(response, error);
   }
@@ -242,7 +252,14 @@ app.put('/api/store/address', (request, response) => {
 
 app.post('/api/store/orders', (request, response) => {
   try {
-    response.status(201).json(createOrder(request.body));
+    const storeState = createOrder(request.body);
+    const order = storeState.orders.find(
+      (item) => item.customerEmail === request.body.customerEmail,
+    );
+
+    sendOrderEmail(order).then((email) => {
+      response.status(201).json({ ...storeState, email });
+    });
   } catch (error) {
     handleApiError(response, error);
   }

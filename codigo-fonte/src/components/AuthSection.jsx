@@ -165,7 +165,11 @@ export function AuthSection() {
       setActiveAccount(data.user);
       setProfileForm(createProfileForm(data.user));
       setRegisterForm(emptyRegister);
-      setMessage('Conta criada e login realizado.');
+      setMessage(
+        data.email?.sent
+          ? `Conta criada e login realizado. E-mail enviado para ${data.user.email}.`
+          : 'Conta criada e login realizado.',
+      );
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao criar conta.');
     }

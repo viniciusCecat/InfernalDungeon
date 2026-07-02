@@ -443,7 +443,11 @@ export function StoreSection() {
 
       applyStoreState(data, activeAccount);
       setCart([]);
-      setMessage(`Compra finalizada: ${cartCount} item(ns), total ${formatCurrency(cartTotal)}.`);
+      setMessage(
+        data.email?.sent
+          ? `Compra finalizada: ${cartCount} item(ns), total ${formatCurrency(cartTotal)}. Confirmação enviada para ${activeAccount.email}.`
+          : `Compra finalizada: ${cartCount} item(ns), total ${formatCurrency(cartTotal)}.`,
+      );
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Erro ao finalizar compra.');
       void loadStoreData(activeAccount, false);

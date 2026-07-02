@@ -68,6 +68,27 @@ Para visualizar os dados em JSON, acesse:
 http://127.0.0.1:5173/api/database/json
 ```
 
+## Configuração opcional de e-mail
+
+O projeto pode enviar e-mail real no cadastro e na finalização de pedido. Para isso, copie o arquivo de exemplo:
+
+```bash
+cp .env.example .env
+```
+
+Depois preencha o `.env` com os dados SMTP:
+
+```text
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=seu-email@gmail.com
+SMTP_PASS=sua-senha-de-app
+EMAIL_FROM="Infernal Dungeon <seu-email@gmail.com>"
+```
+
+O arquivo `.env` nao deve ser enviado ao GitHub. A senha usada deve ser senha de app, nao a senha normal da conta.
+
 ## Funcionalidades implementadas
 
 - Página inicial de apresentação do jogo.
@@ -81,6 +102,7 @@ http://127.0.0.1:5173/api/database/json
 - Interface componentizada em React.
 - Persistência de contas e loja usando SQLite local com tabelas de usuários, produtos, pedidos, itens do pedido e endereços.
 - Uso de `localStorage` apenas para manter a sessão ativa do navegador durante a demonstração.
+- Envio opcional de e-mail real para cadastro e confirmação de pedido quando SMTP estiver configurado.
 
 ## Link do repositório
 
