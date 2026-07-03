@@ -1,28 +1,40 @@
-Resumo atualizado do historico de desenvolvimento em 2026-07-02.
-
-O historico completo esta disponivel no repositorio Git/GitHub. Este arquivo resume
-as principais etapas para facilitar a consulta nas evidencias.
-
-- 3e1aac2: criacao da estrutura React da wiki.
-- b32a555: inclusao da documentacao da Etapa 2.
-- 205c812: implementacao do fluxo funcional de login e registro.
-- ff2c1ce: organizacao dos icones em SVG dentro de assets.
-- f954261: expansao da wiki com loja ficticia, NPCs e torres.
-- 08d67be: separacao das paginas de mascaras e expansao da lore.
-- 60a8296: ajuste do conceito multiplayer com invasores rivais.
-- 6b679e1: correcao do papel duplo do Mestre Rival.
-- 2f27182: expansao das listas de mascaras e torres.
-- ca96271: substituicao do mapa por arte visual no hero.
-- 5d957e1: limpeza final da arte visual do hero.
-- 508eb19: integracao de banco SQLite, login, registro, loja e visualizacao do banco.
-- e9db54b: envio opcional de e-mail para cadastro e pedidos.
-- 201e67e: formulario de suporte por e-mail.
-- c1b1ebd: suporte usando conta cadastrada no banco.
-- 5040836: correcao do destinatario do suporte.
-- 89d06ca: configuracao de Run and Debug no VS Code.
-- dfc8a69: abertura do site e banco no mesmo Brave pelo debug.
-- 55018d5: remocao de botoes administrativos da loja.
-- a3952cd: remocao do status tecnico da loja.
-- b29edb0: ajuste do exemplo no registro.
-- 7835f9c: documento de requisitos atualizado.
-- fcc2ddd: etapa de pagamento ficticio na loja.
+ce2f44c 2026-07-02 Organiza evidencias finais
+8b36408 2026-07-02 Atualiza documentos finais
+c6817e0 2026-07-02 Oculta pedidos cancelados da loja
+dd00ef4 2026-07-02 Ajusta README final
+3b09ee3 2026-07-02 Simplifica textos da entrega
+f352d19 2026-07-02 Adiciona confirmacao de edicao de perfil
+9f114a1 2026-07-02 Adiciona confirmacao de exclusao de conta
+a9c0d58 2026-07-02 Corrige abertura do banco no debug
+398a962 2026-07-02 Atualiza evidencia do pagamento ficticio
+fcc2ddd 2026-07-02 Adiciona pagamento ficticio na loja
+48d8e1a 2026-07-02 Atualiza evidencia do historico
+7835f9c 2026-07-02 Adiciona documento de requisitos
+b29edb0 2026-07-02 Ajusta exemplo do registro
+a3952cd 2026-07-02 Remove status tecnico da loja
+55018d5 2026-07-02 Remove botoes administrativos da loja
+dfc8a69 2026-07-02 Abre site e banco no mesmo Brave
+1dd0d4c 2026-07-02 Abre somente site no debug
+329dc43 2026-07-02 Abre banco pela task de debug
+87dfae4 2026-07-02 Abre banco no debug do VS Code
+89d06ca 2026-07-02 Adiciona debug do VS Code
+a017612 2026-07-02 Ajusta resposta do suporte
+5040836 2026-07-02 Corrige destinatario do suporte
+c1b1ebd 2026-07-02 Usa conta cadastrada no suporte
+201e67e 2026-07-02 Adiciona formulario de suporte por email
+e9db54b 2026-07-02 Adiciona envio opcional de email
+b51b734 2026-07-02 Simplifica textos tecnicos da interface
+0515353 2026-07-02 Ignora banco SQLite local
+ec6a1bc 2026-07-02 Ajusta texto do botao de registro
+508eb19 2026-07-02 Implementa banco SQLite e fluxo completo da wiki
+1e5db7d 2026-07-01 Atualiza evidencia da limpeza do hero
+5d957e1 2026-07-01 Limpa arte visual do hero
+ab98c9a 2026-07-01 Atualiza evidencia da arte do hero
+ca96271 2026-07-01 Substitui mapa por arte visual do hero
+cc80600 2026-07-01 Atualiza evidencia do fluxo visual
+98868eb 2026-07-01 Simplifica fluxo visual da dungeon
+431697f 2026-07-01 Atualiza evidencia do mapa da dungeon
+5de287e 2026-07-01 Reorganiza mapa conceitual da dungeon
+e795d19 2026-07-01 Atualiza evidencia da expansao das listas
+2f27182 2026-07-01 Expande listas de mascaras e torres
+0045fed 2026-07-01 Atualiza evidencia do papel do mestre rival
