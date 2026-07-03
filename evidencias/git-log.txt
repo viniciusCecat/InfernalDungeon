@@ -1,3 +1,5 @@
+f30adcd 2026-07-02 Ajusta textos da entrega
+39eb958 2026-07-02 Atualiza evidencia do historico
 67abcd5 2026-07-02 Organiza nomes das evidencias
 a41b66c 2026-07-02 Atualiza log de commits
 ce2f44c 2026-07-02 Organiza evidencias finais
@@ -36,5 +38,3 @@ ca96271 2026-07-01 Substitui mapa por arte visual do hero
 cc80600 2026-07-01 Atualiza evidencia do fluxo visual
 98868eb 2026-07-01 Simplifica fluxo visual da dungeon
 431697f 2026-07-01 Atualiza evidencia do mapa da dungeon
-5de287e 2026-07-01 Reorganiza mapa conceitual da dungeon
-e795d19 2026-07-01 Atualiza evidencia da expansao das listas
