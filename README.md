@@ -7,9 +7,9 @@
 
 ## Resumo
 
-Infernal Dungeon é uma wiki/apresentação oficial de um jogo tower defense dark fantasy multiplayer.
+Infernal Dungeon é uma wiki/apresentação do nosso jogo, que é um tower defense dark fantasy multiplayer.
 
-O site apresenta o universo do jogo, personagens, máscaras, torres, atualizações e uma loja fictícia. O fluxo funcional principal inclui conta de usuário, edição de perfil, suporte por e-mail, carrinho, endereço, pagamento fictício, registro de pedido e cancelamento.
+No site colocamos as partes principais do projeto: universo do jogo, personagens, máscaras, torres, atualizações e uma loja fictícia. Também foi feito um fluxo funcional com cadastro, login, edição de perfil, suporte por e-mail, carrinho, endereço, pagamento fictício, pedido e cancelamento.
 
 ## Tecnologias
 
@@ -24,40 +24,40 @@ O site apresenta o universo do jogo, personagens, máscaras, torres, atualizaç�
 
 ## Funcionalidades
 
-- Página inicial do jogo.
-- Página de universo/lore.
-- Catálogo de personagens, NPCs, inimigos e rivais.
-- Página de máscaras.
-- Página de torres.
-- Página de atualizações.
-- Registro, login, edição e exclusão de conta.
-- Confirmação antes de editar perfil e excluir conta.
-- Suporte por e-mail.
-- Loja fictícia com carrinho, endereço, pagamento fictício e cancelamento de pedido.
-- Persistência de contas, produtos, estoque, endereços e pedidos.
-- Visualização do banco pelo navegador.
+- Página inicial do jogo
+- Página do universo/lore
+- Lista de personagens, NPCs, inimigos e rivais
+- Página de máscaras
+- Página de torres
+- Página de atualizações
+- Registro, login, edição e exclusão de conta
+- Confirmação antes de editar perfil e excluir conta
+- Suporte por e-mail
+- Loja fictícia com carrinho, endereço, pagamento fictício e cancelamento de pedido
+- Dados salvos no banco local: contas, produtos, estoque, endereços e pedidos
+- Visualização do banco pelo navegador
 
 ## Execução
 
-Entre na pasta do código-fonte:
+Para rodar o projeto, entre na pasta do código-fonte:
 
 ```bash
 cd codigo-fonte
 ```
 
-Instale as dependências:
+Depois instale as dependências:
 
 ```bash
 npm install
 ```
 
-Inicie o projeto:
+E inicie o projeto:
 
 ```bash
 npm run dev
 ```
 
-Acesse no navegador:
+Abra no navegador:
 
 ```text
 http://127.0.0.1:5173/
@@ -77,7 +77,7 @@ https://github.com/viniciusCecat/InfernalDungeon
 
 ## Evidências
 
-As capturas de tela e registros do desenvolvimento estão na pasta `evidencias`.
+Os prints, vídeo e registros usados como evidência estão na pasta `evidencias`.
 
 ## Vídeo
 

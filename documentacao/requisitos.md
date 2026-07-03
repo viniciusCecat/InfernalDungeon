@@ -13,13 +13,13 @@
 
 ## Objetivo do sistema
 
-O objetivo do nosso sistema é criar uma wiki/apresentação do jogo **Infernal Dungeon**.
+O objetivo do sistema é montar uma wiki/apresentação do jogo **Infernal Dungeon**.
 
-Nessa wiki, colocamos informações sobre o universo do jogo, personagens, máscaras, torres, atualizações e uma loja fictícia.
+Na wiki colocamos informações sobre o universo do jogo, personagens, máscaras, torres, atualizações e uma loja fictícia.
 
-Além da parte da wiki, também fizemos algumas funcionalidades para demonstrar melhor o sistema, como cadastro de usuário, login, edição de perfil, carrinho, endereço, pedidos, controle de estoque e suporte por e-mail.
+Além da parte de apresentação, também fizemos algumas funcionalidades para mostrar um fluxo funcionando, como cadastro de usuário, login, edição de perfil, carrinho, endereço, pedidos, controle de estoque e suporte por e-mail.
 
-A ideia foi fazer uma aplicação funcional, mostrando tanto a parte visual do jogo quanto algumas funções parecidas com as de um sistema real.
+A ideia foi entregar uma parte funcional do projeto, sem fazer um backend completo, mas com um fluxo que possa ser testado.
 
 ---
 
@@ -71,7 +71,7 @@ A ideia foi fazer uma aplicação funcional, mostrando tanto a parte visual do j
 
 ## Fluxo principal do sistema
 
-O funcionamento principal do sistema é:
+O fluxo principal que foi implementado é:
 
 1. O usuário acessa a wiki.
 2. O usuário cria uma conta.
@@ -90,8 +90,8 @@ O funcionamento principal do sistema é:
 
 ## Observações
 
-O pagamento do sistema é uma simulação acadêmica, sem cobrança real. Ele foi incluído apenas para demonstrar o fluxo de compra até o registro do pedido.
+O pagamento do sistema é apenas uma simulação, sem cobrança real. Ele foi colocado para mostrar o fluxo de compra até o registro do pedido.
 
-O banco de dados é local e usado somente para o projeto acadêmico no momento.
+O banco de dados é local e usado somente para este projeto.
 
-O projeto entrega uma aplicação funcional com wiki, conta de usuário, carrinho, pedidos, banco local e evidências de funcionamento.
+Com isso, o projeto entrega uma wiki funcional com conta de usuário, carrinho, pedidos, banco local e evidências de funcionamento.

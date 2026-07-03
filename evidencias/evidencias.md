@@ -1,6 +1,6 @@
 # Evidências
 
-Este arquivo reúne as principais capturas de tela do projeto Infernal Dungeon.
+Aqui ficaram os principais prints do projeto Infernal Dungeon para facilitar a conferência.
 
 ## Repositório
 
@@ -10,7 +10,7 @@ https://github.com/viniciusCecat/InfernalDungeon
 
 ## Vídeo de demonstração
 
-Arquivo: [video-demonstracao.mp4](video-demonstracao.mp4)
+Vídeo gravado para apresentar o funcionamento: [video-demonstracao.mp4](video-demonstracao.mp4)
 
 ## Telas da wiki
 
