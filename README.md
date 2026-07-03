@@ -22,26 +22,6 @@ O site apresenta o universo do jogo, personagens, máscaras, torres, atualizaç�
 - SQLite com SQL.js
 - Git e GitHub
 
-## Como executar
-
-```bash
-cd codigo-fonte
-npm install
-npm run dev
-```
-
-Site:
-
-```text
-http://127.0.0.1:5173/
-```
-
-Visualização do banco:
-
-```text
-http://127.0.0.1:5173/api/database
-```
-
 ## Funcionalidades
 
 - Página inicial do jogo.
@@ -57,8 +37,4 @@ http://127.0.0.1:5173/api/database
 - Persistência de contas, produtos, estoque, endereços e pedidos.
 - Visualização do banco pelo navegador.
 
-## Repositório
-
-```text
-https://github.com/viniciusCecat/InfernalDungeon
 ```
