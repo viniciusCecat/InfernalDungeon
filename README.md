@@ -37,4 +37,48 @@ O site apresenta o universo do jogo, personagens, máscaras, torres, atualizaç�
 - Persistência de contas, produtos, estoque, endereços e pedidos.
 - Visualização do banco pelo navegador.
 
+## Execução
+
+Entre na pasta do código-fonte:
+
+```bash
+cd codigo-fonte
 ```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o projeto:
+
+```bash
+npm run dev
+```
+
+Acesse no navegador:
+
+```text
+http://127.0.0.1:5173/
+```
+
+Visualização do banco:
+
+```text
+http://127.0.0.1:5173/api/database
+```
+
+## Repositório
+
+```text
+https://github.com/viniciusCecat/InfernalDungeon
+```
+
+## Evidências
+
+As capturas de tela e registros do desenvolvimento estão na pasta `evidencias`.
+
+## Vídeo
+
+Arquivo de demonstração: [evidencias/video-demonstracao.mp4](evidencias/video-demonstracao.mp4)
