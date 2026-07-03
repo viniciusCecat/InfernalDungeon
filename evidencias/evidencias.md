@@ -18,21 +18,21 @@ Arquivo: [video-demonstracao.mp4](video-demonstracao.mp4)
 
 ![Tela inicial](prints/01-tela-inicial.png)
 
-### 02. Universo
+### 02. Universo e objetivo
 
-![Universo](prints/02-universo.png)
+![Universo e objetivo](prints/02-universo-objetivo.png)
 
-### 03. Personagens
+### 03. Elenco inicial
 
-![Personagens](prints/03-personagens.png)
+![Elenco inicial](prints/03-elenco-inicial.png)
 
-### 04. Máscaras
+### 04. Máscaras e poderes
 
-![Máscaras](prints/04-mascaras.png)
+![Máscaras e poderes](prints/04-mascaras-poderes.png)
 
-### 05. Torres
+### 05. Torres infernais
 
-![Torres](prints/05-torres.png)
+![Torres infernais](prints/05-torres-infernais.png)
 
 ## Fluxo de conta
 
@@ -44,54 +44,54 @@ Arquivo: [video-demonstracao.mp4](video-demonstracao.mp4)
 
 ![Login](prints/07-conta-login.png)
 
-### 08. Perfil
+### 08. Perfil e edição
 
-![Perfil](prints/08-conta-perfil.png)
+![Perfil e edição](prints/08-conta-perfil-edicao.png)
 
-### 09. Confirmação do perfil
+### 09. Suporte por e-mail
 
-![Confirmação do perfil](prints/09-conta-perfil-confirmacao.png)
+![Suporte por e-mail](prints/09-conta-suporte-email.png)
 
-### 10. Edição de perfil
+### 10. Confirmação de edição
 
-![Edição de perfil](prints/10-conta-edicao.png)
+![Confirmação de edição](prints/10-conta-confirmacao-edicao.png)
 
-### 11. Exclusão de conta
+### 11. Confirmação de exclusão de conta
 
-![Exclusão de conta](prints/11-conta-exclusao.png)
+![Confirmação de exclusão de conta](prints/11-conta-confirmacao-exclusao.png)
 
 ## Atualizações e loja
 
-### 12. Atualizações
+### 12. Atualizações e devlog
 
-![Atualizações](prints/12-atualizacoes.png)
+![Atualizações e devlog](prints/12-atualizacoes-devlog.png)
 
-### 13. Vitrine da loja
+### 13. Endereço de entrega
 
-![Vitrine da loja](prints/13-loja-vitrine.png)
+![Endereço de entrega](prints/13-loja-endereco-entrega.png)
 
-### 14. Endereço de entrega
+### 14. Produtos e carrinho vazio
 
-![Endereço de entrega](prints/14-loja-endereco.png)
+![Produtos e carrinho vazio](prints/14-loja-produtos-carrinho-vazio.png)
 
-### 15. Pagamento fictício
+### 15. Histórico de pedido
 
-![Pagamento fictício](prints/15-loja-pagamento.png)
+![Histórico de pedido](prints/15-loja-historico-pedido.png)
 
-### 16. Pedido registrado
+### 16. Carrinho com itens
 
-![Pedido registrado](prints/16-loja-pedido.png)
+![Carrinho com itens](prints/16-loja-carrinho-itens.png)
 
-### 17. Cancelamento de pedido
+### 17. Pagamento fictício
 
-![Cancelamento de pedido](prints/17-loja-cancelamento.png)
+![Pagamento fictício](prints/17-loja-pagamento-ficticio.png)
 
 ## Banco de dados
 
 ### 18. Banco no navegador
 
-![Banco no navegador](prints/18-banco-navegador.png)
+![Banco no navegador](prints/18-banco-visao-geral.png)
 
-### 19. Tabelas do banco
+### 19. Tabelas e registros
 
-![Tabelas do banco](prints/19-banco-tabelas.png)
+![Tabelas e registros](prints/19-banco-tabelas-dados.png)

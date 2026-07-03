@@ -2,91 +2,96 @@
 
 ## Projeto
 
-Infernal Dungeon
+**Infernal Dungeon**
 
 ## Integrantes
 
-- Vinicius Cecatto
-- Leonardo Scheffer Nunes
+* Vinicius Cecatto
+* Leonardo Scheffer Nunes
+
+---
 
 ## Objetivo do sistema
 
-Desenvolver uma wiki/apresentacao oficial do jogo Infernal Dungeon, reunindo informacoes do universo, personagens, mascaras, torres, atualizacoes e loja ficticia.
+O objetivo do nosso sistema é criar uma wiki/apresentação do jogo **Infernal Dungeon**.
 
-O sistema tambem deve demonstrar um fluxo funcional completo com conta de usuario, persistencia em banco local, carrinho, endereco, pedidos e suporte por e-mail.
+Nessa wiki, colocamos informações sobre o universo do jogo, personagens, máscaras, torres, atualizações e uma loja fictícia.
+
+Além da parte da wiki, também fizemos algumas funcionalidades para demonstrar melhor o sistema, como cadastro de usuário, login, edição de perfil, carrinho, endereço, pedidos, controle de estoque e suporte por e-mail.
+
+A ideia foi fazer uma aplicação funcional, mostrando tanto a parte visual do jogo quanto algumas funções parecidas com as de um sistema real.
+
+---
 
 ## Requisitos funcionais implementados
 
-- RF01: Exibir pagina inicial de apresentacao do jogo.
-- RF02: Exibir pagina de universo/background com lore do jogo.
-- RF03: Exibir catalogo de personagens, NPCs, inimigos e mestres rivais.
-- RF04: Permitir filtro de personagens por categoria.
-- RF05: Exibir pagina de mascaras com habilidades, recarga, uso e risco.
-- RF06: Exibir pagina de torres com dano, alcance, recarga e funcao.
-- RF07: Exibir pagina de atualizacoes/devlog.
-- RF08: Permitir cadastro de usuario.
-- RF09: Permitir login de usuario.
-- RF10: Permitir consulta e edicao de perfil.
-- RF11: Permitir exclusao de conta.
-- RF12: Manter sessao ativa no navegador durante a demonstracao.
-- RF13: Permitir envio de mensagem de suporte por e-mail para usuario logado.
-- RF14: Bloquear compra na loja para usuario sem login.
-- RF15: Permitir salvar endereco de entrega vinculado a conta.
-- RF16: Permitir adicionar produtos ao carrinho.
-- RF17: Permitir alterar e remover itens do carrinho.
-- RF18: Permitir finalizar compra.
-- RF19: Registrar pedidos no banco local.
-- RF20: Controlar estoque da loja no banco local.
-- RF21: Permitir cancelamento de pedido.
-- RF22: Exibir uma pagina de visualizacao do banco local para evidencias.
+* **RF01:** Exibir a página inicial de apresentação do jogo.
+* **RF02:** Exibir uma página com o universo e a história do jogo.
+* **RF03:** Exibir personagens, NPCs, inimigos e mestres rivais.
+* **RF04:** Permitir filtrar personagens por categoria.
+* **RF05:** Exibir uma página de máscaras com habilidades, recarga, uso e risco.
+* **RF06:** Exibir uma página de torres com dano, alcance, recarga e função.
+* **RF07:** Exibir uma página de atualizações/devlog.
+* **RF08:** Permitir cadastro de usuário.
+* **RF09:** Permitir login de usuário.
+* **RF10:** Permitir consultar e editar o perfil.
+* **RF11:** Permitir excluir a conta.
+* **RF12:** Manter a sessão ativa no navegador durante o uso.
+* **RF13:** Permitir enviar mensagem de suporte por e-mail para usuário logado.
+* **RF14:** Bloquear compra na loja quando o usuário não estiver logado.
+* **RF15:** Permitir salvar endereço de entrega na conta.
+* **RF16:** Permitir adicionar produtos ao carrinho.
+* **RF17:** Permitir alterar quantidade e remover itens do carrinho.
+* **RF18:** Validar se existe carrinho e endereço antes de liberar o pagamento.
+* **RF19:** Exibir uma etapa de pagamento fictício, deixando claro que é apenas demonstração.
+* **RF20:** Permitir finalizar a compra depois da confirmação do pagamento fictício.
+* **RF21:** Registrar os pedidos no banco local.
+* **RF22:** Controlar o estoque da loja no banco local.
+* **RF23:** Permitir cancelar um pedido.
+* **RF24:** Exibir uma página para visualizar o banco local e usar como evidência.
 
-## Requisitos nao funcionais considerados
+---
 
-- RNF01: Utilizar React com interface componentizada.
-- RNF02: Utilizar Vite para execucao do frontend.
-- RNF03: Utilizar Node.js e Express para a API local.
-- RNF04: Utilizar SQLite local com SQL.js para persistencia dos dados.
-- RNF05: Utilizar Git e GitHub para controle de versao.
-- RNF06: Manter o codigo organizado por componentes, dados, assets e servidor.
-- RNF07: Nao salvar senhas em texto puro no banco.
-- RNF08: Nao enviar arquivos sensiveis como `.env` para o repositorio.
-- RNF09: Nao enviar o arquivo local do banco SQLite para o repositorio.
-- RNF10: Manter interface responsiva para desktop e telas menores.
-- RNF11: Usar SVGs locais para os icones da interface.
-- RNF12: Permitir configuracao opcional de SMTP por arquivo `.env`.
+## Requisitos não funcionais considerados
 
-## Fluxo funcional principal
+* **RNF01:** O sistema foi feito usando React.
+* **RNF02:** O projeto usa Vite para rodar o frontend.
+* **RNF03:** A API local foi feita com Node.js e Express.
+* **RNF04:** O banco local usa SQLite com SQL.js.
+* **RNF05:** O projeto usa Git e GitHub para controle de versão.
+* **RNF06:** O código foi organizado em componentes, dados, assets e servidor.
+* **RNF07:** As senhas não são salvas em texto puro no banco.
+* **RNF08:** Arquivos sensíveis, como `.env`, não devem ser enviados para o GitHub.
+* **RNF09:** O arquivo local do banco SQLite também não deve ser enviado para o GitHub.
+* **RNF10:** A interface foi pensada para funcionar em desktop e telas menores.
+* **RNF11:** Foram usados SVGs locais para ícones da interface.
+* **RNF12:** O envio de e-mail pode ser configurado com SMTP pelo arquivo `.env`.
 
-1. Usuario acessa a wiki.
-2. Usuario cria uma conta.
-3. Usuario faz login.
-4. Usuario consulta e edita o perfil.
-5. Usuario acessa a loja.
-6. Usuario salva um endereco.
-7. Usuario adiciona produtos ao carrinho.
-8. Usuario finaliza a compra.
-9. Sistema registra pedido e reduz estoque no banco.
-10. Usuario pode cancelar o pedido.
-11. Sistema registra o cancelamento e devolve o estoque.
+---
 
-## Banco de dados
+## Fluxo principal do sistema
 
-O sistema utiliza banco SQLite local criado automaticamente em:
+O funcionamento principal do sistema é:
 
-```text
-codigo-fonte/server/data/infernal-dungeon.sqlite
-```
+1. O usuário acessa a wiki.
+2. O usuário cria uma conta.
+3. O usuário faz login.
+4. O usuário pode ver e editar o perfil.
+5. O usuário acessa a loja.
+6. O usuário cadastra um endereço.
+7. O usuário adiciona produtos no carrinho.
+8. O sistema verifica se o carrinho e o endereço estão corretos.
+9. O usuário confirma um pagamento fictício.
+10. O sistema registra o pedido e diminui o estoque.
+11. O usuário pode cancelar o pedido.
+12. O sistema registra o cancelamento e devolve o estoque.
 
-Tabelas usadas:
+---
 
-- `users`
-- `products`
-- `addresses`
-- `orders`
-- `order_items`
+## Observações
 
-Visualizacao no navegador:
+O pagamento do sistema é uma simulação acadêmica, sem cobrança real. Ele foi incluído apenas para demonstrar o fluxo de compra até o registro do pedido.
 
-```text
-http://127.0.0.1:5173/api/database
-```
+O banco de dados é local e usado somente para o projeto acadêmico no momento.
+
+O projeto entrega uma aplicação funcional com wiki, conta de usuário, carrinho, pedidos, banco local e evidências de funcionamento.
