@@ -34,7 +34,7 @@ Vídeo gravado para apresentar o funcionamento: [video-demonstracao.mp4](video-d
 
 ![Torres infernais](prints/05-torres-infernais.png)
 
-## Fluxo de conta
+## Fluxo de conta e suporte
 
 ### 06. Registro
 
@@ -48,7 +48,7 @@ Vídeo gravado para apresentar o funcionamento: [video-demonstracao.mp4](video-d
 
 ![Perfil e edição](prints/08-conta-perfil-edicao.png)
 
-### 09. Suporte por e-mail
+### 09. Suporte por e-mail da conta
 
 ![Suporte por e-mail](prints/09-conta-suporte-email.png)
 
