@@ -175,6 +175,11 @@ export function StoreSection() {
     [cartItems],
   );
 
+  const activeOrders = useMemo(
+    () => orders.filter((order) => order.status !== 'Cancelado'),
+    [orders],
+  );
+
   const savedAddressComplete = !findMissingAddressField(savedAddress);
 
   function applyStoreState(data, account, shouldUpdateAddress = true) {
@@ -777,17 +782,17 @@ export function StoreSection() {
           })}
         </div>
 
-        {orders.length > 0 ? (
+        {activeOrders.length > 0 ? (
           <section className="orders-panel" aria-label="Pedidos registrados">
             <div className="orders-panel-head">
               <div>
-                <p className="eyebrow">Histórico local</p>
-                <h3>Pedidos do banco</h3>
+                <p className="eyebrow">Histórico de compras</p>
+                <h3>Pedidos ativos</h3>
               </div>
-              <span>{orders.length} pedido(s)</span>
+              <span>{activeOrders.length} pedido(s)</span>
             </div>
             <div className="orders-list">
-              {orders.map((order) => {
+              {activeOrders.map((order) => {
                 const orderItems = getOrderItems(order);
                 const orderDescription = orderItems
                   .map((item) => `${item.quantity ?? 1}x ${item.itemName}`)
@@ -809,7 +814,7 @@ export function StoreSection() {
                       <button
                         className="secondary-button danger-action"
                         type="button"
-                        disabled={order.status === 'Cancelado' || Boolean(databaseError)}
+                        disabled={Boolean(databaseError)}
                         onClick={() => cancelOrder(order.id)}
                       >
                         Cancelar pedido
