@@ -1,3 +1,5 @@
+67abcd5 2026-07-02 Organiza nomes das evidencias
+a41b66c 2026-07-02 Atualiza log de commits
 ce2f44c 2026-07-02 Organiza evidencias finais
 8b36408 2026-07-02 Atualiza documentos finais
 c6817e0 2026-07-02 Oculta pedidos cancelados da loja
@@ -36,5 +38,3 @@ cc80600 2026-07-01 Atualiza evidencia do fluxo visual
 431697f 2026-07-01 Atualiza evidencia do mapa da dungeon
 5de287e 2026-07-01 Reorganiza mapa conceitual da dungeon
 e795d19 2026-07-01 Atualiza evidencia da expansao das listas
-2f27182 2026-07-01 Expande listas de mascaras e torres
-0045fed 2026-07-01 Atualiza evidencia do papel do mestre rival
