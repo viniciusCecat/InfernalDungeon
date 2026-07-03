@@ -1,3 +1,5 @@
+6640eb5 2026-07-02 Ajusta indice de evidencias
+1af21ed 2026-07-02 Atualiza log final
 f30adcd 2026-07-02 Ajusta textos da entrega
 39eb958 2026-07-02 Atualiza evidencia do historico
 67abcd5 2026-07-02 Organiza nomes das evidencias
@@ -36,5 +38,3 @@ ec6a1bc 2026-07-02 Ajusta texto do botao de registro
 ab98c9a 2026-07-01 Atualiza evidencia da arte do hero
 ca96271 2026-07-01 Substitui mapa por arte visual do hero
 cc80600 2026-07-01 Atualiza evidencia do fluxo visual
-98868eb 2026-07-01 Simplifica fluxo visual da dungeon
-431697f 2026-07-01 Atualiza evidencia do mapa da dungeon
